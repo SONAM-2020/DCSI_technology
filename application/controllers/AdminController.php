@@ -59,7 +59,96 @@ class AdminController extends CI_Controller {
     }
     
   } 
-  
+
+  function supplierpage($type="",$param2=""){
+    date_default_timezone_set('Asia/Dhaka');
+    $page_data['message'] =$param2;
+    if($type=="loadpage"){
+      $page_data['category_list'] = $this->CommonModel->get_active_category_list();
+      $page_data['product_list'] = $this->CommonModel->get_productDetails($this->session->userdata('User_Id')); 
+      $this->load->view('backend/pages/supplier/add_products', $page_data);
+    }
+    if($type=="addproduct"){
+      $upate_data['Product_Name']= $this->input->post('product');
+      $upate_data['Category_Id']= $this->input->post('category');
+      $upate_data['Company_Id']= $this->db->get_where('t_supplier_company',array('User_Id'=>$this->session->userdata('User_Id')))->row()->Id;
+      $upate_data['Price']= $this->input->post('price');
+      $upate_data['Model_No']= $this->input->post('modal');
+      $upate_data['Description']= $this->input->post('discription');
+      $upate_data['Last_Updated_Date']=date('Y-m-d h:i:s');
+      $upate_data['Status']='Active';
+      $product_id=$this->CommonModel->do_insert('t_products_master', $upate_data);
+      $image_data['Product_Id']=$product_id; 
+      $file_directory = "uploads/productImages/comp".$this->db->get_where('t_supplier_company',array('User_Id'=>$this->session->userdata('User_Id')))->row()->Id.'/';
+      if(!is_dir($file_directory)){
+          mkdir($file_directory,0777,TRUE);
+      }
+      if($_FILES["Image1"]["name"]!=""){
+        move_uploaded_file($_FILES["Image1"]["tmp_name"], $file_directory . $_FILES["Image1"]["name"]);
+        $image_data['Image_Name']=$file_directory . $_FILES["Image1"]["name"];
+        $this->CommonModel->do_insert('t_product_images', $image_data); 
+      }
+      if($_FILES["Image2"]["name"]!=""){
+        move_uploaded_file($_FILES["Image2"]["tmp_name"], $file_directory . $_FILES["Image2"]["name"]);
+        $image_data['Image_Name']=$file_directory . $_FILES["Image2"]["name"];
+        $this->CommonModel->do_insert('t_product_images', $image_data); 
+      }
+      if($_FILES["Image3"]["name"]!=""){
+        move_uploaded_file($_FILES["Image3"]["tmp_name"], $file_directory . $_FILES["Image3"]["name"]);
+        $image_data['Image_Name']=$file_directory . $_FILES["Image3"]["name"];
+        $this->CommonModel->do_insert('t_product_images', $image_data); 
+      }
+      $this->supplierpage('loadpage','Data added successfully');
+    }
+    
+    if($type=="edit"){
+      $page_data['category_list'] = $this->CommonModel->get_active_category_list();
+      $page_data['product_details'] = $this->db->get_where('t_products_master',array('Id'=>$param2))->row();
+      $page_data['product_images'] = $this->db->get_where('t_product_images',array('Product_Id'=>$param2))->result_array();
+      $this->load->view('backend/pages/supplier/edit_products', $page_data);
+    }
+    
+    if($type=="editproduct"){
+      $upate_data['Product_Name']= $this->input->post('product');
+      $upate_data['Category_Id']= $this->input->post('category');
+      $upate_data['Price']= $this->input->post('price');
+      $upate_data['Model_No']= $this->input->post('modal');
+      $upate_data['Description']= $this->input->post('discription');
+      $upate_data['Last_Updated_Date']=date('Y-m-d h:i:s');
+      $upate_data['Status']=$this->input->post('current_status');
+      $this->db->where('Id', $this->input->post('productId'));
+      $this->db->update('t_products_master', $upate_data);
+      $image_data['Product_Id']=$this->input->post('productId'); 
+      $file_directory = "uploads/productImages/comp".$this->db->get_where('t_supplier_company',array('User_Id'=>$this->session->userdata('User_Id')))->row()->Id.'/';
+      if(!is_dir($file_directory)){
+          mkdir($file_directory,0777,TRUE);
+      }
+      if(!empty($_FILES["Image1"]["name"])){
+        unlink($this->input->post('existimage1'));
+        move_uploaded_file($_FILES["Image1"]["tmp_name"], $file_directory . $_FILES["Image1"]["name"]);
+        $image_data['Image_Name']=$file_directory . $_FILES["Image1"]["name"];
+        $this->db->where('Id', $this->input->post('existimageId1'));
+        $this->db->update('t_product_images', $image_data);
+      }
+      if(!empty($_FILES["Image2"]["name"])){
+        unlink($this->input->post('existimage2'));
+        move_uploaded_file($_FILES["Image2"]["tmp_name"], $file_directory . $_FILES["Image2"]["name"]);
+        $image_data['Image_Name']=$file_directory . $_FILES["Image2"]["name"];
+        $this->db->where('Id', $this->input->post('existimageId2'));
+        $this->db->update('t_product_images', $image_data);
+      }
+      if(!empty($_FILES["Image3"]["name"])){
+        unlink($this->input->post('existimage3'));
+        move_uploaded_file($_FILES["Image3"]["tmp_name"], $file_directory . $_FILES["Image3"]["name"]);
+        $image_data['Image_Name']=$file_directory . $_FILES["Image3"]["name"];
+        $this->db->where('Id', $this->input->post('existimageId3'));
+        $this->db->update('t_product_images', $image_data);
+      }
+      $this->supplierpage('loadpage','Data Updated successfully');
+    }
+    
+  }
+
   function AddCategory(){
     $page_data['message']="";
     $page_data['messagefail']="";
@@ -104,4 +193,5 @@ class AdminController extends CI_Controller {
     $page_data['categoryList'] = $this->db->get('t_category_master')->result_array();
     $this->load->view('backend/pages/product_category', $page_data);
   }
+
 }

@@ -28,44 +28,56 @@
                             <input type="text" value="<?=$registration_details->Contact_No?>" class="form-check-inline form-control" id="mobile" name="mobile" readonly>
                         </div>
                     </div>
-                    <label><u>Company Details</u></lavel><br>
+                    <label><u>Company Details </u>(Supplier Type: <?=$registration_details->Supplier_Type?>)</lavel><br>
+                    
                     <div class="row form-group"> 
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Name Of Company</lavel>
                             <input type="text" value="<?=$registration_details->Company_Name?>" class="form-check-inline form-control" id="Company_Name" name="Company_Name" readonly>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Company Trade License No</lavel>
-                            <input type="text" value="<?=$registration_details->License_No?>" class="form-check-inline form-control" id="License_No" name="License_No" readonly>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Company Website</lavel>
                             <input type="text" value="<?=$registration_details->Company_Website?>" class="form-check-inline form-control" id="Company_Website" name="Company_Website" readonly>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Telephone Number</lavel>
-                            <input type="text" value="<?=$registration_details->Telephone_No?>" class="form-check-inline form-control" id="Telephone_No" name="Telephone_No" readonly>
-                        </div>
-                    </div>
-                    <div class="row form-group"> 
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Comapny Registration Date</lavel>
-                            <input type="text" value="<?=$registration_details->License_Registration_Date?>" class="form-check-inline form-control" id="License_Registration_Date" name="License_Registration_Date" readonly>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Company Address</lavel>
                             <input type="text" value="<?=$registration_details->Company_Address?>" class="form-check-inline form-control" id="Company_Address" name="Company_Address" readonly>
                         </div>
-                    </div>
-                    <div class="row form-group"> 
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Company Description</lavel>
                             <input type="text" value="<?=$registration_details->Company_Description?>" class="form-check-inline form-control" id="Company_Description" name="Company_Description" readonly>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Company Trade License</lavel><br>
-                            <button class="btn btn-primary" type="button"> View/Download</button>
+                            <label>Telephone Number</lavel>
+                            <input type="text" value="<?=$registration_details->Telephone_No?>" class="form-check-inline form-control" id="Telephone_No" name="Telephone_No" readonly>
                         </div>
+                        <?php if($registration_details->Supplier_Type=="International"){?>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label>Country</lavel>
+                                <input type="text" value="<?=$registration_details->Country_Name?>" class="form-check-inline form-control" id="Country" name="Country" readonly>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label>City </lavel>
+                                <input type="text" value="<?=$registration_details->City?>" class="form-check-inline form-control" id="City" name="City" readonly>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label>Zip/Pin Code</lavel><br>
+                                <input type="text" value="<?=$registration_details->Postal_Code?>" class="form-check-inline form-control" id="Postal_Code" name="Postal_Code" readonly>
+                            </div>
+                        <?php }else{?>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label>Comapny Registration Date</lavel>
+                                <input type="text" value="<?=$registration_details->License_Registration_Date?>" class="form-check-inline form-control" id="License_Registration_Date" name="License_Registration_Date" readonly>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label>Company Trade License No</lavel>
+                                <input type="text" value="<?=$registration_details->License_No?>" class="form-check-inline form-control" id="License_No" name="License_No" readonly>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label>Company Trade License</lavel><br>
+                                <button class="btn btn-primary" type="button"> View/Download</button>
+                            </div>
+                        <?php }?>
                     </div>
                     <?php if($actiontype=="details"){ ?>
                     <div class="row form-group"> 

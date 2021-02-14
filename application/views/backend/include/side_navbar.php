@@ -44,7 +44,7 @@
 		            </li>
 				<?php }else{ ?>
 					<li>
-						<a href="#" class="ttr-material-button" onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/GuideLines/')">
+						<a href="#" class="ttr-material-button" onclick="loadpage('<?php echo base_url();?>index.php?adminController/supplierpage/loadpage/')">
 							<span class="ttr-icon"><i class="ti-layout-media-center-alt"></i></span>
 		                	<span class="ttr-label">Product Management</span>
 		                </a>

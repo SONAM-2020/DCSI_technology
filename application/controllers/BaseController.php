@@ -123,9 +123,10 @@ class BaseController extends CI_Controller {
             $sup_data['Company_Website']=$this->input->post('website');
             $sup_data['Company_Address']=$this->input->post('address');
             $sup_data['Company_Description']=$this->input->post('description');
-            $data['Country']=$this->input->post('Country');
-            $data['City']=$this->input->post('city');
-            $data['Postal_Code']=$this->input->post('postalcode');
+            $sup_data['Telephone_No']=$this->input->post('telephone');
+            $sup_data['Country_Id']=$this->input->post('Country');
+            $sup_data['City']=$this->input->post('city');
+            $sup_data['Postal_Code']=$this->input->post('postalcode');
             $sup_data['Submitted_Date']=date('Y-m-d h:i:s');
             $sup_data['Status_Id']=1;//change here according to the data in t_status_master
 
