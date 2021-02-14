@@ -88,6 +88,7 @@ class BaseController extends CI_Controller {
               $sup_data['License_Img']=$file_directory . $new_file_name;
             }
             $this->CommonModel->do_insert('t_supplier_company', $sup_data); 
+            //send mail notification
             if($this->db->affected_rows()>0){
                 $page_data['message']="Your Information has been added for Approval. You will be notified throught email once our team take further action.Thank you for using our system";
             }
