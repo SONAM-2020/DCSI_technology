@@ -19,7 +19,7 @@
 		                </a>
 		            </li>
 		            <li>
-						<a href="#" class="ttr-material-button" onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/add_products/')">
+						<a href="#" class="ttr-material-button" onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/product_category/')">
 							<span class="ttr-icon"><i class="ti-layout-media-center-alt"></i></span>
 		                	<span class="ttr-label">Product Category Management</span>
 		                </a>
