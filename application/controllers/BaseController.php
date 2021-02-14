@@ -45,56 +45,98 @@ class BaseController extends CI_Controller {
             $this->load->view('web/login/login', $page_data);   
         }
     }
-    function loginuser(){
-        if($this->input->post('EmailId')!="" &&  $this->input->post('password')!=""){
-            $query = $this->db->get_where('t_user_details', array(
-            'User_Id' => $this->input->post('EmailId')));
-            if ($query->num_rows() > 0){
-                $row = $query->row_array(); 
-                if(password_verify($this->input->post('password'), $row['Password'])){
-                    if($row['User_Status']=="N"){
-                     $page_data['message']='Your user is deactivated. Please contact system administrator.';
-                         $this->load->view('web/acknowledgement', $page_data); 
-                    }
-                    else{
-                        
-                        $this->session->set_userdata('User_table_id', $row['Id']);
-                        $this->session->set_userdata('Role_Id', $row['Role_Id']);
-                        $this->session->set_userdata('Full_Name', $row['Full_Name']);
-                        $this->session->set_userdata('User_Id', $row['User_Id']);
-                        $this->session->set_userdata('Contact_No', $row['Contact_Number']);
-                        redirect(base_url() . 'index.php?baseController/dashboard', 'refresh');
-                    }  
-                }
-                else{
-                    $page_data['message']='Invalid email and password';
-                    $this->load->view('web/acknowledgement', $page_data); 
-                }
-            } 
-            else{
-                $page_data['message']='Invalid email ';
-                $this->load->view('web/acknowledgement', $page_data); 
-            }
-        } 
-        else{
-            $page_data['message']='Email and password is required';
-                $this->load->view('web/acknowledgement', $page_data); 
-        }
 
-    }
-    function dashboard($param=""){
+    //edited this method
+    function localregistration(){
         $page_data['message']="";
-        if ($this->session->userdata('Full_Name') == null ){
-            redirect(base_url(), 'refresh');
+        $page_data['messagefail']="";
+        $checkemail=$this->db->get_where('t_user_master',array('Email'=>$this->input->post('email')))->row();
+        if($checkemail!=""){
+            $page_data['messagefail']="This email is already taken. Pleaese provide another one";
+           $this->load->view('web/acknowledgement', $page_data); 
         }
         else{
-            $this->load->view('admin/dashboard', $page_data);
-        }
+            $data['Name']=$this->input->post('name');
+            $data['Email']=$this->input->post('email');
+            $data['Contact_No']=$this->input->post('phone');
+            $data['Designation']=$this->input->post('designation');
+            $data['Role_Id']=2;//local supplier, give id as mentioned in db ->t_role_master    
+            $data['Password']=password_hash($this->input->post('confirmpassword'), PASSWORD_BCRYPT);
+            $data['Status']="InActive"; //Activeate this user on approval
+            $user_id=$this->CommonModel->do_insert('t_user_master', $data); 
+
+            $sup_data['User_Id']=$user_id;
+            $sup_data['Supplier_Type_Id']=1; //from t_
+            $sup_data['Company_Name']=$this->input->post('company');
+            $sup_data['License_No']=$this->input->post('License');
+            $sup_data['Company_Website']=$this->input->post('website');
+            $sup_data['Telephone_No']=$this->input->post('telephone');
+            $sup_data['License_Registration_Date']= date('Y-m-d',strtotime($this->input->post('Registration')));
+            $sup_data['Company_Address']=$this->input->post('address');
+            $sup_data['Company_Description']=$this->input->post('description');
+            $sup_data['Submitted_Date']=date('Y-m-d h:i:s');
+            $sup_data['Status_Id']=1;//change here according to the data in t_status_master
+            //$sup_data['City']=$this->input->post('Registration');
+            //$sup_data['Postal_Code']=$this->input->post('address');
+            $new_file_name = $_FILES["Image"]["name"];
+            $file_directory = "../uploads/";
+            if(!is_dir($file_directory)){
+                mkdir($file_directory,0777,TRUE); 
+            }
+            if($new_file_name!=""){
+              move_uploaded_file($_FILES["Image"]["tmp_name"], $file_directory . $new_file_name);
+              $sup_data['License_Img']=$file_directory . $new_file_name;
+            }
+            $this->CommonModel->do_insert('t_supplier_company', $sup_data); 
+            if($this->db->affected_rows()>0){
+                $page_data['message']="Your Information has been added for Approval. You will be notified throught email once our team take further action.Thank you for using our system";
+            }
+            else{
+                $page_data['messagefail']='Your Information  is not able to submit. Please try again';
+            }
+            $this->load->view('web/acknowledgement', $page_data);
+        }        
     }
-    function logout($param=''){  
-        $this->session->unset_userdata(0);
-        $this->session->sess_destroy();
-        $this->session->set_flashdata('logout_notification', 'logged_out');
-        redirect(base_url().'index.php?baseController/', 'refresh');
+
+
+
+    function globalregistration(){
+        $page_data['message']="";
+        $page_data['messagefail']="";
+        $data['Supplier_Id']='1';
+        $data['Name']=$this->input->post('name');
+        $data['Designation']=$this->input->post('designation');
+        $data['Mobile_Number']=$this->input->post('phone');
+        $data['Email_Address']=$this->input->post('email');
+        $data['Company_Name']=$this->input->post('company');
+        // $data['Password']=$this->input->post('confirmpassword');
+        $data['Password']=password_hash($this->input->post('confirmpassword'), PASSWORD_BCRYPT);
+        $data['Country']=$this->input->post('Country');
+        $data['City']=$this->input->post('city');
+        $data['Postal_Code']=$this->input->post('postalcode');
+        $data['License_No']=$this->input->post('License');
+        $data['Telephone_No']=$this->input->post('telephone');
+        $data['Company_Address']=$this->input->post('address');
+        $data['Company_Description']=$this->input->post('description');
+        $data['Decleration']=$this->input->post('agree');
+        $data['Apply_date']=date('Y-m-d');
+        $data['Status']='is_Not Approved';
+        // $new_file_name = $_FILES["Image"]["name"];
+        // $file_directory = "../uploads/";
+        // if(!is_dir($file_directory)){
+        //     mkdir($file_directory,0777,TRUE); 
+        // }
+        // if($new_file_name!=""){
+        //   move_uploaded_file($_FILES["Image"]["tmp_name"], $file_directory . $new_file_name);
+        //   $data['License_Img']=$file_directory . $new_file_name;
+        // }
+        $this->CommonModel->do_insert('t_supplier', $data); 
+        if($this->db->affected_rows()>0){
+            $page_data['message']="Your Information has been added for Approval.Thank you for using our system";
+        }
+        else{
+            $page_data['messagefail']='Your Information  is not able to submit. Please try again';
+        }
+        $this->load->view('web/acknowledgement', $page_data);
     }
 }

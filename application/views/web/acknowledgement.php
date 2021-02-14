@@ -1,30 +1,40 @@
+<?php header('Access-Control-Allow-Origin: *'); ?>
 <?php
     $this->load->view('web/includes/header.php');
-?> 
-<section class="event-details-area section-gap">
-	<div class="container">
-	<div class="login px-4 mx-auto mw-100">
-		 <h3 class="heading mb-2 text-center"> <span>Acknowledgement </span></h3>
-		<div class="panel panel-info">
-    		<div class="panel panel-body">
-    			<div class="row">
-		            <div class="alert alert-danger col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		            	<?php  
-							if($message!='Undefined' && $message!=''){
-						?>
-							<p><?=$message?></p>
-						<?php
-						}
-						?>	
-		            </div>
-		            
-		            <a href="<?php echo base_url();?>"><button type="button"   class="btn btn-info"><i class="fa fa-arrow-left"></i> Back to Login </button></a>
-		        </div>
-		    </div>
-		</div>
-	</div>
+?>
+<body>
+  <div id="mainpublicContent">
+   
+    <div class="bg-info">
+        <div class="container mb-1">
+            <div class="breadcrumb-content pl-10">
+                <ul>
+                    <li class="text-white"><b>Acknowledgement</b></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="page-section mb-60">
+        <div class="container">
+            <div class="row">
+                <?php  
+                    if($message!='Undefined' && $message!=''){
+                ?>
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 bg-info text-white pt-10 text-center">
+                        <p><?=$message?></p>
+                    </div>
+                <?php
+                    }else{
+                ?>  
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 bg-danger text-white pt-10 text-center">
+                        <p><?=$messagefail?></p>
+                    </div>
+                <?php
+                    }
+                ?> 
+            </div>
+        </div>
+    </div>
 </div>
-</section>
-<?php
-	    $this->load->view('web/includes/footer.php');
-	?>
+</body>
+</html>

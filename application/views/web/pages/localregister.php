@@ -4,106 +4,105 @@
 ?>
 <body>
   <div id="mainpublicContent">
-    <div class="breadcrumb-area">
+    <div class="bg-info">
         <div class="container">
-            <div class="breadcrumb-content">
+            <div class="breadcrumb-content pl-10">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">Local Supplier Registration Form</li>
+                    <li class="text-white"><b>Local Registration Form</b></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="page-section mb-60">
-        <div class="container">
+        <div class="container"> 
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                     <?php echo form_open('#' , array('class' => 'form-horizontal validatable', 'enctype' => 'multipart/form-data','id'=>'localform'));?>
                         <div class="login-form">
-                            <h4 class="login-title">1.User Registration Form</h4>
+                            <h4 class="login-title mb-10">1.User Detials</h4>
                             <div class="row">
-                                <div class="col-md-4 col-12 mb-20">
-                                    <label>Name<span class="text-danger">*</span></label> 
-                                    <input class="mb-0 form-control" type="text" name="name" id="name" placeholder="Name" onclick="remove_err('name_err')" >
+                                <div class="col-sm-4 col-sm-4 col-md-4 col-lg-4 col-xs-12 col-lg-4 col-xs-12 mb-20">
+                                    <label class="mb-1">Name<span class="text-danger">*</span></label> 
+                                    <input class="mb-0 form-control" type="text" name="name" id="name" placeholder="Name" onchange="remove_err('name_err','name')" >
                                     <span id="name_err" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-4 col-12 mb-20">
-                                    <label>Designation<span class="text-danger">*</span></label>
-                                     <input class="mb-0 form-control" type="text" name="designation" id="designation" placeholder="Designation" onclick="remove_err('designation_err')">
+                                <div class="col-sm-4 col-sm-4 col-md-4 col-lg-4 col-xs-12 col-lg-4 col-xs-12 mb-20">
+                                    <label class="mb-1">Designation<span class="text-danger">*</span></label>
+                                     <input class="mb-0 form-control" type="text" name="designation" id="designation" placeholder="Designation" onchange="remove_err('designation_err','designation')">
                                     <span id="designation_err" class="text-danger"></span>
                                 </div>
                                 
-                                <div class="col-md-4 mb-20">
-                                    <label>Mobile Number<span class="text-danger">*</span></label>
-                                     <input class="mb-0 form-control" type="text" name="phone" id="phone" placeholder="Phone No." onclick="remove_err('phone_err')">
+                                <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 mb-20">
+                                    <label class="mb-1">Mobile Number<span class="text-danger">*</span></label>
+                                     <input class="mb-0 form-control" type="number" name="phone" id="phone" placeholder="Phone No." onchange="remove_err('phone_err','phone')">
                                     <span id="phone_err" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-4 col-12 mb-20">
-                                    <label>Email Address<span class="text-danger">*</span></label>
-                                     <input class="mb-0 form-control" type="text" name="email" id="email" placeholder="E-mail Address" onclick="remove_err('email_err')">
+                                <div class="col-sm-4 col-sm-4 col-md-4 col-lg-4 col-xs-12 col-lg-4 col-xs-12 mb-20">
+                                    <label class="mb-1">Email Address (Will be your user name)<span class="text-danger">*</span></label>
+                                     <input class="mb-0 form-control" type="email" name="email" id="email" placeholder="E-mail Address" onchange="remove_err('email_err','email')">
                                     <span id="email_err" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-4 mb-20">
-                                    <label>Password<span class="text-danger">*</span></label>
-                                     <input class="mb-0 form-control" type="text" name="password" id="password" placeholder="Password" onclick="remove_err('password_err')">
+                                <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 mb-20">
+                                    <label class="mb-1">Password<span class="text-danger">*</span></label>
+                                     <input class="mb-0 form-control" type="password" name="password" id="password" placeholder="Password" onchange="remove_err('password_err','password')">
                                     <span id="password_err" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-4 mb-20">
-                                    <label>Confirm Password<span class="text-danger">*</span></label>
-                                     <input class="mb-0 form-control" type="text" name="confirmpassword" id="confirmpassword"placeholder="Re-type the Password" onclick="remove_err('confirmpassword_err')">
+                                <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 mb-20">
+                                    <label class="mb-1">Confirm Password<span class="text-danger">*</span></label>
+                                     <input class="mb-0 form-control" type="password" name="confirmpassword" id="confirmpassword" placeholder="Re-type the Password" onchange="remove_err('confirmpassword_err','confirmpassword')">
                                     <span id="confirmpassword_err" class="text-danger"></span>
                                 </div>
                             </div>
-                            <h4 class="login-title">2.Company Registration Form</h4>
+                            <h4 class="login-title mb-10">2.Company Registration Form</h4>
                             <div class="row">
-                                <div class="col-md-6 col-12 mb-20">
-                                    <label>Name of Company<span class="text-danger">*</span></label>
-                                    <input class="mb-0 form-control" type="text" name="company" id="Comapny" placeholder="Name of Company" onclick="remove_err('company_err')">
+                                <div class="col-sm-6 col-sm-6 col-md-6 col-lg-6 col-xs-12 col-lg-6 col-xs-12 mb-20">
+                                    <label class="mb-1">Name of Company<span class="text-danger">*</span></label>
+                                    <input class="mb-0 form-control" type="text" name="company" id="company" placeholder="Name of Company" onchange="remove_err('company_err','company')">
                                     <span id="company_err" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-6 col-12 mb-20">
-                                    <label>Company Trade License No.<span class="text-danger">*</span></label>
-                                    <input class="mb-0 form-control" type="text" name="License" id="License" placeholder="Password" onclick="remove_err('License_err')">
+                                <div class="col-sm-6 col-sm-6 col-md-6 col-lg-6 col-xs-12 col-lg-6 col-xs-12 mb-20">
+                                    <label class="mb-1">Company Trade License No.<span class="text-danger">*</span></label>
+                                    <input class="mb-0 form-control" type="text" name="License" id="License" placeholder="License No." onchange="remove_err('License_err','License')">
                                     <span id="License_err" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-6 col-12 mb-20">
-                                    <label>Company Trade License<span class="text-danger">*</span></label>
-                                    <input class="mb-0" type="file" placeholder="Last Name">
+                                <div class="col-sm-6 col-sm-6 col-md-6 col-lg-6 col-xs-12 col-lg-6 col-xs-12 mb-20">
+                                    <label class="mb-1">Company Trade License<span class="text-danger">*</span></label>
+                                     <input type="file" id="Image" onchange="checkfilesize(this,'images','Image_err','addBtn')" onchange="remove_err('Image_err','Image')" name="Image" class="mb-0 form-control">
+                                    <span id="Image_err" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-6 col-12 mb-20">
-                                    <label>Company Website<span class="text-danger">*</span></label>
-                                    <input class="mb-0 form-control" type="text" name="website" id="website" placeholder="https://www.company.bt" onclick="remove_err('website_err')">
+                                <div class="col-sm-6 col-sm-6 col-md-6 col-lg-6 col-xs-12 col-lg-6 col-xs-12 mb-20">
+                                    <label class="mb-1">Company Website<span class="text-danger">*</span></label>
+                                    <input class="mb-0 form-control" type="text" name="website" id="website" placeholder="https://www.company.bt" onchange="remove_err('website_err','website')">
                                     <span id="website_err" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-6 mb-20">
-                                    <label>Telephone Number<span class="text-danger">*</span></label>
-                                    <input class="mb-0 form-control" type="text" name="telephone" id="telephone" placeholder="Telephone Number" onclick="remove_err('telephone_err')">
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
+                                    <label class="mb-1">Telephone Number<span class="text-danger">*</span></label>
+                                    <input class="mb-0 form-control" type="text" name="telephone" id="telephone" placeholder="Telephone Number" onchange="remove_err('telephone_err')">
                                     <span id="telephone_err" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-6 mb-20">
-                                    <label>Comapny Registration Date<span class="text-danger">*</span></label>
-                                   <input class="mb-0 form-control" type="text" name="Registration" id="Registration" placeholder="Registration Date" onclick="remove_err('Registration_err')">
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
+                                    <label class="mb-1">Comapny Registration Date<span class="text-danger">*</span></label>
+                                   <input class="mb-0 form-control" type="date" name="Registration" id="Registration" placeholder="DD/MM/YYYY" onchange="remove_err('Registration_err')">
                                     <span id="Registration_err" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-6 mb-20">
-                                    <label>Company Address</label>
-                                    <textarea class="mb-0 form-control" style="height: 70;"></textarea>
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
+                                    <label class="mb-1">Company Address</label>
+                                    <textarea class="mb-0 form-control" onchange="remove_err('address_err','address')" name="address" id="address" style="height: 70;"></textarea>
+                                    <span id="address_err" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-6 mb-20">
-                                    <label>Company Description</label>
-                                    <textarea class="mb-0 form-control" style="height: 70;"></textarea>
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
+                                    <label class="mb-1">Company Description</label>
+                                    <textarea class="mb-0 form-control"  name="description" id="description" style="height: 70;"></textarea>
                                 </div>
-                                <div class="col-1">
-                                <input type="checkbox"  class="mb-0 form-control" id="agree" name="agree">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20 input-group-append">
+                                     <input type="checkbox"  class="" onclick="removevalidationhceckbox('agree_err','agree')" id="agree" name="agree">
+                                     <label for="agree" class="pt-10 pl-10 mt-1">Declarations-The knowledge provide above is true to the best of my Knowledge.</label> 
                                 </div>
-                                <div class="col-7">
-                                <label for="agree">Declarations-The knowledge provide above is true to the best of my Knowledge.</label>
+                                
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                    <span id="agree_err" class="text-danger"></span>
+                                    <button type ="button" class="register-button mt-0 form-control" onclick="AddInfo()">Register</button>
                                 </div>
-                                <div class="col-4">
-                                </div>
-                                <div class="col-12">
-                            <button class="register-button mt-0 form-control" onclick="AddInfo()">Register</button>
-                            </div>
                             </div>
                         </div>
                     </form>
@@ -114,27 +113,28 @@
 </div>
 <script type="text/javascript">
     function AddInfo(){
-    if(validate()){
-    $.blockUI
-        ({ 
-          css: 
-          { 
-                border: 'none', 
-                padding: '15px', 
-                backgroundColor: '#000', 
-                '-webkit-border-radius': '10px', 
-                '-moz-border-radius': '10px', 
-                opacity: .5, 
-                color: '#fff' 
-          } 
-        });
-        var url='<?php echo base_url();?>index.php?websiteController/addmessage';
-        var options = {target: '#mainpublicContent',url:url,type:'POST',data: $("#localform").serialize()}; 
-        $("#localform").ajaxSubmit(options);
-        setTimeout($.unblockUI, 600); 
+    if(validatefrom()){
+        $.blockUI
+            ({ 
+              css: 
+              { 
+                    border: 'none', 
+                    padding: '15px', 
+                    backgroundColor: '#000', 
+                    '-webkit-border-radius': '10px', 
+                    '-moz-border-radius': '10px', 
+                    opacity: .5, 
+                    color: '#fff' 
+              } 
+            });
+            var url='<?php echo base_url();?>index.php?baseController/localregistration';
+            var options = {target: '#mainpublicContent',url:url,type:'POST',data: $("#localform").serialize()}; 
+            $("#localform").ajaxSubmit(options);
+            setTimeout($.unblockUI, 600); 
+        }
     }
-    }
-    function validate(){
+
+    function validatefrom(){
       let returnt=true;
       if($('#name').val()==""){
         $('#name_err').html('Please Mention Your Name');
@@ -146,8 +146,8 @@
         $('#designation').focus();
         returnt=false;
       }
-      if($('#phone').val()==""){
-        $('#phone_err').html('Please Mention Your Phone Number');
+      if($('#phone').val()=="" || $('#phone').val().length!=8){
+        $('#phone_err').html('Please Mention Your 8 digit Phone Number');
         $('#phone').focus();
         returnt=false;
       }
@@ -161,21 +161,30 @@
         $('#password').focus();
         returnt=false;
       }
+      if($('#confirmpassword').val()=="" || ($('#confirmpassword').val()!=$('#password').val())){
+        $('#confirmpassword_err').html('Password mismathch');
+        $('#confirmpassword').focus();
+        returnt=false;
+      }
 
-      // if($('#password, #confirmpassword').on('keyup', function () {
-      //   if ($('#password').val() == $('#confirmpassword').val()) {
-      //   $('#confirmpassword_err').html('Matching').css('color', 'green');
-      //   } else 
-      //   $('#confirmpassword_err').html('Not Matching').css('color', 'red');
-      //   }));
       if($('#company').val()==""){
         $('#company_err').html('Please Mention Your Company Name');
-        $('#Comapny').focus();
+        $('#company').focus();
+        returnt=false;
+      }
+      if($('#website').val()==""){
+        $('#website_err').html('Please Mention Your Company Website');
+        $('#website').focus();
         returnt=false;
       }
       if($('#License').val()==""){
         $('#License_err').html('Please Mention Your Company Licences');
         $('#License').focus();
+        returnt=false;
+      }
+    if($('#Image').val()==""){
+        $('#Image_err').html('Upload license copy');
+        $('#Image').focus();
         returnt=false;
       }
       if($('#telephone').val()==""){
@@ -188,6 +197,13 @@
         $('#Registration').focus();
         returnt=false;
       }
+      if($('#agree').prop('checked')==false){
+        $('#agree_err').html('You need to agree declaration <br>');
+        $('#agree').focus();
+        returnt=false;
+      }
+     
+      return returnt;
     }
   </script>
 </body>

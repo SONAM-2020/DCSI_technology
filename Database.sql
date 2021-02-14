@@ -16,69 +16,201 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`csitechnology_db` /*!40100 DEFAULT CHAR
 
 USE `csitechnology_db`;
 
-/*Table structure for table `t_admin_user` */
+/*Table structure for table `t_category_master` */
 
-DROP TABLE IF EXISTS `t_admin_user`;
+DROP TABLE IF EXISTS `t_category_master`;
 
-CREATE TABLE `t_admin_user` (
+CREATE TABLE `t_category_master` (
+  `Id` int(11) NOT NULL auto_increment,
+  `Category_Name` varchar(200) NOT NULL,
+  `Description` text,
+  `Status` enum('Active','InActive') NOT NULL default 'Active',
+  PRIMARY KEY  (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `t_category_master` */
+
+/*Table structure for table `t_country_master` */
+
+DROP TABLE IF EXISTS `t_country_master`;
+
+CREATE TABLE `t_country_master` (
+  `Id` int(11) NOT NULL auto_increment,
+  `Country_Name` varchar(200) NOT NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `t_country_master` */
+
+/*Table structure for table `t_product_images` */
+
+DROP TABLE IF EXISTS `t_product_images`;
+
+CREATE TABLE `t_product_images` (
+  `Id` int(11) NOT NULL auto_increment,
+  `Image_Name` varchar(200) NOT NULL,
+  `Product_Id` int(11) NOT NULL,
+  PRIMARY KEY  (`Id`),
+  KEY `FK_t_product_images_mappng` (`Product_Id`),
+  CONSTRAINT `FK_t_product_images_mappng` FOREIGN KEY (`Product_Id`) REFERENCES `t_products_master` (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `t_product_images` */
+
+/*Table structure for table `t_products_master` */
+
+DROP TABLE IF EXISTS `t_products_master`;
+
+CREATE TABLE `t_products_master` (
   `Id` int(50) NOT NULL auto_increment,
-  `Name` varchar(255) default NULL,
-  `Email` varchar(255) default NULL,
-  `Email_Verified_at` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  `Password` varchar(255) default NULL,
-  `Image` tinyblob,
-  `created_at` timestamp NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL default '0000-00-00 00:00:00',
+  `Product_Name` varchar(255) NOT NULL,
+  `Category_Id` int(11) NOT NULL,
+  `Company_Id` int(11) NOT NULL,
+  `Price` varchar(255) NOT NULL,
+  `Model_No` varchar(255) default NULL,
+  `Description` text,
+  `Last_Updated_Date` datetime NOT NULL,
+  `Status` enum('Active','InActive') NOT NULL default 'Active',
+  PRIMARY KEY  (`Id`),
+  KEY `FK_t_products_category_mapping` (`Category_Id`),
+  CONSTRAINT `FK_t_products_category_mapping` FOREIGN KEY (`Category_Id`) REFERENCES `t_category_master` (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `t_products_master` */
+
+/*Table structure for table `t_request_equipment_details` */
+
+DROP TABLE IF EXISTS `t_request_equipment_details`;
+
+CREATE TABLE `t_request_equipment_details` (
+  `Id` int(11) NOT NULL auto_increment,
+  `Equipment_Name` varchar(200) NOT NULL,
+  `Description` text,
+  `Quantity` int(11) default NULL,
+  `Estimated_Price` varchar(100) default NULL,
+  `Request_Personal_Id` int(11) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `t_request_equipment_details` */
+
+/*Table structure for table `t_request_personal_details` */
+
+DROP TABLE IF EXISTS `t_request_personal_details`;
+
+CREATE TABLE `t_request_personal_details` (
+  `Id` int(11) NOT NULL auto_increment,
+  `Name` varchar(200) NOT NULL,
+  `Address` text NOT NULL,
+  `Contact_No` varchar(100) NOT NULL,
+  `Email` varchar(200) default NULL,
+  `Submission_Date` datetime default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `t_request_personal_details` */
+
+/*Table structure for table `t_role_master` */
+
+DROP TABLE IF EXISTS `t_role_master`;
+
+CREATE TABLE `t_role_master` (
+  `Id` int(11) NOT NULL auto_increment,
+  `Role_Name` varchar(100) NOT NULL,
+  `Status` enum('Active','InActive') NOT NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+/*Data for the table `t_role_master` */
+
+insert  into `t_role_master`(`Id`,`Role_Name`,`Status`) values (1,'Admin','Active'),(2,'Local Supplier','Active'),(3,'Global_Supplier','Active');
+
+/*Table structure for table `t_status_master` */
+
+DROP TABLE IF EXISTS `t_status_master`;
+
+CREATE TABLE `t_status_master` (
+  `Id` int(11) NOT NULL auto_increment,
+  `Status_Name` varchar(200) NOT NULL,
+  `Status` enum('Active','InActive') NOT NULL default 'Active',
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
-/*Data for the table `t_admin_user` */
+/*Data for the table `t_status_master` */
 
-insert  into `t_admin_user`(`Id`,`Name`,`Email`,`Email_Verified_at`,`Password`,`Image`,`created_at`,`updated_at`) values (1,'SONAM','admin@dcsitechnology.bt','2021-02-11 12:19:40','$2y$10$oVQ6BavZ3QGabxRjyvKxduBq4lJFSQwAR6cPfGzLb9F6CDFP38iay',NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+insert  into `t_status_master`(`Id`,`Status_Name`,`Status`) values (1,'Submitted','Active');
 
-/*Table structure for table `t_supplier` */
+/*Table structure for table `t_supplier_company` */
 
-DROP TABLE IF EXISTS `t_supplier`;
+DROP TABLE IF EXISTS `t_supplier_company`;
 
-CREATE TABLE `t_supplier` (
-  `Id` int(50) NOT NULL auto_increment,
-  `Supplier_Id` int(50) default NULL,
-  `Name` varchar(255) default NULL,
-  `Designation` varchar(255) default NULL,
-  `Mobile_Number` varchar(255) default NULL,
-  `Email_Address` varchar(255) default NULL,
-  `Password` varchar(255) default NULL,
-  `Company_Name` varchar(255) default NULL,
-  `Country` varchar(255) default NULL,
+CREATE TABLE `t_supplier_company` (
+  `Id` int(11) NOT NULL auto_increment,
+  `Supplier_Type_Id` int(11) NOT NULL,
+  `User_Id` int(11) NOT NULL,
+  `Company_Name` varchar(255) NOT NULL,
+  `Country_Id` int(11) default NULL,
   `City` varchar(255) default NULL,
   `Postal_Code` varchar(255) default NULL,
   `License_No` varchar(255) default NULL,
   `License_Img` blob,
   `Telephone_No` varchar(255) default NULL,
-  `L_Registration_Date` date default NULL,
+  `License_Registration_Date` date default NULL,
   `Company_Address` text,
   `Company_Description` text,
-  `Decleration` varchar(100) default NULL,
-  `Apply_date` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  `Company_Website` varchar(200) default NULL,
+  `Submitted_Date` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `Update_date` timestamp NOT NULL default '0000-00-00 00:00:00',
-  `Status` varchar(255) default NULL,
+  `Updated_By` int(11) default NULL,
+  `Status_Id` int(11) NOT NULL,
+  PRIMARY KEY  (`Id`),
+  KEY `FK_t_supplier_status_mapping` (`Status_Id`),
+  KEY `FK_t_supplier_company` (`Country_Id`),
+  CONSTRAINT `FK_t_supplier_company` FOREIGN KEY (`Country_Id`) REFERENCES `t_country_master` (`Id`),
+  CONSTRAINT `FK_t_supplier_status_mapping` FOREIGN KEY (`Status_Id`) REFERENCES `t_status_master` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Data for the table `t_supplier_company` */
+
+insert  into `t_supplier_company`(`Id`,`Supplier_Type_Id`,`User_Id`,`Company_Name`,`Country_Id`,`City`,`Postal_Code`,`License_No`,`License_Img`,`Telephone_No`,`License_Registration_Date`,`Company_Address`,`Company_Description`,`Company_Website`,`Submitted_Date`,`Update_date`,`Updated_By`,`Status_Id`) values (1,0,4,'company',NULL,NULL,NULL,'sdfas','../uploads/rin_side.png','02333566','2021-02-16','sdfsdf','asdfasdf','http://bhutansyncits.com','2021-02-14 12:20:30','0000-00-00 00:00:00',NULL,1),(2,1,5,'e-bhutan',NULL,NULL,NULL,'12312312','../uploads/main1.png','12312312','2021-02-16','sdfsdf','asdfasdf','http://e-bhutan.com','2021-02-14 12:37:27','0000-00-00 00:00:00',NULL,1);
+
+/*Table structure for table `t_supplier_type` */
+
+DROP TABLE IF EXISTS `t_supplier_type`;
+
+CREATE TABLE `t_supplier_type` (
+  `Id` int(11) NOT NULL auto_increment,
+  `Supplier_Type` varchar(200) NOT NULL,
+  `Status` enum('Active','InActive') NOT NULL default 'Active',
   PRIMARY KEY  (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
-/*Data for the table `t_supplier` */
+/*Data for the table `t_supplier_type` */
 
-/*Table structure for table `t_supplier_master` */
+insert  into `t_supplier_type`(`Id`,`Supplier_Type`,`Status`) values (1,'Local','Active'),(2,'International','Active');
 
-DROP TABLE IF EXISTS `t_supplier_master`;
+/*Table structure for table `t_user_master` */
 
-CREATE TABLE `t_supplier_master` (
+DROP TABLE IF EXISTS `t_user_master`;
+
+CREATE TABLE `t_user_master` (
   `Id` int(50) NOT NULL auto_increment,
-  `Name` varchar(255) default NULL,
-  `Status` varchar(50) default 'Yes',
-  PRIMARY KEY  (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Name` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `Image` tinyblob,
+  `Contact_No` varchar(8) NOT NULL,
+  `Designation` varchar(200) default NULL,
+  `Role_Id` int(11) NOT NULL,
+  `Status` enum('Active','InActive') NOT NULL default 'Active',
+  PRIMARY KEY  (`Id`),
+  KEY `FK_t_user_role_mapping` (`Role_Id`),
+  CONSTRAINT `FK_t_user_role_mapping` FOREIGN KEY (`Role_Id`) REFERENCES `t_role_master` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
-/*Data for the table `t_supplier_master` */
+/*Data for the table `t_user_master` */
+
+insert  into `t_user_master`(`Id`,`Name`,`Email`,`Password`,`Image`,`Contact_No`,`Designation`,`Role_Id`,`Status`) values (1,'SONAM','admin@dcsitechnology.bt','$2y$10$xAGBI03TCNXegn97SAkf9eGxflVG22gAK2kG1RrHfbeL0l74Ntkhq',NULL,'',NULL,1,'Active'),(2,'name test','email','$2y$10$XK6dkgV3mJhs56EJscM1SeToeQfLIicPGOOnnp8rbspx.IPzPR/ui',NULL,'12312312','designation',2,'InActive'),(3,'name test','email','$2y$10$GgErJSiKDGSxVbOE8BJS8.DujslAM2yj5P7vLjllDhmcIIR9i3hJ2',NULL,'12312312','designation',2,'InActive'),(4,'name test','email','$2y$10$xAGBI03TCNXegn97SAkf9eGxflVG22gAK2kG1RrHfbeL0l74Ntkhq',NULL,'12312312','designation',2,'InActive'),(5,'Tshewan','email@gmail.com','$2y$10$Qt7WHMwHQyXgR1/BNanGFe6QCq38KgXJKXlp1O8VR/M3HCRep5cpS',NULL,'12312312','Programmer',2,'InActive');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

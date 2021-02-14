@@ -233,9 +233,16 @@
 </div>
 
 <script type="text/javascript">
-    function remove_err(err_Id){
-        $('#'+err_Id).html('');
-      }
+    function remove_err(err_Id,fieldId){
+        if($('#'+fieldId).val()!=""){
+            $('#'+err_Id).html('');
+        }
+    }
+    function removevalidationhceckbox(errid,id){
+        if($('#'+id).prop('checked')){
+             $('#'+errid).html('');
+        }
+    }
    function loadpage(url){
     $.blockUI
         ({ 

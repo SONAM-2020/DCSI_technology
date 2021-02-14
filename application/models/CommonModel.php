@@ -28,5 +28,10 @@ class CommonModel extends CI_Model{
     $query =$this->db->query("SELECT c.`comp_name`,c.`mission`, c.`information`, c.`work`, c.`design`, c.`support`, c.`image` FROM t_company c WHERE c.`Id`='".$id."'")->result_array();
     return $query;
   }
+  function getproductDetails($id=""){
+    $query=$this->db->query("
+    SELECT * FROM t_products p LEFT JOIN t_supplier r ON r.`supplier_Id`=p.`product_Id` where p.`product_Id`='".$id."'")->result_array();
+
+  }
 }
 

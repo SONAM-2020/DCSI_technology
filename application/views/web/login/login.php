@@ -20,7 +20,7 @@
                 <div class="col-sm-12 col-md-4 col-lg-4 col-xs-4">
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4 col-xs-4">
-                     <?php echo form_open('?adminController/login' , array('class' =>'form-horizontal','id' => 'loginform'));?>
+                     <?php echo form_open('?loginController/login' , array('class' =>'form-horizontal','id' => 'loginform'));?>
                         <div class="login-form">
                             <h4 class="login-title">Login</h4>
                             <div class="row">
@@ -89,47 +89,6 @@ function validate(){
 }
 function remove_err(err_Id){
   $('#'+err_Id).html('');
-}
-function loadforgotpassword(){
-  $('#loginsection').hide();
-  $('#forgotpass').show()
-}
-function getOtp(){
-   $.blockUI
-   ({ 
-      css: 
-      { 
-          border: 'none', 
-          padding: '15px', 
-          backgroundColor: '#000', 
-          '-webkit-border-radius': '10px', 
-          '-moz-border-radius': '10px', 
-          opacity: .5, 
-          color: '#fff' 
-      } 
-    });
-  var url = '<?php echo base_url();?>index.php?adminController/getOtp/'+$('#emailtoresetpassword').val();
-  $.ajax({  
-    type: "GET",
-    url : url,
-    success : function(data){
-      if(data.trim() =='success'){
-        $('#messagetodisplay').html('System has reset your password. Please visit your email to get new password');
-        $('#loginsection').show();
-        $('#forgotpass').hide();
-        $('#mismatcherr').hide();
-      }
-      else{
-        $('#loginsection').hide();
-        $('#forgotpass').show()
-        $('#emailtoresetpassword_err').html(data);
-      }
-    },
-    error : function(jqXHR, textStatus, errorThrown) {  
-    alert(textStatus+'in error:'+errorThrown+":"+jqXHR);  
-    }
-  });
-  setTimeout($.unblockUI, 6000);
 }
 </script>
 </body>
