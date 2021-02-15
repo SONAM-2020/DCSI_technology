@@ -178,7 +178,6 @@
         $('#confirmpassword').focus();
         returnt=false;
       }
-
       if($('#company').val()==""){
         $('#company_err').html('Please Mention Your Company Name');
         $('#company').focus();
@@ -224,7 +223,6 @@
         $('#agree').focus();
         returnt=false;
       }
-     
       return returnt;
     }
   </script>

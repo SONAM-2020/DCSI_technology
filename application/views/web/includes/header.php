@@ -6,7 +6,7 @@
     <title>CSI Technology</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>assest/website/images/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>uploads/dcsilogo.png">
     <link rel="stylesheet" href="<?php echo base_url();?>assest/website/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assest/website/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assest/website/css/fontawesome-stars.css">
