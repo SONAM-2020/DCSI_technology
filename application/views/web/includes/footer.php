@@ -232,7 +232,58 @@
 </div>   
 </div>
 
+
+<script src="<?php echo base_url();?>assest/website/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/vendor/popper.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/ajax-mail.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/jquery.meanmenu.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/wow.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/owl.carousel.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/jquery.magnific-popup.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/isotope.pkgd.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/imagesloaded.pkgd.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/jquery.mixitup.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/jquery.countdown.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/jquery.counterup.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/waypoints.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/jquery.barrating.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/jquery-ui.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/venobox.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/jquery.nice-select.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/scrollUp.min.js"></script>
+<!-- <script src="<?php echo base_url();?>assest/website/js/slick.min.js"></script> -->
+<script src="<?php echo base_url();?>assest/website/js/main.js"></script>
+<script src="<?php echo base_url();?>assest/JqueryAjaxFormSubmit.js"></script>
+<script src="<?php echo base_url();?>assest/jquery.form.js"></script>
+<script src="<?php echo base_url();?>assest/jquery-blockUI.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/main.js"></script> 
+
 <script type="text/javascript">
+    function searchproductdetails(){
+        if($('#searchdetailsfom').val()==""){
+            $('#searchdetails').prop('placeholder','Please enter search key here');
+        }
+        else{
+            $.blockUI
+            ({ 
+              css: 
+              { 
+                    border: 'none', 
+                    padding: '15px', 
+                    backgroundColor: '#000', 
+                    '-webkit-border-radius': '10px', 
+                    '-moz-border-radius': '10px', 
+                    opacity: .5, 
+                    color: '#fff' 
+              } 
+            });
+            var url='<?php echo base_url();?>index.php?baseController/search_details';
+            var options = {target: '#mainpublicContent',url:url,type:'POST',data: $("#searchdetails").serialize()}; 
+            $("#searchdetails").ajaxSubmit(options);
+            setTimeout($.unblockUI, 600); 
+        }
+    }
     function remove_err(err_Id,fieldId){
         if($('#'+fieldId).val()!=""){
             $('#'+err_Id).html('');
@@ -277,29 +328,5 @@
             $('#'+buttonId).show();
         }
     }
+    
 </script>
-<script src="<?php echo base_url();?>assest/website/js/vendor/jquery-1.12.4.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/vendor/popper.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/ajax-mail.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/jquery.meanmenu.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/wow.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/owl.carousel.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/jquery.magnific-popup.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/isotope.pkgd.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/imagesloaded.pkgd.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/jquery.mixitup.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/jquery.countdown.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/jquery.counterup.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/waypoints.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/jquery.barrating.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/jquery-ui.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/venobox.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/jquery.nice-select.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/scrollUp.min.js"></script>
-<!-- <script src="<?php echo base_url();?>assest/website/js/slick.min.js"></script> -->
-<script src="<?php echo base_url();?>assest/website/js/main.js"></script>
-<script src="<?php echo base_url();?>assest/JqueryAjaxFormSubmit.js"></script>
-<script src="<?php echo base_url();?>assest/jquery.form.js"></script>
-<script src="<?php echo base_url();?>assest/jquery-blockUI.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/main.js"></script> 

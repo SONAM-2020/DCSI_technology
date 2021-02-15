@@ -7,8 +7,11 @@ class BaseController extends CI_Controller {
     public function index(){
         $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
         $this->load->view('web/index', $page_data);
+        $page_data['category_list'] = $this->CommonModel->get_active_category_list();
+        $this->load->view('web/index',$page_data);
     }
     function loadpage($param1="",$param2=""){
+        $page_data['category_list'] = $this->CommonModel->get_active_category_list();
         $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
         if($param1=="localregister"){
             $page_data['linktype']=$param1;
@@ -142,5 +145,9 @@ class BaseController extends CI_Controller {
             }
             $this->load->view('web/acknowledgement', $page_data);
         }
+    }
+    function search_details(){
+        $page_data['searchResult'] = $this->CommonModel->searchfromtable($this->input->post('searchdetails'));
+        $this->load->view('web/search_result', $page_data);
     }
 }

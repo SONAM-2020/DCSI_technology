@@ -33,7 +33,7 @@ class CommonModel extends CI_Model{
     SELECT * FROM t_products p LEFT JOIN t_supplier r ON r.`supplier_Id`=p.`product_Id` where p.`product_Id`='".$id."'")->result_array();
   }
   function get_registration_list($type="",$id=""){
-    $query="SELECT u.Contact_No,u.Designation,u.Email,u.Id user_id,u.Name,s.Company_Name,s.Company_Website,s.Submitted_Date,s.Company_Address FROM t_user_master u JOIN t_supplier_company s ON s.User_Id=u.Id";
+    $query="SELECT u.`Contact_No`,u.`Designation`,u.`Email`,u.`Id` user_id,u.`Name`,s.`Company_Name`,s.`Company_Website`,s.`Submitted_Date`,s.`Company_Address` FROM t_user_master u JOIN t_supplier_company s ON s.`User_Id`=u.`Id`";
     if($type=="submitted"){
       $query =$this->db->query($query." WHERE s.Status_Id=1 AND u.Role_Id <> 1")->result_array();
     }
@@ -43,8 +43,8 @@ class CommonModel extends CI_Model{
     return $query;
   }
   function get_registration_details($type="",$id=""){
-    $query="SELECT u.Contact_No,u.Designation,u.Email,u.Id user_id,u.Name,s.Company_Name,s.Company_Website,s.Submitted_Date,s.Company_Address,s.City,s.Company_Description,s.Id company_Id,s.License_Img,s.License_No,s.License_Registration_Date,s.Postal_Code,s.Telephone_No,c.Country_Name,t.Supplier_Type,s.Remarks
-    FROM t_user_master u JOIN t_supplier_company s ON s.User_Id=u.Id LEFT JOIN t_country_master c ON c.Id=s.Country_Id LEFT JOIN t_supplier_type t ON t.Id=s.Supplier_Type_Id ";
+    $query="SELECT u.`Contact_No`,u.`Designation`,u.`Email`,u.`Id` user_id,u.`Name`,s.`Company_Name`,s.`Company_Website`,s.`Submitted_Date`,s.`Company_Address`,s.`City`,s.`Company_Description`,s.`Id` company_Id,s.`License_Img`,s.`License_No`,s.`License_Registration_Date`,s.`Postal_Code`,s.`Telephone_No`,c.`Country_Name`,t.`Supplier_Type`,s.`Remarks`
+    FROM t_user_master u JOIN t_supplier_company s ON s.`User_Id`=u.`Id` LEFT JOIN t_country_master c ON c.`Id`=s.`Country_Id` LEFT JOIN t_supplier_type t ON t.`Id`=s.`Supplier_Type_Id`";
     //return $this->db->query($query)->row();
     if($type=="details"){
       $query.=" WHERE s.Status_Id=1 AND u.Role_Id <> 1 AND u.Id='".$id."'";
@@ -59,8 +59,12 @@ class CommonModel extends CI_Model{
     return $this->db->get_where('t_category_master', array('Status' => 'Active'))->result_array();
   }
   function get_productDetails($userId=""){
-    $query="SELECT p.Id,p.Product_Name,c.Category_Name,p.Description,p.Price,p.Status,i.Image_Name FROM t_products_master p JOIN t_product_images i ON i.Product_Id=p.Id JOIN t_supplier_company s ON s.Id=p.Company_Id JOIN t_category_master c ON c.Id=p.Category_Id ";
+    $query="SELECT p.`Id`,p.`Product_Name`,c.`Category_Name`,p.`Description`,p.`Price`,p.`Status`,i.`Image_Name` FROM t_products_master p JOIN t_product_images i ON i.`Product_Id`=p.`Id` JOIN t_supplier_company s ON s.`Id`=p.`Company_Id` JOIN t_category_master c ON c.`Id`=p.`Category_Id` ";
     return $this->db->query($query." WHERE s.User_Id='".$userId."' GROUP BY p.Id ")->result_array();
   }
+  function searchfromtable($searchtype=""){
+    $query="SELECT p.`Id`,p.`Description`,p.`Last_Updated_Date`,p.`Model_No`,p.`Price`,p.`Product_Name`,i.`Image_Name`  FROM t_products_master p, t_product_images i WHERE p.`Product_Name` LIKE '%".$searchtype."%' AND p.`Id`=i.`Product_Id` AND p.`Status`='Active' GROUP BY p.Id "; 
+    return $this->db->query($query)->result_array();
+}
 }
 
