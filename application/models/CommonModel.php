@@ -62,5 +62,9 @@ class CommonModel extends CI_Model{
     $query="SELECT p.Id,p.Product_Name,c.Category_Name,p.Description,p.Price,p.Status,i.Image_Name FROM t_products_master p JOIN t_product_images i ON i.Product_Id=p.Id JOIN t_supplier_company s ON s.Id=p.Company_Id JOIN t_category_master c ON c.Id=p.Category_Id ";
     return $this->db->query($query." WHERE s.User_Id='".$userId."' GROUP BY p.Id ")->result_array();
   }
+  function searchfromtable($searchtype=""){
+    $query="SELECT p.Id,p.Description,p.Last_Updated_Date,p.Model_No,p.Price,p.Product_Name,i.Image_Name  FROM t_products_master p, t_product_images i WHERE p.Product_Name LIKE '%".$searchtype."%' AND p.`Id`=i.`Product_Id` AND p.`Status`='Active' GROUP BY p.Id "; 
+    return $this->db->query($query)->result_array();
+}
 }
 

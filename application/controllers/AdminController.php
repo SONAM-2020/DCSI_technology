@@ -106,17 +106,17 @@ class AdminController extends CI_Controller {
       if(!is_dir($file_directory)){
           mkdir($file_directory,0777,TRUE);
       }
-      if($_FILES["Image1"]["name"]!=""){
+      if(!empty($_FILES["Image1"]["name"])){
         move_uploaded_file($_FILES["Image1"]["tmp_name"], $file_directory . $_FILES["Image1"]["name"]);
         $image_data['Image_Name']=$file_directory . $_FILES["Image1"]["name"];
         $this->CommonModel->do_insert('t_product_images', $image_data); 
       }
-      if($_FILES["Image2"]["name"]!=""){
+      if(!empty($_FILES["Image2"]["name"])){
         move_uploaded_file($_FILES["Image2"]["tmp_name"], $file_directory . $_FILES["Image2"]["name"]);
         $image_data['Image_Name']=$file_directory . $_FILES["Image2"]["name"];
         $this->CommonModel->do_insert('t_product_images', $image_data); 
       }
-      if($_FILES["Image3"]["name"]!=""){
+      if(!empty($_FILES["Image3"]["name"])){
         move_uploaded_file($_FILES["Image3"]["tmp_name"], $file_directory . $_FILES["Image3"]["name"]);
         $image_data['Image_Name']=$file_directory . $_FILES["Image3"]["name"];
         $this->CommonModel->do_insert('t_product_images', $image_data); 

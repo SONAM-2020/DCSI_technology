@@ -5,7 +5,8 @@ class BaseController extends CI_Controller {
         parent::_construct();
     }
     public function index(){
-        $this->load->view('web/index');
+        $page_data['category_list'] = $this->CommonModel->get_active_category_list();
+        $this->load->view('web/index',$page_data);
     }
     function loadpage($param1="",$param2=""){
         if($param1=="localregister"){
@@ -139,5 +140,9 @@ class BaseController extends CI_Controller {
             }
             $this->load->view('web/acknowledgement', $page_data);
         }
+    }
+    function search_details(){
+        $page_data['searchResult'] = $this->CommonModel->searchfromtable($this->input->post('searchdetails'));
+        $this->load->view('web/search_result', $page_data);
     }
 }
