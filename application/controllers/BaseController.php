@@ -19,7 +19,7 @@ class BaseController extends CI_Controller {
         }
         if($param1=="About"){
             $page_data['linktype']=$param1;
-            $this->load->view('web/pages/About', $page_data);   
+            $this->load->view('web/pages/aboutus', $page_data);   
         }
         if($param1=="Partner"){
             $page_data['linktype']=$param1;

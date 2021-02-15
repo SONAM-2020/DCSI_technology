@@ -12,8 +12,7 @@
                 </ul>
             </div>
         </div>
-    </div>
-    </div>
+      </div>
     <div class="page-section mb-60">
         <div class="container">
             <div class="row">

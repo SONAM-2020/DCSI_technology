@@ -35,6 +35,7 @@
 <script src="<?php echo base_url();?>assest/admin/assets/js/admin.js"></script>
 <script src='<?php echo base_url();?>assest/admin/assets/vendors/calendar/moment.min.js'></script>
 <script src='<?php echo base_url();?>assest/admin/assets/vendors/calendar/fullcalendar.js'></script>
+<script type="text/javascript" src="<?php echo base_url();?>assest/summernote/summernote-lite.js"></script>
 <script src="<?php echo base_url();?>assest/JqueryAjaxFormSubmit.js"></script>
 <script src="<?php echo base_url();?>assest/jquery.form.js"></script>
 <script src="<?php echo base_url();?>assest/jquery-blockUI.js"></script>

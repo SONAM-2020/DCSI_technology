@@ -20,16 +20,29 @@
 		                </a>
 		                <ul>
 		                	<li>
-		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/GeneralInfo/')"><span class="ttr-label">General Information</span></a>
+		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/CompanyInformation/')"><span class="ttr-label">Manage General Information</span></a>
 		                	</li>
 		                	<li>
 		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/ImageSlider/')"><span class="ttr-label">Manage Home Slider</span></a>
 		                	</li>
 		                	<li>
-		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/Service/')"><span class="ttr-label">Partner Profile</span></a>
+		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/PartnerProfile/')"><span class="ttr-label">Manage Partner Profile</span></a>
 		                	</li>
 		                </ul>
 		            </li>
+		            <li>
+						<a href="#" class="ttr-material-button">
+							<span class="ttr-icon"><i class="ti-layout-media-center-alt"></i></span>
+		                	<span class="ttr-label">News Management</span>
+		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+		                </a>
+		                <ul>
+		                	<li>
+		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/News/')"><span class="ttr-label">Add News & Announcement</span></a>
+		                	</li>
+		                </ul>
+		            </li>
+		            
 		            <li>
 						<a href="#" class="ttr-material-button" onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/product_category/')">
 							<span class="ttr-icon"><i class="ti-layout-media-center-alt"></i></span>

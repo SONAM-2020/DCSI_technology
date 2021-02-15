@@ -1,10 +1,10 @@
 <main class="ttr-wrapper">
 		<div class="container-fluid">
 			<div class="db-breadcrumb">
-				<h4 class="breadcrumb-title">Products</h4>
+				<h4 class="breadcrumb-title">Silder</h4>
 				<ul class="db-breadcrumb-list">
 					<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-					<li>Products</li>
+					<li>Manage Image Slider</li>
 				</ul>
 			</div>
 			<div class="row">

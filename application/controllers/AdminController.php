@@ -19,15 +19,29 @@ class AdminController extends CI_Controller {
       $page_data['message']="";
       $this->load->view('backend/pages/product_category', $page_data);
     }
-    if($param1=="GeneralInfo"){
-      $page_data['GeneralInfo'] = $this->db->get_where('t_',array('Status'=>'Active'))->result_array();
+    if($param1=="CompanyInformation"){
+      $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
       $page_data['message']="";
-      $this->load->view('backend/pages/product_category', $page_data);
+      $this->load->view('backend/pages/CompanyInformation', $page_data);
     }
     if($param1=="ImageSlider"){
       $page_data['ImageSlider'] = $this->db->get_where('t_image_slider')->result_array();
       $page_data['message']="";
       $this->load->view('backend/pages/ImageSlider', $page_data);
+    }
+    if($param1=="PartnerProfile"){
+      $page_data['PartnerInfo'] = $this->db->get_where('t_partner_details')->row(); 
+      $page_data['message']="";
+      $this->load->view('backend/pages/PartnerProfile', $page_data);
+    }
+    if($param1=="News"){
+        $page_data['News_info'] = $this->db->get_where('t_news_announcement')->result_array();
+        $this->load->view('backend/pages/newsandAnnouncement/news_announcement', $page_data);
+    }
+    if($param1=="ViewnewsDetails"){
+        $page_data['news_announcementdetails'] = $this->db->get_where('t_news_announcement', array(
+        'Id' => $param2))->row();
+        $this->load->view('backend/pages/newsandAnnouncement/news_announcementdetails', $page_data);
     }
       
   }
@@ -157,7 +171,6 @@ class AdminController extends CI_Controller {
     }
     
   }
-
   function AddCategory(){
     $page_data['message']="";
     $page_data['messagefail']="";
@@ -196,7 +209,6 @@ class AdminController extends CI_Controller {
     $page_data['categoryList'] = $this->db->get_where('t_category_master')->result_array();
     $this->load->view('backend/pages/product_category', $page_data);
   }
-<<<<<<< HEAD
   function AddSlider(){
     $page_data['message']="";
     $page_data['messagefail']="";
@@ -234,21 +246,108 @@ class AdminController extends CI_Controller {
         $this->load->view('backend/pages/ImageSlider', $page_data); 
       }
     function Deleteslider($sliderId="",$page=""){ 
-      $page_data['ImageSlider'] = $this->db->get('t_image_slider')->result_array();
-      $page_data['message']="";
-      $page_data['messagefail']="";
-      $this->db->where('Id', $sliderId);
-      $this->db->delete('t_image_slider');
-      if($this->db->affected_rows()>0){
-        $page_data['message']="Image Slider has been deleted Successfully";
+        $page_data['ImageSlider'] = $this->db->get('t_image_slider')->result_array();
+        $page_data['message']="";
+        $page_data['messagefail']="";
+        $this->db->where('Id', $sliderId);
+        $this->db->delete('t_image_slider');
+        if($this->db->affected_rows()>0){
+          $page_data['message']="Image Slider has been deleted Successfully";
+        }
+        else{
+            $page_data['messagefail']='Unable to Delete Image Slider. Please try again';
+        }
+        $this->load->view('backend/pages/acknowledgement', $page_data); 
       }
-      else{
-          $page_data['messagefail']='Unable to Delete Image Slider. Please try again';
-      }
-      $this->load->view('backend/pages/acknowledgement', $page_data); 
-      }
-} 
-=======
 
+      function UpdateInfo($param1=""){
+        $page_data['formSubmit']="";
+        $page_data['message']="";
+        $page_data['messagefail']="";
+        if($param1=='Companyinfo'){
+            $data['Name']=$this->input->post('Name');
+            $data['Contact_Number']=$this->input->post('Telephone');
+            $data['Email_Address']=$this->input->post('Email');
+            $data['Company_Description']=$this->input->post('Description');
+            $data['Location_Address']=$this->input->post('Location');
+            $data['Fackbook_Link']=$this->input->post('facebook');
+            $data['Twitter_Link']=$this->input->post('twitter');
+            $data['Googleplus_Link']=$this->input->post('Google');
+            $data['Youtube_Link']=$this->input->post('Youtube');
+            if(!empty($_FILES["Image"]["name"])){
+                $fle="../uploads/".$this->input->post('currentlogoinivalue');
+                if (file_exists($fle)){
+                    unlink($fle);
+                }
+                move_uploaded_file($_FILES['Image']['tmp_name'],'./uploads/'.$_FILES["Image"]["name"]);
+                $data['Logo']=$_FILES["Image"]["name"];
+            }
+            $this->db->where('Id', "1");
+            $this->db->update('t_company_details', $data);
+            if($this->db->affected_rows()>0){
+                $page_data['message']='Your Company Information has been Updated Successfully. Thank you';
+            }
+            else{
+                $page_data['messagefail']='No changes are found to be updated.Thank you';
+            } 
+            $this->load->view('backend/pages/acknowledgement', $page_data);           
+        }
+        if($param1=='PartnerInfo'){
+            $data['Name']=$this->input->post('Name');
+            $data['Description']=$this->input->post('Description');
+            if(!empty($_FILES["Image"]["name"])){
+                $fle="../uploads/".$this->input->post('currentlogoinivalue');
+                if (file_exists($fle)){
+                    unlink($fle);
+                }
+                move_uploaded_file($_FILES['Image']['tmp_name'],'./uploads/'.$_FILES["Image"]["name"]);
+                $data['Image']=$_FILES["Image"]["name"];
+            }
+            $this->db->where('Id', "1");
+            $this->db->update('t_partner_details', $data);
+            if($this->db->affected_rows()>0){
+                $page_data['message']='Your Partner Information has been Updated Successfully. Thank you';
+            }
+            else{
+                $page_data['messagefail']='No changes are found to be updated.Thank you';
+            } 
+            $this->load->view('backend/pages/acknowledgement', $page_data);           
+        }
+  }
+  function Addnews(){
+        $page_data['message']="";
+        $page_data['messagefail']="";
+        $data['News_title']=$this->input->post('name');
+        $data['Description']=$this->input->post('description');
+        $new_file_name = $_FILES["Image"]["name"];
+        $file_directory = "../uploads/NewsAnnouncement/";
+        if(!is_dir($file_directory)){
+            mkdir($file_directory,0777,TRUE);
+        }
+        if($new_file_name!=""){
+          move_uploaded_file($_FILES["Image"]["tmp_name"], $file_directory . $new_file_name);
+          $data['Image']=$file_directory . $new_file_name;
+        }
+        $this->CommonModel->do_insert('t_news_announcement', $data); 
+        if($this->db->affected_rows()>0){
+            $page_data['message']="Your News and Announcement has been added.Thank you for using our system";
+        }
+        else{
+            $page_data['messagefail']='Your News and Announcement is not able to submit. Please try again';
+        }
+        $this->load->view('backend/pages/acknowledgement', $page_data); 
+      }
+    function Deletenews($productid="",$page=""){ 
+        $page_data['message']="";
+        $page_data['messagefail']="";
+        $this->db->where('Id', $productid);
+        $this->db->delete('t_news_announcement');
+        if($this->db->affected_rows()>0){
+            $page_data['message']="Your News and Announcement has been delete successfully.Thank you for using our system";
+        }
+        else{
+            $page_data['messagefail']='Not able to delete your News and Announcement. Please try again';
+        }
+        $this->load->view('backend/pages/acknowledgement', $page_data);
+        }
 }
->>>>>>> 347d3413868f488720ed768f0e886d508a40a351
