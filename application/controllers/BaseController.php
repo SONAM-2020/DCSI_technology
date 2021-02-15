@@ -5,9 +5,11 @@ class BaseController extends CI_Controller {
         parent::_construct();
     }
     public function index(){
-        $this->load->view('web/index');
+        $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
+        $this->load->view('web/index', $page_data);
     }
     function loadpage($param1="",$param2=""){
+        $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
         if($param1=="localregister"){
             $page_data['linktype']=$param1;
             $this->load->view('web/pages/localregister', $page_data);   
@@ -22,6 +24,7 @@ class BaseController extends CI_Controller {
             $this->load->view('web/pages/aboutus', $page_data);   
         }
         if($param1=="Partner"){
+            $page_data['PartnerInfo'] = $this->db->get_where('t_partner_details')->row();
             $page_data['linktype']=$param1;
             $this->load->view('web/pages/Partner', $page_data);   
         }

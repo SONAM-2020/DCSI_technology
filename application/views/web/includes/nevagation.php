@@ -1,5 +1,5 @@
 <div class="body-wrapper">
-    <header>
+    <header class="li-header-4">
         <div class="header-top">
             <div class="container">
                 <div class="row">

@@ -7,21 +7,21 @@
                         <div class="footer-logo">
                             <img src="<?php echo base_url();?>uploads/1.png" alt="Footer Logo">
                             <p class="info">
-                                We are a team of designers and developers that create high quality HTML Template & Woocommerce, Shopify Theme.
+                                We serves as an online database for the exchange of technology offers and requests in Bhutan.
                             </p>
                         </div>
                         <ul class="des">
                             <li>
                                 <span>Address: </span>
-                                6688Princess Road, London, Greater London BAS 23JK, UK
+                                <?=$CompanyInfo->Location_Address;?>
                             </li>
                             <li>
                                 <span>Phone: </span>
-                                <a href="#">(+123) 123 321 345</a>
+                                <a href="#"><?=$CompanyInfo->Contact_Number;?></a>
                             </li>
                             <li>
                                 <span>Email: </span>
-                                <a href="mailto://info@yourdomain.com">info@yourdomain.com</a>
+                                <a href="mailto:<?=$CompanyInfo->Email_Address;?>"><?=$CompanyInfo->Email_Address;?></a>
                             </li>
                         </ul>
                     </div>
