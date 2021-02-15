@@ -24,14 +24,14 @@ CREATE TABLE `t_category_master` (
   `Id` int(11) NOT NULL auto_increment,
   `Category_Name` varchar(200) NOT NULL,
   `Description` text,
-  `Image` varchar(200) default NULL,
+  `Image` varchar(200) NOT NULL,
   `Status` enum('Active','InActive') NOT NULL default 'Active',
   PRIMARY KEY  (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_category_master` */
 
-insert  into `t_category_master`(`Id`,`Category_Name`,`Description`,`Image`,`Status`) values (1,'Equipment','one and two','uploads/category2.png','Active'),(2,'Machinery','eferfreferf','uploads/category3.png','Active');
+insert  into `t_category_master`(`Id`,`Category_Name`,`Description`,`Image`,`Status`) values (1,'Category1','easdfasdfasd','','Active'),(2,'Catrgory 2','adf	','','Active'),(3,'Tshewang Tenzin','sdfasdfasdf','uploads/online.jpg','InActive');
 
 /*Table structure for table `t_country_master` */
 
@@ -40,7 +40,7 @@ DROP TABLE IF EXISTS `t_country_master`;
 CREATE TABLE `t_country_master` (
   `Id` int(11) NOT NULL auto_increment,
   `Country_Name` varchar(200) NOT NULL,
-  `Status` enum('Active','inActive') NOT NULL default 'Active',
+  `Status` enum('Active') default 'Active',
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=251 DEFAULT CHARSET=latin1;
 
@@ -59,9 +59,11 @@ CREATE TABLE `t_product_images` (
   PRIMARY KEY  (`Id`),
   KEY `FK_t_product_images_mappng` (`Product_Id`),
   CONSTRAINT `FK_t_product_images_mappng` FOREIGN KEY (`Product_Id`) REFERENCES `t_products_master` (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_product_images` */
+
+insert  into `t_product_images`(`Id`,`Image_Name`,`Product_Id`) values (1,'uploads/productImages/comp4/online.jpg',5),(2,'uploads/productImages/comp4/12.jpg',5),(3,'uploads/productImages/comp4/33.jpg',5),(4,'uploads/productImages/comp4/aboutImages.jpg',6),(5,'uploads/productImages/comp4/test4.jpg',6),(6,'uploads/productImages/comp4/WhatsApp Image 2020-11-10 at 7.42.53 PM.jpeg',6);
 
 /*Table structure for table `t_products_master` */
 
@@ -80,9 +82,11 @@ CREATE TABLE `t_products_master` (
   PRIMARY KEY  (`Id`),
   KEY `FK_t_products_category_mapping` (`Category_Id`),
   CONSTRAINT `FK_t_products_category_mapping` FOREIGN KEY (`Category_Id`) REFERENCES `t_category_master` (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_products_master` */
+
+insert  into `t_products_master`(`Id`,`Product_Name`,`Category_Id`,`Company_Id`,`Price`,`Model_No`,`Description`,`Last_Updated_Date`,`Status`) values (1,'sadfas',1,4,'123','ddd','sdfasdfasdfasdf','2021-02-15 12:12:22','Active'),(2,'electronics',2,4,'123','sdf','sdfasdfasdfasdf','2021-02-15 12:13:24','Active'),(3,'electronics',2,4,'123','sdf','sdfasdfasdfasdf','2021-02-15 12:13:47','Active'),(4,'electronics',2,4,'123','sdf','sdfasdfasdfasdf','2021-02-15 12:14:41','Active'),(5,'electronics',2,4,'123','sdf','sdfasdfasdfasdf','2021-02-15 12:15:03','Active'),(6,'ssss cccc',2,4,'2002','2013','                                                                                                    sdfsdfsdfsdfsdfsdf sdfasfsdaf asdadasd','2021-02-15 01:29:21','Active');
 
 /*Table structure for table `t_request_equipment_details` */
 
@@ -140,11 +144,11 @@ CREATE TABLE `t_status_master` (
   `Status_Name` varchar(200) NOT NULL,
   `Status` enum('Active','InActive') NOT NULL default 'Active',
   PRIMARY KEY  (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_status_master` */
 
-insert  into `t_status_master`(`Id`,`Status_Name`,`Status`) values (1,'Submitted','Active');
+insert  into `t_status_master`(`Id`,`Status_Name`,`Status`) values (1,'Submitted','Active'),(2,'Approved','Active'),(3,'Rejected','Active');
 
 /*Table structure for table `t_supplier_company` */
 
@@ -168,17 +172,18 @@ CREATE TABLE `t_supplier_company` (
   `Submitted_Date` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `Update_date` timestamp NOT NULL default '0000-00-00 00:00:00',
   `Updated_By` int(11) default NULL,
+  `Remarks` text,
   `Status_Id` int(11) NOT NULL,
   PRIMARY KEY  (`Id`),
   KEY `FK_t_supplier_status_mapping` (`Status_Id`),
   KEY `FK_t_supplier_company` (`Country_Id`),
   CONSTRAINT `FK_t_supplier_company` FOREIGN KEY (`Country_Id`) REFERENCES `t_country_master` (`Id`),
   CONSTRAINT `FK_t_supplier_status_mapping` FOREIGN KEY (`Status_Id`) REFERENCES `t_status_master` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_supplier_company` */
 
-insert  into `t_supplier_company`(`Id`,`Supplier_Type_Id`,`User_Id`,`Company_Name`,`Country_Id`,`City`,`Postal_Code`,`License_No`,`License_Img`,`Telephone_No`,`License_Registration_Date`,`Company_Address`,`Company_Description`,`Company_Website`,`Submitted_Date`,`Update_date`,`Updated_By`,`Status_Id`) values (1,0,4,'company',NULL,NULL,NULL,'sdfas','../uploads/rin_side.png','02333566','2021-02-16','sdfsdf','asdfasdf','http://bhutansyncits.com','2021-02-14 12:20:30','0000-00-00 00:00:00',NULL,1),(2,1,5,'e-bhutan',NULL,NULL,NULL,'12312312','../uploads/main1.png','12312312','2021-02-16','sdfsdf','asdfasdf','http://e-bhutan.com','2021-02-14 12:37:27','0000-00-00 00:00:00',NULL,1),(3,2,6,'BhutanSync Infotech Solution',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'dvgegvr','dvdvsdv','http://bhutansyncits.com','2021-02-14 03:04:53','0000-00-00 00:00:00',NULL,1);
+insert  into `t_supplier_company`(`Id`,`Supplier_Type_Id`,`User_Id`,`Company_Name`,`Country_Id`,`City`,`Postal_Code`,`License_No`,`License_Img`,`Telephone_No`,`License_Registration_Date`,`Company_Address`,`Company_Description`,`Company_Website`,`Submitted_Date`,`Update_date`,`Updated_By`,`Remarks`,`Status_Id`) values (1,0,4,'company',NULL,NULL,NULL,'sdfas','../uploads/rin_side.png','02333566','2021-02-16','sdfsdf','asdfasdf','http://bhutansyncits.com','2021-02-14 12:20:30','2021-02-14 10:20:05',1,'sasdasd',2),(2,1,5,'e-bhutan',NULL,NULL,NULL,'12312312','../uploads/main1.png','12312312','2021-02-16','sdfsdf','asdfasdf','http://e-bhutan.com','2021-02-14 12:37:27','2021-02-14 10:10:59',1,'',3),(3,2,8,'asdfasdf',3,'Thimphu','123123',NULL,NULL,NULL,NULL,'asdfasdf','asdfasdf',';fknbskjgnb','2021-02-14 06:00:00','0000-00-00 00:00:00',NULL,NULL,1),(4,2,9,'New Edge Technologies pvt.ltd',16,'Thimphu','111',NULL,NULL,'12312312',NULL,'asasfdsadf','asdfasdfasdf',';fknbskjgnb','2021-02-14 06:17:20','2021-02-14 11:17:41',1,'asdfsadfsadf',2);
 
 /*Table structure for table `t_supplier_type` */
 
@@ -212,11 +217,11 @@ CREATE TABLE `t_user_master` (
   PRIMARY KEY  (`Id`),
   KEY `FK_t_user_role_mapping` (`Role_Id`),
   CONSTRAINT `FK_t_user_role_mapping` FOREIGN KEY (`Role_Id`) REFERENCES `t_role_master` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_user_master` */
 
-insert  into `t_user_master`(`Id`,`Name`,`Email`,`Password`,`Image`,`Contact_No`,`Designation`,`Role_Id`,`Status`) values (1,'SONAM','admin@dcsitechnology.bt','$2y$10$mr4ydh6Xqr1QrBOvphT66.SAvUjwESA2lm07k4FDXtCx8XH7jtzFy',NULL,'',NULL,1,'Active'),(2,'name test','email','$2y$10$XK6dkgV3mJhs56EJscM1SeToeQfLIicPGOOnnp8rbspx.IPzPR/ui',NULL,'12312312','designation',2,'InActive'),(3,'name test','email','$2y$10$GgErJSiKDGSxVbOE8BJS8.DujslAM2yj5P7vLjllDhmcIIR9i3hJ2',NULL,'12312312','designation',2,'InActive'),(4,'name test','email','$2y$10$xAGBI03TCNXegn97SAkf9eGxflVG22gAK2kG1RrHfbeL0l74Ntkhq',NULL,'12312312','designation',2,'InActive'),(5,'Tshewan','email@gmail.com','$2y$10$Qt7WHMwHQyXgR1/BNanGFe6QCq38KgXJKXlp1O8VR/M3HCRep5cpS',NULL,'12312312','Programmer',2,'InActive'),(6,'Sonam Dorji','sonam@bhutansyncits.com','$2y$10$mr4ydh6Xqr1QrBOvphT66.SAvUjwESA2lm07k4FDXtCx8XH7jtzFy',NULL,'17458669','General Manager',3,'Active');
+insert  into `t_user_master`(`Id`,`Name`,`Email`,`Password`,`Image`,`Contact_No`,`Designation`,`Role_Id`,`Status`) values (1,'SONAM','admin@gmail.com','$2y$10$xAGBI03TCNXegn97SAkf9eGxflVG22gAK2kG1RrHfbeL0l74Ntkhq',NULL,'',NULL,1,'Active'),(4,'name test','email','$2y$10$xAGBI03TCNXegn97SAkf9eGxflVG22gAK2kG1RrHfbeL0l74Ntkhq',NULL,'12312312','designation',2,'Active'),(5,'Tshewan','email@gmail.com','$2y$10$Qt7WHMwHQyXgR1/BNanGFe6QCq38KgXJKXlp1O8VR/M3HCRep5cpS',NULL,'12312312','Programmer',2,'Active'),(8,'Tshewang Tenzin','wangzin53@gmail.com','$2y$10$ZnUJyVHeZZLg4NH28le5iuczc6B/qmVWUslOTQ72GyugSRoIHR.Tq',NULL,'12312312','designation',3,'InActive'),(9,'Tshewang Tenzin','staff@newedge.bt','$2y$10$jBV28eZcwnrJHBIXjyj2ZuSZSJzFNu.NtGcWPxY0vxu0F.pcpoUrK',NULL,'12312312','designation',3,'Active');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

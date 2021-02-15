@@ -49,9 +49,7 @@ class loginController extends CI_Controller {
             redirect(base_url(), 'refresh');
         }
         else{
-            if($this->session->userdata('Role_Id')==1){
-                $this->load->view('backend/dashboard', $page_data);
-            }
+            $this->load->view('backend/dashboard', $page_data);
         }
     }
     function logout($param=''){  
