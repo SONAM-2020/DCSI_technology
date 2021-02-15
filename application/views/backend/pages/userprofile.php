@@ -37,30 +37,34 @@
                       </div>
                       <div class="form-group row">
                         <label >Phone</label>
-                        <input class="form-control" type="text" id="Phone" name="Phone" value="<?=$userDetils->Mobile_Number;?>" class="form-control">
+                        <input class="form-control" type="text" id="Phone" name="Phone" value="<?=$userDetils->Contact_No;?>" class="form-control">
+                      </div>
+                      <div class="form-group row">
+                        <label >Designation</label>
+                        <input class="form-control" type="text" id="Designation" name="Designation" value="<?=$userDetils->Designation;?>" class="form-control">
                       </div>
                       <div class="form-group row">
                         <label >E-mail Address</label>
-                        <input class="form-control" readonly type="text" id="Email" name="Email" value="<?=$userDetils->Email_Address;?>" class="form-control">
+                        <input class="form-control" readonly type="text" id="Email" name="Email" value="<?=$userDetils->Email;?>" class="form-control">
                       </div>
                     </div>
                     <div class="col-6">
                       <div class="form-group row" style="margin-bottom: -50px;">
                         <div class="col-12">
-                            <img src="<?php echo base_url();?>uploads/<?=$userDetils->userImage;?>" alt="no imaged" onerror="this.src='<?php echo base_url();?>uploads/user.jpg'" class="pull-right mr-5 h-75">
+                            <img src="<?php echo base_url();?>uploads/<?=$userDetils->Image;?>" alt="no imaged" onerror="this.src='<?php echo base_url();?>uploads/user.jpg'" class="pull-right mr-5 h-75">
                         </div>
                       </div>
                       <div class="form-group row text-right">
                         <div class="col-12">
                             <input type="file" id="Image" name="Image"><br>
                             <span style="color: red;">Choose Image (Recommebded Size:128*128)</span>
-                            <input type="hidden" name="currentlogoinivalue" value="<?=$userDetils->userImage;?>">
+                            <input type="hidden" name="currentlogoinivalue" value="<?=$userDetils->Image;?>">
                         </div>
                       </div>
                     </div>
                   </div>
                 <div class="row">
-                    <input type="hidden" name="userId" value="<?php echo $this->session->userdata('User_table_id');?>">
+                    <input type="hidden" name="userId" value="<?php echo $this->session->userdata('User_Id');?>">
                     <button type="reset" class="btn" onclick="update_users('profile')" class="btn btn-success pull-right"><span class="fa fa-edit"></span> Update</button>
                   </div>
                 </div>

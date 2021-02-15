@@ -6,7 +6,7 @@
                     <div class="col-lg-3 col-md-4">
                         <div class="header-top-left">
                             <ul class="phone-wrap">
-                                <li class="phone-wrap"><span>Telephone Enquiry: </span><a href="#">(+975) 221 345</a></li>
+                                <li class="phone-wrap"><span>Telephone Enquiry: </span><a href="#">(+975) <?=$CompanyInfo->Contact_Number;?></a></li>
                             </ul>
                         </div>
                     </div>
@@ -14,9 +14,9 @@
                         <div class="header-top-right">
                             <ul class="ht-menu">
                                 <li class="phone-wrap">
-                                   <span>Email Enquiry: </span><a href="#" style="color: black;">support@dcsitechnology.bt</a>
+                                   <span>Email Enquiry: </span><a href="#" style="color: white;">  <?=$CompanyInfo->Email_Address;?></a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <span class="language-selector-wrapper">Language :</span>
                                     <div class="ht-language-trigger"><span>English</span></div>
                                     <div class="language ht-language">
@@ -25,7 +25,7 @@
                                             <li><a href="#"><img src="<?php echo base_url();?>assest/website/images/menu/flag-icon/2.jpg" alt="">Dzongkha</a></li>
                                         </ul>
                                     </div>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>

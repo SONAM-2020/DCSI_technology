@@ -8,7 +8,7 @@
         <div class="container">
             <div class="breadcrumb-content pl-10">
                 <ul>
-                    <li class="text-white"><b>About Us</b></li>
+                    <li class="text-white"><b>Partner Information</b></li>
                 </ul>
             </div>
         </div>

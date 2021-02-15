@@ -6,12 +6,13 @@ class BaseController extends CI_Controller {
     }
     public function index(){
         $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
-        $this->load->view('web/index', $page_data);
+        $page_data['t_announcement'] = $this->db->get_where('t_news_announcement',array('Status'=>'Active'))->result_array();
+        $page_data['t_imageslider'] = $this->db->get_where('t_image_slider',array('Status'=>'Active'))->result_array();
+        
         $page_data['category_list'] = $this->CommonModel->get_active_category_list();
         $this->load->view('web/index',$page_data);
     }
     function loadpage($param1="",$param2=""){
-        $page_data['category_list'] = $this->CommonModel->get_active_category_list();
         $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
         if($param1=="localregister"){
             $page_data['linktype']=$param1;
@@ -32,6 +33,7 @@ class BaseController extends CI_Controller {
             $this->load->view('web/pages/Partner', $page_data);   
         }
         if($param1=="News"){
+            $page_data['t_announcement'] = $this->db->get_where('t_news_announcement',array('Status'=>'Active'))->result_array();
             $page_data['linktype']=$param1;
             $this->load->view('web/pages/News', $page_data);   
         }
@@ -39,17 +41,23 @@ class BaseController extends CI_Controller {
             $page_data['linktype']=$param1;
             $this->load->view('web/pages/Download', $page_data);   
         }
-        if($param1=="Contact"){
-            $page_data['linktype']=$param1;
-            $this->load->view('web/pages/Contact', $page_data);   
-        }
         if($param1=="TechnologyRequest"){
             $page_data['linktype']=$param1;
-            $this->load->view('web/pages/TechnologyRequest', $page_data);   
+            $this->load->view('web/pages/technologyrequestform', $page_data);   
         }
         if($param1=="Login"){
             $page_data['linktype']=$param1;
             $this->load->view('web/login/login', $page_data);   
+        }
+        if($param1=="Newsdetails"){
+            $page_data['t_announcement'] = $this->db->get_where('t_news_announcement',array('Id'=>$param2))->result_array();
+            $page_data['linktype']=$param1;
+            $this->load->view('web/pages/newsdetails', $page_data);   
+        }
+        if($param1=="Contact"){
+            $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
+            $page_data['linktype']=$param1;
+            $this->load->view('web/pages/Contactus', $page_data);   
         }
     }
 
@@ -149,5 +157,25 @@ class BaseController extends CI_Controller {
     function search_details(){
         $page_data['searchResult'] = $this->CommonModel->searchfromtable($this->input->post('searchdetails'));
         $this->load->view('web/search_result', $page_data);
+    }
+
+    function technologyrequestForm(){
+        $page_data['message']="";
+        $page_data['messagefail']="";
+        
+        $data['Name']=$this->input->post('name');
+        $data['Email']=$this->input->post('email');
+        $data['Contact_No']=$this->input->post('phone');
+        $data['Present_Address']=$this->input->post('address');
+        $data['Equipment_Name']=$this->input->post('equipment');
+        $data['Equipment_Description']=$this->input->post('description');
+        $this->CommonModel->do_insert('t_technology_request', $data); 
+        if($this->db->affected_rows()>0){
+            $page_data['message']="Your Information has been added. You will be notified throught email once our the Supplier take further action.Thank you for using our system";
+        }
+        else{
+            $page_data['messagefail']='Your Information  is not able to submit. Please try again';
+        }
+        $this->load->view('web/acknowledgement', $page_data);
     }
 }

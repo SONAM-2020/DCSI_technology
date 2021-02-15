@@ -9,7 +9,7 @@ class CommonModel extends CI_Model{
         return $this->db->insert_id();
     }
   function getuserDetails($id=""){
-        $query =$this->db->query("SELECT * FROM t_user_details u LEFT JOIN t_role r ON r.`Id`=u.`Role_Id` WHERE u.`Id`= '".$id."'")->row();
+        $query =$this->db->query("SELECT * FROM t_user_master u LEFT JOIN t_role_master r ON r.`Id`=u.`Role_Id` WHERE u.`Id`= '".$id."'")->row();
         return $query;
     }
   function getusers(){ 

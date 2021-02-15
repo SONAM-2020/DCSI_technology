@@ -33,7 +33,7 @@
                     
                     <div class="form-group row">
                       <label >E-mail Address</label>
-                      <input class="form-control" readonly type="text" id="Email" name="Email" value="<?=$userDetils->Email_Address;?>" class="form-control">
+                      <input class="form-control" readonly type="text" id="Email" name="Email" value="<?=$userDetils->Email;?>" class="form-control">
                     </div>
                     <div class="form-group row">
                       <label >New Password</label>
@@ -55,7 +55,7 @@
                   </div>
                 </div>
                 <div class="row">
-                    <input type="hidden" name="userId" value="<?php echo $this->session->userdata('User_table_id');?>">
+                    <input type="hidden" name="userId" value="<?php echo $this->session->userdata('User_Id');?>">
                     <button type="reset" class="btn" onclick="update_users('profile')" class="btn btn-success pull-right"><span class="fa fa-edit"></span> Update</button>
                   </div>
                 </div>

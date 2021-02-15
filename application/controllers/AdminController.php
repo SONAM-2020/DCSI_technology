@@ -5,12 +5,12 @@ class AdminController extends CI_Controller {
 	}
   function loadpage($param1="",$param2="",$param3=""){
     if($param1=="userprofile"){
-        $page_data['userDetils'] = $this->db->get_where('t_supplier',array('supplier_Id'=>$param2))->row(); 
+        $page_data['userDetils'] = $this->db->get_where('t_user_master',array('Id'=>$param2))->row(); 
         $page_data['message']="";
         $this->load->view('backend/pages/userprofile', $page_data);
       }
     if($param1=="password"){
-      $page_data['userDetils'] = $this->db->get_where('t_supplier',array('supplier_Id'=>$param2))->row(); 
+      $page_data['userDetils'] = $this->db->get_where('t_user_master',array('Id'=>$param2))->row(); 
       $page_data['message']="";
       $this->load->view('backend/pages/changepassword', $page_data);
     }
@@ -43,6 +43,17 @@ class AdminController extends CI_Controller {
         'Id' => $param2))->row();
         $this->load->view('backend/pages/newsandAnnouncement/news_announcementdetails', $page_data);
     }
+    if($param1=="viewtechnologyrequest"){
+        $page_data['technologyrequestformList'] = $this->db->get_where('t_technology_request', array(
+        'Status' => 'Active'))->result_array();
+        $this->load->view('backend/pages/supplier/viewtechnologyrequest', $page_data);
+    }
+    if($param1=="ViewRequestDetails"){
+        $page_data['technologyrequestformList'] = $this->db->get_where('t_technology_request', array(
+            'Id' => $param2))->row();
+        $this->load->view('backend/pages/supplier/ViewTechnologyRequestDetails', $page_data);
+    }
+        
       
   }
   function new_registration_list($type="",$id=""){
@@ -350,4 +361,46 @@ class AdminController extends CI_Controller {
         }
         $this->load->view('backend/pages/acknowledgement', $page_data);
         }
+
+       function Addtechnologyrequestrespond($param1=""){
+        $page_data['message']="";
+        $page_data['messagefail']="";
+        $data['Response']=$this->input->post('Response');
+        $this->db->where('Id',  $this->input->post('deleteId'));
+        $this->db->update('t_messagedtls`', $data);
+        $page_data['technologyrequestformList'] = $this->db->get_where('t_technology_request', array(
+        'Status' => 'Active'))->result_array();
+        $this->load->view('backend/pages/supplier/viewtechnologyrequest', $page_data);
+
+        ///email the response to request applier
+      }
+      function updateusers(){
+        $data['Name']=$this->input->post('Name');
+        $data['Contact_No']=$this->input->post('Phone');
+        $data['Designation']=$this->input->post('Designation');
+        if(!empty($_FILES["Image"]["name"])){
+            $fle="../uploads/".$this->input->post('currentlogoinivalue');
+            if (file_exists($fle)){
+                unlink($fle);
+            }
+            move_uploaded_file($_FILES['Image']['tmp_name'],'../uploads/'.$_FILES["Image"]["name"]);
+            $data['Image']=$_FILES["Image"]["name"];
+        }
+        $this->db->where('Id', $this->input->post('userId'));
+        $this->db->update('t_user_master', $data);
+        $page_data['userDetils'] =$this->CommonModel->getuserDetails($this->input->post('userId'));
+        $page_data['message']="Update Information successfully";
+        $this->load->view('backend/pages/userprofile', $page_data);
+
+    }
+    function updatepassword(){
+        $data['Password']=password_hash($this->input->post('cpassword'), PASSWORD_BCRYPT);
+        $this->db->where('Id', $this->input->post('userId'));
+        $this->db->update('t_user_master', $data);
+        $page_data['userDetils'] =$this->CommonModel->getuserDetails($this->input->post('userId'));
+        $page_data['message']="Password resetted successfully";
+        $this->load->view('backend/pages/changepassword', $page_data);
+
+    }
+
 }
