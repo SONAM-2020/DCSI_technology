@@ -31,7 +31,7 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <h4><a class="product_name" href="#"><?=$itm['Product_Name']?></a></h4>
+                                                    <h4><a class="product_name" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_productdetails/<?=$itm['Id']?>')"><?=$itm['Product_Name']?></a></h4>
                                                     <div class="price-box">
                                                         <span class="new-price">Nu. <?=$itm['Price']?></span>
                                                     </div>
@@ -39,7 +39,7 @@
                                             </div>
                                             <div class="add-actions">
                                                 <ul class="add-actions-link">
-                                                    <li class="add-cart active"><a href="#"><i class="fa fa-eye"></i> View Details</a></li>
+                                                    <li class="add-cart active"><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_productdetails/<?=$itm['Id']?>')"><i class="fa fa-eye"></i> View Details</a></li>
                                                 </ul>
                                             </div>
                                         </div>

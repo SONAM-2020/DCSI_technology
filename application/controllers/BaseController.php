@@ -178,4 +178,10 @@ class BaseController extends CI_Controller {
         }
         $this->load->view('web/acknowledgement', $page_data);
     }
+
+    function load_productdetails($id=""){
+        $page_data['product_details'] =$this->db->get_where('t_products_master',array('Id'=>$id))->row();
+        $page_data['product_images_details'] =$this->db->get_where('t_product_images',array('Product_Id'=>$id))->result_array();
+        $this->load->view('web/product_details', $page_data);
+    }
 }

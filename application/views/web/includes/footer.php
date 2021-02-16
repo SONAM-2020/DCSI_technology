@@ -1,7 +1,7 @@
 <div class="footer">
     <div class="footer-static-middle">
         <div class="container">
-            <div class="footer-logo-wrap pt-50 pb-35">
+            <div class="footer-logo-wrap pt-10 pb-10">
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="footer-logo">
@@ -10,40 +10,24 @@
                                 We serves as an online database for the exchange of technology offers and requests in Bhutan.
                             </p>
                         </div>
-                        <ul class="des">
-                            <li>
-                                <span>Address: </span>
-                                <?=$CompanyInfo->Location_Address;?>
-                            </li>
-                            <li>
-                                <span>Phone: </span>
-                                <a href="#"><?=$CompanyInfo->Contact_Number;?></a>
-                            </li>
-                            <li>
-                                <span>Email: </span>
-                                <a href="mailto:<?=$CompanyInfo->Email_Address;?>"><?=$CompanyInfo->Email_Address;?></a>
-                            </li>
-                        </ul>
+                       
                     </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="col-lg-4 col-md-4 col-sm-6">
                         <div class="footer-block">
-                            <h3 class="footer-block-title">Product</h3>
-                            <ul>
-                                <li><a href="#">Prices drop</a></li>
-                                <li><a href="#">New products</a></li>
-                                <li><a href="#">Best sales</a></li>
-                                <li><a href="#">Contact us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6">
-                        <div class="footer-block">
-                            <h3 class="footer-block-title">Our company</h3>
-                            <ul>
-                                <li><a href="#">Delivery</a></li>
-                                <li><a href="#">Legal Notice</a></li>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Contact us</a></li>
+                            <h3 class="footer-block-title">Contact Us:</h3>
+                             <ul class="des">
+                                <li class="mb-0">
+                                    <span>Address: </span>
+                                    <?=$CompanyInfo->Location_Address;?>
+                                </li>
+                                <li class="mb-0">
+                                    <span>Phone: 
+                                    <a href="#"><?=$CompanyInfo->Contact_Number;?></a></span>
+                                </li>
+                                <li>
+                                    <span>Email: 
+                                    <a href="mailto:<?=$CompanyInfo->Email_Address;?>"><?=$CompanyInfo->Email_Address;?></a></span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -83,32 +67,15 @@
                                 </li>
                             </ul>
                         </div>
-                        <!-- Begin Footer Newsletter Area -->
-                        <div class="footer-newsletter">
-                            <h4>Sign up to newsletter</h4>
-                            <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="footer-subscribe-form validate" target="_blank" novalidate>
-                               <div id="mc_embed_signup_scroll">
-                                  <div id="mc-form" class="mc-form subscribe-form form-group" >
-                                    <input id="mc-email" type="email" autocomplete="off" placeholder="Enter your email" />
-                                    <button  class="btn" id="mc-submit">Subscribe</button>
-                                  </div>
-                               </div>
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer-static-bottom pt-55 pb-55">
+    <div class="footer-static-bottom pt-0 pb-55">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="copyright text-center">
-                        <a href="#">
-                            <img src="images/payment/1.png" alt="">
-                        </a>
-                    </div>
                     <div class="copyright text-center pt-25">
                         <span class="tg-copyright"><a target="_blank" href="https://www.bhutansyncits.com" style="color: black;">གསར་བཟོ་འབད་མི། ༔ BHUTANSYNC INFOTECH SOLUTION</a></span>
                         <nav class="tg-addnav">
@@ -122,115 +89,6 @@
         </div>
     </div>
 </div>
-<div class="modal fade modal-wrapper" id="exampleModalCenter" >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <div class="modal-inner-area row">
-                    <div class="col-lg-5 col-md-6 col-sm-6">
-                        <div class="product-details-left">
-                            <div class="product-details-images slider-navigation-1">
-                                <div class="lg-image">
-                                    <img src="images/product/large-size/1.jpg" alt="product image">
-                                </div>
-                                <div class="lg-image">
-                                    <img src="images/product/large-size/2.jpg" alt="product image">
-                                </div>
-                                <div class="lg-image">
-                                    <img src="images/product/large-size/3.jpg" alt="product image">
-                                </div>
-                                <div class="lg-image">
-                                    <img src="images/product/large-size/4.jpg" alt="product image">
-                                </div>
-                                <div class="lg-image">
-                                    <img src="images/product/large-size/5.jpg" alt="product image">
-                                </div>
-                                <div class="lg-image">
-                                    <img src="images/product/large-size/6.jpg" alt="product image">
-                                </div>
-                            </div>
-                            <div class="product-details-thumbs slider-thumbs-1">                                        
-                                <div class="sm-image"><img src="images/product/small-size/1.jpg" alt="product image thumb"></div>
-                                <div class="sm-image"><img src="images/product/small-size/2.jpg" alt="product image thumb"></div>
-                                <div class="sm-image"><img src="images/product/small-size/3.jpg" alt="product image thumb"></div>
-                                <div class="sm-image"><img src="images/product/small-size/4.jpg" alt="product image thumb"></div>
-                                <div class="sm-image"><img src="images/product/small-size/5.jpg" alt="product image thumb"></div>
-                                <div class="sm-image"><img src="images/product/small-size/6.jpg" alt="product image thumb"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-7 col-md-6 col-sm-6">
-                        <div class="product-details-view-content pt-60">
-                            <div class="product-info">
-                                <h2>Today is a good day Framed poster</h2>
-                                <span class="product-details-ref">Reference: demo_15</span>
-                                <div class="rating-box pt-20">
-                                    <ul class="rating rating-with-review-item">
-                                        <li><i class="fa fa-star-o"></i></li>
-                                        <li><i class="fa fa-star-o"></i></li>
-                                        <li><i class="fa fa-star-o"></i></li>
-                                        <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                        <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                        <li class="review-item"><a href="#">Read Review</a></li>
-                                        <li class="review-item"><a href="#">Write Review</a></li>
-                                    </ul>
-                                </div>
-                                <div class="price-box pt-20">
-                                    <span class="new-price new-price-2">$57.98</span>
-                                </div>
-                                <div class="product-desc">
-                                    <p>
-                                        <span>100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
-                                        </span>
-                                    </p>
-                                </div>
-                                <div class="product-variants">
-                                    <div class="produt-variants-size">
-                                        <label>Dimension</label>
-                                        <select class="nice-select">
-                                            <option value="1" title="S" selected="selected">40x60cm</option>
-                                            <option value="2" title="M">60x90cm</option>
-                                            <option value="3" title="L">80x120cm</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="single-add-to-cart">
-                                    <form action="#" class="cart-quantity">
-                                        <div class="quantity">
-                                            <label>Quantity</label>
-                                            <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" value="1" type="text">
-                                                <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                                <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
-                                            </div>
-                                        </div>
-                                        <button class="add-to-cart" type="submit">Add to cart</button>
-                                    </form>
-                                </div>
-                                <div class="product-additional-info pt-25">
-                                    <a class="wishlist-btn" href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a>
-                                    <div class="product-social-sharing pt-25">
-                                        <ul>
-                                            <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
-                                            <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
-                                            <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i>Google +</a></li>
-                                            <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>   
-</div>
 
 
 <script src="<?php echo base_url();?>assest/website/js/vendor/jquery-1.12.4.min.js"></script>
@@ -239,6 +97,7 @@
 <script src="<?php echo base_url();?>assest/website/js/ajax-mail.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/jquery.meanmenu.min.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/wow.min.js"></script>
+<script src="<?php echo base_url();?>assest/website/js/slick.min.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/owl.carousel.min.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/jquery.magnific-popup.min.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/isotope.pkgd.min.js"></script>
@@ -252,12 +111,11 @@
 <script src="<?php echo base_url();?>assest/website/js/venobox.min.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/jquery.nice-select.min.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/scrollUp.min.js"></script>
-<!-- <script src="<?php echo base_url();?>assest/website/js/slick.min.js"></script> -->
 <script src="<?php echo base_url();?>assest/website/js/main.js"></script>
+
 <script src="<?php echo base_url();?>assest/JqueryAjaxFormSubmit.js"></script>
 <script src="<?php echo base_url();?>assest/jquery.form.js"></script>
 <script src="<?php echo base_url();?>assest/jquery-blockUI.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/main.js"></script> 
 
 <script type="text/javascript">
     function searchproductdetails(){
