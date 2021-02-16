@@ -38,7 +38,7 @@
                     <div class="col-lg-3">
                         <div class="logo pb-sm-30 pb-xs-30">
                             <a href="<?php echo base_url();?>">
-                                <img src="<?php echo base_url();?>uploads/1.png" alt="">
+                                <img src="<?php echo base_url();?>uploads/dcsilogowhite.png" alt="">
                             </a>
                         </div>
                     </div>

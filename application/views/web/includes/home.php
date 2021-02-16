@@ -2,23 +2,24 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8">
-                <?php foreach($t_imageslider as $i=> $event): ?>
                 <div class="slider-area">
                     <div class="slider-active owl-carousel">
+                        <?php foreach($t_imageslider as $i=> $event): ?>
                         <div class="single-slide align-center-left  animation-style-01 bg-1" style="background-image: url('<?php echo base_url();?>uploads/<?php echo$event['Image'];?>">
                             <div class="slider-progress"></div>
                             <div class="slider-content">
-                                <h2><?php echo$event['Name'];?></h2>
-                                <h3>uploads/<?php echo$event['Description'];?></h3>
+                                <h2 style="color: white;"><?php echo$event['Name'];?></h2>
+                                <h3 style="color: white;">uploads/<?php echo$event['Description'];?></h3>
                                 <div class="default-btn slide-btn">
                                     <a class="links" href="#">Read More</a>
                                 </div>
                             </div>
                         </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
-                <?php endforeach; ?>
             </div>
+                
             <div class="col-lg-4 col-md-4 text-center pt-xs-30">
                 <div class="li-banner" style="background-image: url('<?php echo base_url();?>uploads/banner.png">
                     <br>

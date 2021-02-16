@@ -3,6 +3,7 @@
     $this->load->view('web/includes/header.php');
 ?>
 <body>
+  <?php $this->load->view('web/includes/nevagation.php'); ?> 
   <div id="mainpublicContent">
     <div class="bg-info">
         <div class="container">
@@ -104,7 +105,7 @@
                               <div class="li-blog-single-item pb-40">
                                   <div class="li-blog-gallery-slider slick-dot-style">
                                       <div class="li-blog-banner">
-                                          <a href="blog-details.html"><img class="img-full" src="uploads/<?php echo$event['Image'];?>" alt="Product Image"></a>
+                                          <a href="blog-details.html"><img class="img-full" src="NewsAnnouncement/<?php echo$event['Image'];?>" alt="Product Image"></a>
                                       </div>
                                   </div>
                                   <div class="li-blog-content">

@@ -43,7 +43,7 @@
                   <td>
                     <button class="btn-secondry" onclick="viewRequest('<?php echo $event['Id'];?>')" type="button"><i class="fa fa-eye"></i> View Request</button>
                     <br><br>
-                    <button type="button" class="btn" onclick="Reply('<?php echo $event['Id']?>','<?php echo $event['Name']?>','<?php echo $event['Email']?>',)"><i class="fa fa-edit"></i>Reply Request</button> 
+                    <!-- <button type="button" class="btn" onclick="Reply('<?php echo $event['Id']?>','<?php echo $event['Name']?>','<?php echo $event['Email']?>',)"><i class="fa fa-edit"></i>Reply Request</button> --> 
 						      </td>
 						      </tr>
                   <?php endforeach;?>

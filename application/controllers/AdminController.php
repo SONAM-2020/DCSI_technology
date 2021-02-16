@@ -324,6 +324,27 @@ class AdminController extends CI_Controller {
             } 
             $this->load->view('backend/pages/acknowledgement', $page_data);           
         }
+        if($param1=='NewsInfo'){
+           $data['News_title']=$this->input->post('name');
+           $data['Description']=$this->input->post('description');
+            if(!empty($_FILES["Image"]["name"])){
+                $fle="../uploads/NewsAnnouncement/".$this->input->post('currentlogoinivalue');
+                if (file_exists($fle)){
+                    unlink($fle);
+                }
+                move_uploaded_file($_FILES['Image']['tmp_name'],'./uploads/NewsAnnouncement/'.$_FILES["Image"]["name"]);
+                $data['Image']=$_FILES["Image"]["name"];
+            }
+            $this->db->where('Id', "1");
+            $this->db->update('t_news_announcement', $data);
+            if($this->db->affected_rows()>0){
+                $page_data['message']='Your News and Announcement has been Updated Successfully. Thank you';
+            }
+            else{
+                $page_data['messagefail']='No changes are found to be updated.Thank you';
+            } 
+            $this->load->view('backend/pages/acknowledgement', $page_data);           
+        }
   }
   function Addnews(){
         $page_data['message']="";

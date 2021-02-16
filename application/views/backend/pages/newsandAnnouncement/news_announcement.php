@@ -35,7 +35,7 @@
 						      <td><?=$i+1?></td>
                   <th><?php echo $event['News_title'];?></th>
 						      <td style="display: none;"><?php echo $event['Description'];?></td>
-						      <td><img style="width: 100px; height: 100px;" src="uploads/NewsAnnouncement/<?php echo $event['Image'];?>"></td>
+						      <td><img style="width: 100px; height: 100px;" src="NewsAnnouncement/<?php echo $event['Image'];?>"></td>
                   <th><?php echo $event['Post_date'];?></th>
                   <td>
                     <?php if($event['Status']=="Active"){ ?>

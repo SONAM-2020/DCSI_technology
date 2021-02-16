@@ -51,12 +51,12 @@
                       <textarea style="height: 200px;" class="form-control" type="text" id="description" name="description" ><?=$technologyrequestformList->Equipment_Description;?></textarea>
                     </div>
                   </div>
-                  <div class="form-group row">
+                  <!-- <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Response</label>
                     <div class="col-sm-7">
                       <textarea style="height: 200px;" class="form-control" type="text" id="description" name="description" ><?=$technologyrequestformList->Response;?></textarea>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="seperator"></div>
                 </div>
             </div>

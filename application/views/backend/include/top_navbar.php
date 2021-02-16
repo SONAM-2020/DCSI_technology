@@ -8,8 +8,8 @@
 			<div class="ttr-logo-box">
 				<div>
 					<a href="<?php echo base_url();?>index.php?loginController/dashboard" class="ttr-logo">
-						<img class="ttr-logo-mobile" alt="" src="<?php echo base_url();?>uploads/1.png" width="30" height="30">
-						<img class="ttr-logo-desktop" alt="" src="<?php echo base_url();?>uploads/1.png" width="160" height="27">
+						<img class="ttr-logo-mobile" alt="" src="<?php echo base_url();?>uploads/dcsilogowhite.png" width="30" height="30">
+						<img class="ttr-logo-desktop" alt="" src="<?php echo base_url();?>uploads/dcsilogowhite.png" width="160" height="27">
 					</a>
 				</div>
 			</div>

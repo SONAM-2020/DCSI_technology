@@ -19,7 +19,7 @@
                   <div class="form-group row">
                     <label class="col-sm-2 col-md-2 col-lg-2 col-xs-12 col-form-label">News Image</label>
                     <div class="col-sm-7 col-md-7 col-lg-7 col-xs-12">
-                      <img src="<?php echo base_url();?>uploads/NewsAnnouncement/<?=$news_announcementdetails->Image;?>" width="30%" align="left">
+                      <img src="<?php echo base_url();?>NewsAnnouncement/<?=$news_announcementdetails->Image;?>" width="30%" align="left">
                         <input type="file" id="Image" name="Image">
                         <span style="color: red;">Choose image to change</span>
                         <input type="hidden" name="currentlogoinivalue" value="uploads/NewsAnnouncement/<?=$news_announcementdetails->Image;?>">
@@ -44,7 +44,7 @@
                       <div class="col-sm-2 col-md-2 col-lg-2 col-xs-12">
                       </div>
                       <div class="col-sm-10 col-md-10 col-lg-10 col-xs-12">
-                        <button type="button" onclick="update('Companyinfo','CompanyDetails')" class="btn btn-success pull-right"><span class="fa fa-edit"></span> Save changes</button>
+                        <button type="button" onclick="update('NewsInfo','CompanyDetails')" class="btn btn-success pull-right"><span class="fa fa-edit"></span> Save changes</button>
                         <button type="reset" class="btn-secondry">Cancel</button>
                       </div>
                     </div>
