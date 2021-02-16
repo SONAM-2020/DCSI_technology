@@ -27,11 +27,11 @@ CREATE TABLE `t_category_master` (
   `Image` varchar(200) default NULL,
   `Status` enum('Active','InActive') NOT NULL default 'Active',
   PRIMARY KEY  (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_category_master` */
 
-insert  into `t_category_master`(`Id`,`Category_Name`,`Description`,`Image`,`Status`) values (1,'Category3','fewfewffew','category3.png','Active');
+insert  into `t_category_master`(`Id`,`Category_Name`,`Description`,`Image`,`Status`) values (1,'Machinery','fewfewffew','category3.png','Active'),(2,'Tools & Equipment',NULL,NULL,'Active'),(3,'Accessories',NULL,NULL,'Active');
 
 /*Table structure for table `t_company_details` */
 
@@ -55,7 +55,7 @@ CREATE TABLE `t_company_details` (
 
 /*Data for the table `t_company_details` */
 
-insert  into `t_company_details`(`Id`,`Name`,`Contact_Number`,`Email_Address`,`Location_Address`,`Fackbook_Link`,`Twitter_Link`,`Youtube_Link`,`Googleplus_Link`,`Logo`,`Company_Description`,`status`) values (1,'CSI Technology','17458669','info@dcsitechnology.bt','MOEA, Thimphu Bhutan','https://www.facebook.com/dcsitechnology','https://www.twitter.com/dcsitechnology','https://www.Youtube.com/dcsitechnology','https://www.google.com/dcsitechnology','dcsilogo1.png','<p>This technology transfer website serves as an online database for the exchange of technology offers and requests in Bhutan. The website has several features including a technology offers and requests database in Bhutan and International, technology transfer partner links, basic and practical knowledge on technology transfer, technology news, and technology events. This online database search engine enables buyers and sellers of technology to search not only from our local Bhutanese suppliers but also connected to selected International database centers. Over 20 public technology databases are currently searchable using this online database Search Engine and it is planned to link more technology databases from Europe, North America, and Africa. </p>',NULL);
+insert  into `t_company_details`(`Id`,`Name`,`Contact_Number`,`Email_Address`,`Location_Address`,`Fackbook_Link`,`Twitter_Link`,`Youtube_Link`,`Googleplus_Link`,`Logo`,`Company_Description`,`status`) values (1,'DCSI TECHNOLOGY','17458669','info@dcsitechnology.bt','Ministry of Economic Affair ,Thimphu Bhutan','https://www.facebook.com/dcsitechnology','https://www.twitter.com/dcsitechnology','https://www.Youtube.com/dcsitechnology','https://www.google.com/dcsitechnology','dcsilogoblack.png','<p style=\"text-align: justify; box-sizing: inherit; margin-bottom: 15px; color: rgb(114, 114, 114); font-family: dzongkha, dzongkha; font-size: 14px;\"><span style=\"font-family: Arial; font-size: 14px; text-align: start;\">The Department of Cottage &amp; Small Industry (DCSI) was established under the Ministry of Economic Affairs (MOEA) in July 2010; with the appointment of a director and transfer of staffs from the erstwhile MSME division of the Department of Industry (DoI). Considering the fact that more than 95% of the industries in Bhutan are small and cottage scale, the Royal Government created this department to spearhead the development of cottage and small industry in the country. Its head office is located within the MoEA complex, Thimphu.</span></p><p style=\"text-align: justify; box-sizing: inherit; margin-bottom: 15px; color: rgb(114, 114, 114); font-family: dzongkha, dzongkha; font-size: 14px;\"><span style=\"font-family: Arial; font-size: 14px; text-align: start;\">Guided by the philosophy of GNH, to become a premier agency promoting growth of a vibrant and sustainable cottage and small industries contributing to the overall socio-economic development of the country.</span></p><p style=\"text-align: justify; box-sizing: inherit; margin-bottom: 15px; color: rgb(114, 114, 114); font-family: dzongkha, dzongkha; font-size: 14px;\"><span style=\"font-family: Arial; font-size: 14px; text-align: start;\">To create an enabling environment to facilitate and support sustainable growth and development of Cottage &amp; Small Industries (CSI) in the country for equitable income distribution, employment generation and balanced regional development.</span></p><p style=\"text-align: justify; box-sizing: inherit; margin-bottom: 15px; color: rgb(114, 114, 114); font-family: dzongkha, dzongkha; font-size: 14px;\"><br></p>',NULL);
 
 /*Table structure for table `t_country_master` */
 
@@ -83,11 +83,11 @@ CREATE TABLE `t_image_slider` (
   `Description` text NOT NULL,
   `Status` enum('Active','InActive') NOT NULL default 'Active',
   PRIMARY KEY  (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_image_slider` */
 
-insert  into `t_image_slider`(`Id`,`Image`,`Name`,`Description`,`Status`) values (10,'banner.png','Sonam Dorji','efefewrf','Active');
+insert  into `t_image_slider`(`Id`,`Image`,`Name`,`Description`,`Status`) values (10,'slider122.png','TECHNOLOGY TRANSFER AND DATABASE CENTER','This technology transfer website serves as an online database for the exchange of technology offers and requests in Bhutan. The website has several features including a technology offers and requests database in Bhutan and International, technology transfer partner links,','Active'),(13,'slider1.png','The Asian and Pacific Centre for Transfer of Technology','The Asian and Pacific Centre for Transfer of Technology (APCTT) is a regional institution of the United Nations Economic and Social Commission for Asia and the Pacific servicing the Asia-Pacific region.','Active');
 
 /*Table structure for table `t_news_announcement` */
 
@@ -101,11 +101,11 @@ CREATE TABLE `t_news_announcement` (
   `Post_date` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `Status` enum('Active','InActive') default 'Active',
   PRIMARY KEY  (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_news_announcement` */
 
-insert  into `t_news_announcement`(`Id`,`News_title`,`Description`,`Image`,`Post_date`,`Status`) values (2,'csacfsd','<p>sdfsdvs</p>','banner.png','2021-02-15 16:48:22','Active');
+insert  into `t_news_announcement`(`Id`,`News_title`,`Description`,`Image`,`Post_date`,`Status`) values (3,'Ground Breaking Ceremony for Construction of Pasakha Dry Port','<p style=\"text-align: justify; box-sizing: inherit; margin-bottom: 15px; color: rgb(114, 114, 114); font-family: dzongkha, dzongkha; font-size: 14px;\"><span style=\"font-size: 12px;\">Dasho Sonam Wangyel, Secretary for Ministry of Home and Cultural Affairs who is also the Chairman of the SC19TF graced the Salang Tendril (ground breaking ceremony) for the construction of Pasakha Dry port in Phuentsholing. The ceremony was also attended by the members of SC19TF, Consul General of the Embassy of India and the regional heads of Phuentsholing.</span></p><p style=\"text-align: justify; box-sizing: inherit; margin-bottom: 15px; color: rgb(114, 114, 114); font-family: dzongkha, dzongkha; font-size: 14px;\"><span style=\"font-size: 14px; font-family: Arial;\">Pasakha dry port is one of the biggest infrastructural development projects undertaken by the Department of Trade. It is part of the government’s continuous efforts to facilitate trade and improve logistical facilities for our import and export. The prefeasibility study was carried out in 2016/17 with the financial and technical assistance from the World Bank. The need for dry port facilities has become critical and necessary to address logistical challenges faced by a landlocked country like Bhutan for export and business.</span></p><p style=\"text-align: justify; box-sizing: inherit; margin-bottom: 15px; color: rgb(114, 114, 114); font-family: dzongkha, dzongkha; font-size: 14px;\"><span style=\"font-size: 14px; font-family: Arial;\">Pasakha dry port is being developed on an area of 15.06 acres which is strategically located near Pasakha industries and Bhutan-Indo border at Ahllay land custom station. The project is financed under the Trade support Facility program supported by the Government of India with overall cost estimation of around 1.7 billion.</span></p><p style=\"text-align: justify; box-sizing: inherit; margin-bottom: 15px; color: rgb(114, 114, 114); font-family: dzongkha, dzongkha; font-size: 14px;\"><span style=\"font-size: 14px; font-family: Arial;\">The project has three major packages to be executed. The construction of 1.2 km length boundary RCC wall which is currently underway is the first package and is scheduled to be completed towards end of 2021. Other major packages in the pipeline include approach road to the project site, refilling of the project area, and the construction of civil structures such as administrative building, guest house, warehouses and internal roads.</span></p><p style=\"text-align: justify; box-sizing: inherit; margin-bottom: 15px; color: rgb(114, 114, 114); font-family: dzongkha, dzongkha; font-size: 14px;\"><span style=\"font-size: 14px; font-family: Arial;\">The construction of Pasakha dry port is expected to significantly address logistical challenges faced by the private sector such as processing of import/export, transshipment of cargoes, long transit times, and high freight costs for movement of goods across the border. The port will also help reduce the risk of damages and pilferages to cargo during the processing, storage, and transshipment while providing improved facilities for traders. The dry port will cater for import and export of goods for/from western and central regions of Bhutan, besides Pasakha industries.</span></p><p style=\"text-align: justify; box-sizing: inherit; margin-bottom: 15px; color: rgb(114, 114, 114); font-family: dzongkha, dzongkha; font-size: 14px;\"><span style=\"font-size: 14px; font-family: Arial;\">The construction of RCC wall has been awarded to Hi-Tech Construction Co. at an evaluated cost of 194.7 million. The project employs close to 180 employees, out of which more than 95% are Bhutanese workers from southern dzongkhags. The construction is carried out in a self-contained mode under strict compliance to the Covid-19 containment protocols issued by Covid-19 taskforce and Ministry of Health.</span></p><p style=\"text-align: justify; box-sizing: inherit; margin-bottom: 15px; color: rgb(114, 114, 114); font-family: dzongkha, dzongkha; font-size: 14px;\"><span style=\"font-size: 14px; font-family: Arial;\">The project is implemented by Project Implementation Unit based in Pasakha under Department of Trade, Ministry of Economic Affairs. The development of overall project is expected to be completed by early 2024.</span></p>','../uploads/NewsAnnouncement/news1.png','2021-02-16 10:51:17','Active');
 
 /*Table structure for table `t_partner_details` */
 
@@ -122,7 +122,7 @@ CREATE TABLE `t_partner_details` (
 
 /*Data for the table `t_partner_details` */
 
-insert  into `t_partner_details`(`Id`,`Name`,`Image`,`Description`,`status`) values (1,'The Asian and Pacific Centre for Transfer of Technology(APCTT)','apctt.jpg','<div style=\"text-align: justify;\">The Asian and Pacific Centre for Transfer of Technology (APCTT) is a regional institution of the United Nations Economic and Social Commission for Asia and the Pacific servicing the Asia-Pacific region.</div><div style=\"text-align: justify;\">The Centre works towards strengthening the national capacity of member States to nurture and promote national innovation systems and to create an enabling environment for the development and transfer of technology. The Centre was established in 1977 in Bangalore, India, and moved to New Delhi in 1993.</div><p style=\"text-align: justify;\"><span style=\"font-weight: bolder;\">1. Science, Technology, and Innovation</span></p><p style=\"text-align: justify;\">APCTT assists member countries in the development and management of sound National Innovation Systems. We provide capacity-building support to foster technology innovation, technology-based entrepreneurship, and competitiveness of Small and Medium-Sized Enterprises.</p><p style=\"text-align: justify;\"><span style=\"font-weight: bolder;\">2. Technology Transfer</span></p><p style=\"text-align: justify;\">APCTT provides capacity-building support to member countries to develop, transfer, commercialize, and adopt new and emerging technologies that have the transformative potential to achieve Sustainable Development Goals.&nbsp;<span style=\"font-weight: bolder;\"><br></span></p><p style=\"text-align: justify;\"><span style=\"font-weight: bolder;\">3. Regional Cooperation</span></p><p style=\"text-align: justify;\">APCTT works to promote regional cooperation and networking related to Science, Technology, and Innovation policymaking and technology transfer.&nbsp;</p><p style=\"text-align: justify;\"><span style=\"font-weight: bolder;\">4. Technology Intelligence</span></p><p style=\"text-align: justify;\">APCTT publishes several knowledge products, including the Asia-Pacific Tech Monitor, to disseminate information on new and emerging issues related to Science, Technology, and Innovation policy, latest technological innovations, market developments, and events.&nbsp;</p><div><br></div>','Active');
+insert  into `t_partner_details`(`Id`,`Name`,`Image`,`Description`,`status`) values (1,'The Asian and Pacific Centre for Transfer of Technology(APCTT)','apctt.jpg','<div style=\"text-align: justify;\"><span style=\"font-size: 14px;\">The Asian and Pacific Centre for Transfer of Technology (APCTT) is a regional institution of the United Nations Economic and Social Commission for Asia and the Pacific servicing the Asia-Pacific region.</span></div><div style=\"text-align: justify;\"><span style=\"font-size: 14px;\">The Centre works towards strengthening the national capacity of member States to nurture and promote national innovation systems and to create an enabling environment for the development and transfer of technology. The Centre was established in 1977 in Bangalore, India, and moved to New Delhi in 1993.</span></div><p style=\"text-align: justify;\"><span style=\"font-weight: bolder; font-size: 14px;\">1. Science, Technology, and Innovation</span></p><p style=\"text-align: justify;\"><span style=\"font-size: 14px;\">APCTT assists member countries in the development and management of sound National Innovation Systems. We provide capacity-building support to foster technology innovation, technology-based entrepreneurship, and competitiveness of Small and Medium-Sized Enterprises.</span></p><p style=\"text-align: justify;\"><span style=\"font-weight: bolder; font-size: 14px;\">2. Technology Transfer</span></p><p style=\"text-align: justify;\"><span style=\"font-size: 14px;\">APCTT provides capacity-building support to member countries to develop, transfer, commercialize, and adopt new and emerging technologies that have the transformative potential to achieve Sustainable Development Goals.&nbsp;</span><span style=\"font-weight: bolder;\"><br></span></p><p style=\"text-align: justify;\"><span style=\"font-weight: bolder; font-size: 14px;\">3. Regional Cooperation</span></p><p style=\"text-align: justify;\"><span style=\"font-size: 14px;\">APCTT works to promote regional cooperation and networking related to Science, Technology, and Innovation policymaking and technology transfer.&nbsp;</span></p><p style=\"text-align: justify;\"><span style=\"font-weight: bolder; font-size: 14px;\">4. Technology Intelligence</span></p><p style=\"text-align: justify;\"><span style=\"font-size: 14px;\">APCTT publishes several knowledge products, including the Asia-Pacific Tech Monitor, to disseminate information on new and emerging issues related to Science, Technology, and Innovation policy, latest technological innovations, market developments, and events.&nbsp;</span></p><div><br></div>','Active');
 
 /*Table structure for table `t_product_images` */
 
@@ -135,9 +135,11 @@ CREATE TABLE `t_product_images` (
   PRIMARY KEY  (`Id`),
   KEY `FK_t_product_images_mappng` (`Product_Id`),
   CONSTRAINT `FK_t_product_images_mappng` FOREIGN KEY (`Product_Id`) REFERENCES `t_products_master` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_product_images` */
+
+insert  into `t_product_images`(`Id`,`Image_Name`,`Product_Id`) values (7,'uploads/productImages/comp5/product_large2.png',2),(8,'uploads/productImages/comp5/product_large1.png',2),(9,'uploads/productImages/comp5/product_large1.png',2),(10,'uploads/productImages/comp5/product_large1.png',3),(11,'uploads/productImages/comp5/product_large1.png',3),(12,'uploads/productImages/comp5/product_large1.png',3),(13,'uploads/productImages/comp5/product_large3.png',4),(14,'uploads/productImages/comp5/product_large3.png',4),(15,'uploads/productImages/comp5/product_large3.png',4),(16,'uploads/productImages/comp6/product_large2.png',5),(17,'uploads/productImages/comp6/product_large2.png',6);
 
 /*Table structure for table `t_products_master` */
 
@@ -156,9 +158,11 @@ CREATE TABLE `t_products_master` (
   PRIMARY KEY  (`Id`),
   KEY `FK_t_products_category_mapping` (`Category_Id`),
   CONSTRAINT `FK_t_products_category_mapping` FOREIGN KEY (`Category_Id`) REFERENCES `t_category_master` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_products_master` */
+
+insert  into `t_products_master`(`Id`,`Product_Name`,`Category_Id`,`Company_Id`,`Price`,`Model_No`,`Description`,`Last_Updated_Date`,`Status`) values (2,'Baking Machine',1,5,'2000','122333','Power Source	Gas, Electric, Diesel\nCapacity	20Kg - 5000 Kg per Hour\nMachine Body Material	Steel\nDesign Type	Standard\nBaking Capacity	36 trays, 32 trays, Upto 500 Trays, 12 trays, 64 trays, 16 trays\nAutomation Grade	Automatic\nVoltage (V)	220 Volt / 440 Volt\nDisplay Type	PLC\nWarranty	1 year','2021-02-15 09:44:55','Active'),(3,'Ketichen Set',2,5,'2000','122333','Capacity	5 kg - 30 kg per Batch\nMachine Type	Automatic\nMachine Body Material	Metal\nDesign Type	Standard\nBaking Capacity	2 Trays or 4 Trays\nAutomation Grade	Automatic\nCondition	New\nVoltage (V)	220 Volt\nFrequency (Hertz)	50Hz','2021-02-15 10:00:26','Active'),(4,'Planetary Mixer',3,5,'2000','122333','Minimum Order Quantity	1 Set\nCapacity	3 litres - 100 litres\nUsage/Application	For Making Soft Dough\nDesign Type	Standard\nVoltage (volts)	220 Volt/ 440 Volt\nVoltage (V)	220 Volt / 440 Volt\nBowl Capacity (L)	3 Litres to 100 Litres\nCondition	New\nAutomation Grade	Automatic','2021-02-15 10:01:20','Active'),(5,'Dehydrator',1,6,'2000','122333','derbrthtyjbthy6','2021-02-16 11:07:03','Active'),(6,'Dehydrator',2,6,'2000','122333','fergergerg rthtytyh','2021-02-16 11:08:25','Active');
 
 /*Table structure for table `t_request_equipment_details` */
 
@@ -205,7 +209,7 @@ CREATE TABLE `t_role_master` (
 
 /*Data for the table `t_role_master` */
 
-insert  into `t_role_master`(`Id`,`Role_Name`,`Status`) values (1,'Admin','Active'),(2,'Local Supplier','Active'),(3,'Global_Supplier','Active');
+insert  into `t_role_master`(`Id`,`Role_Name`,`Status`) values (1,'Admin','Active'),(2,'Local Supplier','Active'),(3,'Global Supplier','Active');
 
 /*Table structure for table `t_status_master` */
 
@@ -216,11 +220,11 @@ CREATE TABLE `t_status_master` (
   `Status_Name` varchar(200) NOT NULL,
   `Status` enum('Active','InActive') NOT NULL default 'Active',
   PRIMARY KEY  (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_status_master` */
 
-insert  into `t_status_master`(`Id`,`Status_Name`,`Status`) values (1,'Submitted','Active');
+insert  into `t_status_master`(`Id`,`Status_Name`,`Status`) values (1,'Submitted','Active'),(2,'Approved','Active'),(3,'Rejected','Active');
 
 /*Table structure for table `t_supplier_company` */
 
@@ -251,9 +255,11 @@ CREATE TABLE `t_supplier_company` (
   KEY `FK_t_supplier_company` (`Country_Id`),
   CONSTRAINT `FK_t_supplier_company` FOREIGN KEY (`Country_Id`) REFERENCES `t_country_master` (`Id`),
   CONSTRAINT `FK_t_supplier_status_mapping` FOREIGN KEY (`Status_Id`) REFERENCES `t_status_master` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_supplier_company` */
+
+insert  into `t_supplier_company`(`Id`,`Supplier_Type_Id`,`User_Id`,`Company_Name`,`Country_Id`,`City`,`Postal_Code`,`License_No`,`License_Img`,`Telephone_No`,`License_Registration_Date`,`Company_Address`,`Company_Description`,`Company_Website`,`Submitted_Date`,`Update_date`,`Updated_By`,`Remarks`,`Status_Id`) values (5,1,10,'Druk Green Kitchen',NULL,NULL,NULL,'123456','../uploads/online.jpg','02333566','2021-02-16','1212212 4r34r34r34','343t34t4t43t4t43','http://bhutansyncits.com','2021-02-15 04:18:01','2021-02-15 09:26:47',1,'approved',2),(6,1,11,'DCSI',NULL,NULL,NULL,'12333','../uploads/banner11.png','02333566','2021-02-01','cfsduvgdvgdfu','dfvdfjgvdfvdfjkv','www.mymusicentertainment.com','2021-02-16 06:03:52','2021-02-16 11:04:58',1,'all docc updte',2);
 
 /*Table structure for table `t_supplier_type` */
 
@@ -269,6 +275,28 @@ CREATE TABLE `t_supplier_type` (
 /*Data for the table `t_supplier_type` */
 
 insert  into `t_supplier_type`(`Id`,`Supplier_Type`,`Status`) values (1,'Local','Active'),(2,'International','Active');
+
+/*Table structure for table `t_technology_request` */
+
+DROP TABLE IF EXISTS `t_technology_request`;
+
+CREATE TABLE `t_technology_request` (
+  `Id` int(11) NOT NULL auto_increment,
+  `Name` varchar(200) NOT NULL,
+  `Email` varchar(200) default NULL,
+  `Contact_No` varchar(200) default NULL,
+  `Present_Address` text,
+  `Equipment_Name` varchar(255) default NULL,
+  `Equipment_Description` text,
+  `Submitted_Date` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  `Response` text,
+  `Status` enum('Active','InActive') default 'Active',
+  PRIMARY KEY  (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Data for the table `t_technology_request` */
+
+insert  into `t_technology_request`(`Id`,`Name`,`Email`,`Contact_No`,`Present_Address`,`Equipment_Name`,`Equipment_Description`,`Submitted_Date`,`Response`,`Status`) values (1,'Sonam Dorji','sonam@bhutansyncits.com','17458669','12123224324','baking machine','scsacsv','2021-02-15 23:50:51','dcvsdvsdvsdv','Active'),(2,'Karma','sdorji815@gmail.com','17458669','MOEA','Pulser','regrgbthyhy','2021-02-16 11:09:40',NULL,'Active');
 
 /*Table structure for table `t_user_master` */
 
@@ -287,11 +315,11 @@ CREATE TABLE `t_user_master` (
   PRIMARY KEY  (`Id`),
   KEY `FK_t_user_role_mapping` (`Role_Id`),
   CONSTRAINT `FK_t_user_role_mapping` FOREIGN KEY (`Role_Id`) REFERENCES `t_role_master` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_user_master` */
 
-insert  into `t_user_master`(`Id`,`Name`,`Email`,`Password`,`Image`,`Contact_No`,`Designation`,`Role_Id`,`Status`) values (1,'SONAM','admin@gmail.com','$2y$10$oVQ6BavZ3QGabxRjyvKxduBq4lJFSQwAR6cPfGzLb9F6CDFP38iay',NULL,'',NULL,1,'Active'),(4,'name test','email','$2y$10$oVQ6BavZ3QGabxRjyvKxduBq4lJFSQwAR6cPfGzLb9F6CDFP38iay',NULL,'12312312','designation',2,'Active'),(5,'Tshewan','email@gmail.com','$2y$10$oVQ6BavZ3QGabxRjyvKxduBq4lJFSQwAR6cPfGzLb9F6CDFP38iay',NULL,'12312312','Programmer',2,'Active'),(8,'Tshewang Tenzin','wangzin53@gmail.com','$2y$10$oVQ6BavZ3QGabxRjyvKxduBq4lJFSQwAR6cPfGzLb9F6CDFP38iay',NULL,'12312312','designation',3,'InActive'),(9,'Tshewang Tenzin','staff@newedge.bt','$2y$10$oVQ6BavZ3QGabxRjyvKxduBq4lJFSQwAR6cPfGzLb9F6CDFP38iay',NULL,'12312312','designation',3,'Active');
+insert  into `t_user_master`(`Id`,`Name`,`Email`,`Password`,`Image`,`Contact_No`,`Designation`,`Role_Id`,`Status`) values (1,'SONAM','admin@gmail.com','$2y$10$oVQ6BavZ3QGabxRjyvKxduBq4lJFSQwAR6cPfGzLb9F6CDFP38iay',NULL,'',NULL,1,'Active'),(4,'name test','email','$2y$10$oVQ6BavZ3QGabxRjyvKxduBq4lJFSQwAR6cPfGzLb9F6CDFP38iay',NULL,'12312312','designation',2,'Active'),(5,'Tshewan','email@gmail.com','$2y$10$oVQ6BavZ3QGabxRjyvKxduBq4lJFSQwAR6cPfGzLb9F6CDFP38iay',NULL,'12312312','Programmer',2,'Active'),(8,'Tshewang Tenzin','wangzin53@gmail.com','$2y$10$oVQ6BavZ3QGabxRjyvKxduBq4lJFSQwAR6cPfGzLb9F6CDFP38iay',NULL,'12312312','designation',3,'Active'),(9,'Tshewang Tenzin','staff@newedge.bt','$2y$10$oVQ6BavZ3QGabxRjyvKxduBq4lJFSQwAR6cPfGzLb9F6CDFP38iay',NULL,'12312312','designation',3,'Active'),(10,'Druk Green Kitchenvdve','druk@gmail.com','$2y$10$eU09nJVSrha/7h60Ah/gye6J7cZDspTE6i7S76jPrF32BloVj7gqq','dcsilogo.png','17458644','General Manger',2,'Active'),(11,'Karma','sonam@bhutansyncits.com','$2y$10$kyOHUPhq8bhAAJlIvAQn9.5fugAI1i.wxtyZrRcnVfGVe3LdoDKzK',NULL,'17458669','CEO',2,'Active');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
