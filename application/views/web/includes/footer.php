@@ -1,7 +1,7 @@
 <div class="footer">
     <div class="footer-static-middle">
         <div class="container">
-            <div class="footer-logo-wrap pt-50 pb-10">
+            <div class="footer-logo-wrap pt-10 pb-10">
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="footer-logo">
