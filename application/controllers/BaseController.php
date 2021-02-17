@@ -103,7 +103,13 @@ class BaseController extends CI_Controller {
               $sup_data['License_Img']=$file_directory . $new_file_name;
             }
             $this->CommonModel->do_insert('t_supplier_company', $sup_data); 
-            //send mail notification
+            //mail notification
+            $emailparam='';
+            $maildetails=$this->db->get_where('t_mail_template', array( 'Template_Module' => 'REGISTRATION_SUBMISSION'))->row();
+            $t_mail_template=$maildetails->Template_Mail_Body;
+            $t_mail_template=str_replace("##Name##", ''.$this->input->post('name'),  $t_mail_template);
+            $htmlContent =$t_mail_template;
+            $val=$this->CommonModel->sendmail($this->input->post('email'), $maildetails->Template_Subject.' (This is system generated mail. Please donot reply)',$htmlContent);
             if($this->db->affected_rows()>0){
                 $page_data['message']="Your Information has been added for Approval. You will be notified throught email once our team take further action.Thank you for using our system";
             }
@@ -145,6 +151,14 @@ class BaseController extends CI_Controller {
             $sup_data['Status_Id']=1;//change here according to the data in t_status_master
 
             $this->CommonModel->do_insert('t_supplier_company', $sup_data); 
+            
+            $emailparam='';
+            $maildetails=$this->db->get_where('t_mail_template', array( 'Template_Module' => 'REGISTRATION_SUBMISSION'))->row();
+            $t_mail_template=$maildetails->Template_Mail_Body;
+            $t_mail_template=str_replace("##Name##", ''.$this->input->post('name'),  $t_mail_template);
+            $htmlContent =$t_mail_template;
+            $val=$this->CommonModel->sendmail($this->input->post('email'), $maildetails->Template_Subject.' (This is system generated mail. Please donot reply)',$htmlContent);
+
             if($this->db->affected_rows()>0){
                 $page_data['message']="Your Information has been added for Approval. You will be notified throught email once our team take further action.Thank you for using our system";
             }
@@ -182,6 +196,27 @@ class BaseController extends CI_Controller {
     function load_productdetails($id=""){
         $page_data['product_details'] =$this->db->get_where('t_products_master',array('Id'=>$id))->row();
         $page_data['product_images_details'] =$this->db->get_where('t_product_images',array('Product_Id'=>$id))->result_array();
+        $page_data['company_details'] =$this->db->get_where('t_supplier_company',array('Id'=>$page_data['product_details']->Company_Id))->row();
         $this->load->view('web/product_details', $page_data);
+    }
+    
+    function createorder(){
+        $page_data['message']="";
+        $page_data['messagefail']="";
+        $data['Name']=$this->input->post('name');
+        $data['Email']=$this->input->post('email');
+        $data['Contact_No']=$this->input->post('contact');
+        $data['Quantity']=$this->input->post('quantity');
+        $data['Product_Id']=$this->input->post('productId');
+        $data['Company_Id']=$this->input->post('companyId');
+        $data['Submitted_Date']=date('Y-m-d h:i:s');
+        $this->CommonModel->do_insert('t_order_details', $data); 
+        if($this->db->affected_rows()>0){
+            $page_data['message']="Your order information has been added. You will be contacted with your provided information.Thank you for using our system";
+        }
+        else{
+            $page_data['messagefail']='Your Information  is not able to submit. Please try again';
+        }
+        $this->load->view('web/acknowledgement', $page_data);
     }
 }
