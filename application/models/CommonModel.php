@@ -12,6 +12,10 @@ class CommonModel extends CI_Model{
         $query =$this->db->query("SELECT * FROM t_user_master u LEFT JOIN t_role_master r ON r.`Id`=u.`Role_Id` WHERE u.`Id`= '".$id."'")->row();
         return $query;
     }
+   function gethomeproductDetails($id=""){
+        $query =$this->db->query(" ")->result_array();
+        return $query;
+    }
   function getusers(){ 
        $query =$this->db->query(" SELECT u.`CID`,u.`Contact_Numer`,u.`Full_Name`,u.`User_Id` Email_Id,u.`Id` user_id,IF(u.`User_Status`='Y','Yes','No') Active_status FROM t_user_details u LEFT JOIN t_role_master r ON r.`Id`=u.`Role_Id` ")->result_array();
         return $query;
@@ -43,7 +47,7 @@ class CommonModel extends CI_Model{
     return $query;
   }
   function get_requestedDetails($userdi=""){
-    $query="SELECT o.Contact_No,o.Company_Id,o.Email,o.Id,o.Name,o.Product_Id,p.Product_Name,o.Quantity,o.Submitted_Date FROM t_order_details o JOIN t_supplier_company s ON s.Id=o.Company_Id JOIN t_products_master p ON p.Id=o.Product_Id WHERE s.User_Id=".$userdi;
+    $query="SELECT o.`Contact_No`,o.`Company_Id`,o.`Email`,o.`Id`,o.`Name`,o.`Product_Id`,p.`Product_Name`,o.`Quantity`,o.`Submitted_Date` FROM t_order_details o JOIN t_supplier_company s ON s.`Id`=o.`Company_Id` JOIN t_products_master p ON p.`Id`=o.`Product_Id` WHERE s.`User_Id`=".$userdi;
     return $this->db->query($query)->result_array();
   }
   function get_registration_details($type="",$id=""){

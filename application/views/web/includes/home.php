@@ -9,9 +9,9 @@
                             <div class="slider-progress"></div>
                             <div class="slider-content">
                                 <h2 style="color: white;"><?php echo$event['Name'];?></h2>
-                                <h3 style="color: white;">uploads/<?php echo$event['Description'];?></h3>
+                                <h3 style="color: white;"><?php echo$event['Description'];?></h3>
                                 <div class="default-btn slide-btn">
-                                    <a class="links" href="#">Read More</a>
+                                    <a class="links" href="https://www.google.com">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -50,27 +50,15 @@
 <div class="li-static-banner">
     <div class="container">
         <div class="row">
+            <?php foreach($t_imagecategory as $i=> $event): ?>
             <div class="col-lg-4 col-md-4 text-center">
                 <div class="single-banner">
                     <a href="#">
-                        <img src="<?php echo base_url();?>uploads/category1.png" alt="Li's Static Banner">
+                        <img src="uploads/CategoryImage/<?=$event['Image']?>" alt="Li's Static Banner">
                     </a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 text-center pt-xs-30">
-                <div class="single-banner">
-                    <a href="#">
-                        <img src="<?php echo base_url();?>uploads/category3.png" alt="Li's Static Banner">
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 text-center pt-xs-30">
-                <div class="single-banner">
-                    <a href="#">
-                        <img src="<?php echo base_url();?>uploads/category2.png" alt="Li's Static Banner">
-                    </a>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>

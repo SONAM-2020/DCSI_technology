@@ -14,6 +14,7 @@ class loginController extends CI_Controller {
     }
     //edited this method
     function login(){
+        $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
          $page_data['message']="";
         if($this->input->post('email')!="" &&  $this->input->post('password')!=""){
             $query = $this->db->get_where('t_user_master', array('Email' => $this->input->post('email')));

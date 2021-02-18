@@ -8,7 +8,7 @@
         <div class="container">
             <div class="breadcrumb-content">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="<?php echo base_url();?>">Home</a></li>
                     <li class="active">Login</li>
                 </ul> 
             </div>

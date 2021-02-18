@@ -13,14 +13,33 @@
 				<div class="widget-card widget-bg1">					 
 					<div class="wc-item">
 						<h4 class="wc-title">
-							Total Products
+							Total No. of Product
 						</h4>
 						<span class="wc-des">
-							All Customs Value
+							Product added to System
 						</span>
 						<span class="wc-stats">
-							<span class="counter"></span>
+							<span class="counter"><?php
+              		$size=sizeof($this->db->get_where('t_products_master', array(
+			            'Status' => 'Active'
+    			        ))->result_array());
+    			        if($size>0){
+    			        	echo $size;
+    			        }
+    			        else{
+    			        	echo 0;
+    			        }
+            		?></span> 
 						</span>		
+						<div class="progress wc-progress">
+							<div class="progress-bar" role="progressbar" style="width: 78%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+						<span class="wc-progress-bx">
+							<span class="wc-change">
+							</span>
+							<span class="wc-number ml-auto">
+							</span>
+						</span>
 					</div>				      
 				</div>
 			</div>
@@ -28,14 +47,27 @@
 				<div class="widget-card widget-bg2">					 
 					<div class="wc-item">
 						<h4 class="wc-title">
-							 New Feedbacks
+						Technology Request
 						</h4>
 						<span class="wc-des">
-							Customer Review
+						Total Technology Request
 						</span>
 						<span class="wc-stats counter">
-					
+							<?php
+              		$size=sizeof($this->db->get_where('t_technology_request', array(
+			            'Status' => 'Active'
+    			        ))->result_array());
+    			        if($size>0){
+    			        	echo $size;
+    			        }
+    			        else{
+    			        	echo 0;
+    			        }
+            		?>
 						</span>		
+						<div class="progress wc-progress">
+							<div class="progress-bar" role="progressbar" style="width: 88%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
 					</div>				      
 				</div>
 			</div>
@@ -46,10 +78,20 @@
 							New Orders 
 						</h4>
 						<span class="wc-des">
-							No of Fresh Order
+							Fresh Order Amount 
 						</span>
 						<span class="wc-stats counter">
+							7 
 						</span>		
+						<div class="progress wc-progress">
+							<div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+						<span class="wc-progress-bx">
+							<span class="wc-change">
+							</span>
+							<span class="wc-number ml-auto">
+							</span>
+						</span>
 					</div>				      
 				</div>
 			</div>
@@ -57,13 +99,27 @@
 				<div class="widget-card widget-bg4">					 
 					<div class="wc-item">
 						<h4 class="wc-title">
-							Order Delivered 
+							Total Users 
 						</h4>
 						<span class="wc-des">
-							No of Order Delivered
+							Total Number of Users
 						</span>
 						<span class="wc-stats counter">
+							<?php
+              		$size=sizeof($this->db->get_where('t_user_master', array(
+			            'Status' => 'Active'
+    			        ))->result_array());
+    			        if($size>0){
+    			        	echo $size;
+    			        }
+    			        else{
+    			        	echo 0;
+    			        }
+            		?>
 						</span>		
+						<div class="progress wc-progress">
+							<div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
 					</div>				      
 				</div>
 			</div>

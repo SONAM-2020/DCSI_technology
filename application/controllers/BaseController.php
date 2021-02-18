@@ -7,6 +7,7 @@ class BaseController extends CI_Controller {
     public function index(){
         $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
         $page_data['t_announcement'] = $this->db->get_where('t_news_announcement',array('Status'=>'Active'))->result_array();
+        $page_data['t_imagecategory'] = $this->db->get_where('t_category_master',array('Status'=>'Active'))->result_array();
         $page_data['t_imageslider'] = $this->db->get_where('t_image_slider',array('Status'=>'Active'))->result_array();
         
         $page_data['category_list'] = $this->CommonModel->get_active_category_list();
@@ -37,9 +38,12 @@ class BaseController extends CI_Controller {
             $page_data['linktype']=$param1;
             $this->load->view('web/pages/News', $page_data);   
         }
-        if($param1=="Download"){
+        if($param1=="allproduct"){
+            $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
+            // $page_data['product_list'] = $this->CommonModel->gethomeproductDetails();
+            $page_data['category_list'] = $this->CommonModel->get_active_category_list();
             $page_data['linktype']=$param1;
-            $this->load->view('web/pages/Download', $page_data);   
+            $this->load->view('web/pages/allproduct', $page_data);   
         }
         if($param1=="TechnologyRequest"){
             $page_data['linktype']=$param1;
@@ -63,6 +67,7 @@ class BaseController extends CI_Controller {
 
     //edited this method
     function localregistration(){
+        $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
         $page_data['message']="";
         $page_data['messagefail']="";
         $checkemail=$this->db->get_where('t_user_master',array('Email'=>$this->input->post('email')))->row();
@@ -120,6 +125,7 @@ class BaseController extends CI_Controller {
         }        
     }
     function globalregistration(){
+        $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
         $page_data['message']="";
         $page_data['messagefail']="";
         $checkemail=$this->db->get_where('t_user_master',array('Email'=>$this->input->post('email')))->row();
@@ -174,6 +180,7 @@ class BaseController extends CI_Controller {
     }
 
     function technologyrequestForm(){
+        $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
         $page_data['message']="";
         $page_data['messagefail']="";
         

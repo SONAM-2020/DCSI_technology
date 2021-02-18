@@ -76,8 +76,8 @@
                                   <li><a href="<?php echo base_url();?>">Home</a></li>
                                   <li><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/About/')">About Us</a></li>
                                   <li><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/Partner/')">Partner Profile</a></li>
-                                  <li><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/News/')">News</a></li>
-                                  <li><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/Download/')">Download</a></li>
+                                  <li><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/News/')">Technology News</a></li>
+                                  <li><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/allproduct/')">Products</a></li>
                                   <li><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/Contact/')">Contact Us</a></li>
                                   <li><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/TechnologyRequest/')">Technology Request</a></li>
                                 </ul>

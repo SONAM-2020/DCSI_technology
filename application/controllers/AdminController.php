@@ -250,6 +250,7 @@ class AdminController extends CI_Controller {
             $data['Image']=$_FILES["Image"]["name"];
         }
     $data['Name']=$this->input->post('name');
+    $data['Links']=$this->input->post('links');
     $data['Description']=$this->input->post('description');
     $data['Status']='Active';
     $page_data['ImageSlider'] = $this->db->get('t_image_slider')->result_array();
@@ -271,7 +272,8 @@ class AdminController extends CI_Controller {
             move_uploaded_file($_FILES['uploadedImageedit']['tmp_name'],'./uploads/Imageslider/'.$_FILES["uploadedImageedit"]["name"]);
             $data['Image']=$_FILES["uploadedImageedit"]["name"];
         }
-        $data['Name']=$this->input->post('Name');      
+        $data['Name']=$this->input->post('Name');    
+        $data['Links']=$this->input->post('links1');  
         $data['Description']=$this->input->post('Description');
         $this->db->where('Id', $this->input->post('sliderId'));
         $this->db->update('t_image_slider`', $data); 

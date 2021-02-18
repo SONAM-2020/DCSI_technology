@@ -23,6 +23,7 @@
 						      <th>No.</th>
                   <th>Slider Name</th>
 						      <th style="display: none;">Slider Description</th>
+                  <th>Links</th>
 						      <th>Image</th>
                   <th>Status</th>
 						      <th>Action</th>
@@ -34,6 +35,7 @@
 						      <td><?=$i+1?></td>
                   <th><?php echo $event['Name'];?></th>
 						      <td style="display: none;"><?php echo $event['Description'];?></td>
+                  <th><?php echo $event['Links'];?></th>
 						      <td><a href="<?php echo base_url();?>uploads/Imageslider/<?php echo$event['Image'];?>" target="_blank"><img src="<?php echo base_url();?>uploads/Imageslider/<?php echo$event['Image'];?>" alt="no imaged" onerror="this.src='<?php echo base_url();?>uploads/1.png'" width="100" align="left"></a></td>
                   <td>
                     <?php if($event['Status']=="Active"){ ?>
@@ -48,7 +50,7 @@
 
                   </td>
 						      <td>
-                    <button type="button" class="btn-secondry btn-danger btn-block" onclick="editdetails('<?php echo $event['Id']?>','<?php echo $event['Name']?>','<?php echo $event['Description']?>','uploads/Imageslider/<?php echo $event['Image']?>','uploads/Imageslider/<?php echo $event['Image']?>')"><i class="fa fa-edit"></i>Edit</button> 
+                    <button type="button" class="btn-secondry btn-danger btn-block" onclick="editdetails('<?php echo $event['Id']?>','<?php echo $event['Name']?>','<?php echo $event['Description']?>','<?php echo $event['Links']?>','uploads/Imageslider/<?php echo $event['Image']?>','uploads/Imageslider/<?php echo $event['Image']?>')"><i class="fa fa-edit"></i>Edit</button> 
                     <br><br>
 						       <button type="button" class="btn btn-danger btn-block" onclick="deleteslider(<?php echo $event['Id'];?>)"><i class="fa fa-times"></i>Delete</button>
 						        </td>
@@ -89,7 +91,11 @@
                             <input type="file" id="Image" onchange="checkfilesize(this,'images','Image_err','addBtn')" name="Image" class="form-control">
                             <span id="Image_err" class="text-danger"></span>
                         </div>
-
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
+                          <label>Website Links: <span class="text-danger">*</span></label>
+                            <input type="text" id="links" onclick="remove_err('Links_err')" name="links" class="form-control">
+                            <span id="Links_err" class="text-danger"></span>
+                        </div>
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20">
                             <label>Description: <span class="text-danger">*</span></label>
                             <textarea id="description" onclick="remove_err('Description_err')" name="description" class="form-control"></textarea>
@@ -145,6 +151,11 @@
                             <label>Image:</label><span style="color: red;"><i>(Recommended Size:370x230px)</i></span>
                              <input type="hidden" name="uploadedImage" id="uploadedImage"> 
                              <input type="file" id="uploadedImageedit" name="uploadedImageedit" class="form-control">
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
+                          <label>Website Links: <span class="text-danger">*</span></label>
+                            <input type="text" id="links1" onclick="remove_err('Links1_err')" name="links1" class="form-control">
+                            <span id="Links1_err" class="text-danger"></span>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20">
                             <label>Description: <span class="text-danger">*</span></label>
@@ -208,6 +219,10 @@
         $('#Image_err').html('Image is required');
         retrtype=false;
       }
+      if($('#links').val()==""){
+        $('#Links_err').html('Website Link is required');
+        retrtype=false;
+      }
       return retrtype;
     }
    function deleteslider(id){
@@ -228,9 +243,10 @@
          $("#mainContentdiv").load(url);
          setTimeout($.unblockUI, 1000);
     }
-    function editdetails(id,name,descript,imageId,image){
+    function editdetails(id,name,descript,links,imageId,image){
       $('#Name').val(name);
       $('#Description').val(descript);
+      $('#links1').val(links);
       $('#sliderId').val(id);
       $('#uploadedImage').val(imageId);
       $('#loadimage').html('<img src="'+image+'" alt="no imaged" width="100%" align="left">');
@@ -269,6 +285,10 @@
       }
       if($('#Description').val()==""){
         $('#Description_err').html('Please mention Slider Description');
+        retrtype=false;
+      }
+      if($('#links1').val()==""){
+        $('#Links1_err').html('Website Link is required');
         retrtype=false;
       }
       return retrtype;

@@ -4,7 +4,7 @@
 ?>
 <body>
   <div id="mainpublicContent">
-   
+   <?php $this->load->view('web/includes/nevagation.php'); ?> 
     <div class="bg-info">
         <div class="container mb-1">
             <div class="breadcrumb-content pl-10">
@@ -36,5 +36,6 @@
         </div>
     </div>
 </div>
+<?php  $this->load->view('web/includes/footer.php'); ?>
 </body>
 </html>
