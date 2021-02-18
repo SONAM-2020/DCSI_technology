@@ -3,7 +3,6 @@
     $this->load->view('web/includes/header.php');
 ?>
 <body>
-  <?php $this->load->view('web/includes/nevagation.php'); ?> 
   <div id="mainpublicContent">
     <div class="bg-info">
         <div class="container">

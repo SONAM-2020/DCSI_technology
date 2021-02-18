@@ -22,16 +22,16 @@
                       <div class="col-sm-6 col-md-6 col-lg-4 col-xs-12">
                           <div class="li-blog-single-item pb-25">
                               <div class="li-blog-banner">
-                                  <a href="<?php echo base_url();?>index.php?baseController/loadpage/Newsdetails/<?=$event['Id']?>"><img class="img-full" src="NewsAnnouncement/<?php echo$event['Image'];?>" alt=""></a>
+                                  <a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_NewsDestails/<?=$event['Id']?>')"><img class="img-full" src="NewsAnnouncement/<?php echo$event['Image'];?>" alt=""></a>
                               </div>
                               <div class="li-blog-content">
                                   <div class="li-blog-details">
-                                      <h3 class="li-blog-heading pt-25"><a href="<?php echo base_url();?>index.php?baseController/loadpage/Newsdetails/<?=$event['Id']?>" style="text-align: justify;"><?php echo$event['News_title'];?></a></h3>
+                                      <h3 class="li-blog-heading pt-25"><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_NewsDestails/<?=$event['Id']?>')" style="text-align: justify;"><?php echo$event['News_title'];?></a></h3>
                                       <div class="li-blog-meta">
                                           <a class="post-time" href="#"><i class="fa fa-calendar"></i><?php echo$event['Post_date'];?></a>
                                       </div>
                                       <p style="text-align: justify;"><?=  substr(strip_tags($event['Description']), 0, 300).'............';?></p>
-                                      <a class="read-more" href="<?php echo base_url();?>index.php?baseController/loadpage/Newsdetails/<?=$event['Id']?>">READ MORE...</a>
+                                      <a class="read-more" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_NewsDestails/<?=$event['Id']?>')">READ MORE...</a>
                                   </div>
                               </div>
                           </div>

@@ -42,6 +42,10 @@ class CommonModel extends CI_Model{
     }
     return $query;
   }
+  function get_requestedDetails($userdi=""){
+    $query="SELECT o.Contact_No,o.Company_Id,o.Email,o.Id,o.Name,o.Product_Id,p.Product_Name,o.Quantity,o.Submitted_Date FROM t_order_details o JOIN t_supplier_company s ON s.Id=o.Company_Id JOIN t_products_master p ON p.Id=o.Product_Id WHERE s.User_Id=".$userdi;
+    return $this->db->query($query)->result_array();
+  }
   function get_registration_details($type="",$id=""){
     $query="SELECT u.`Contact_No`,u.`Designation`,u.`Email`,u.`Id` user_id,u.`Name`,s.`Company_Name`,s.`Company_Website`,s.`Submitted_Date`,s.`Company_Address`,s.`City`,s.`Company_Description`,s.`Id` company_Id,s.`License_Img`,s.`License_No`,s.`License_Registration_Date`,s.`Postal_Code`,s.`Telephone_No`,c.`Country_Name`,t.`Supplier_Type`,s.`Remarks`
     FROM t_user_master u JOIN t_supplier_company s ON s.`User_Id`=u.`Id` LEFT JOIN t_country_master c ON c.`Id`=s.`Country_Id` LEFT JOIN t_supplier_type t ON t.`Id`=s.`Supplier_Type_Id`";
@@ -65,6 +69,30 @@ class CommonModel extends CI_Model{
   function searchfromtable($searchtype=""){
     $query="SELECT p.`Id`,p.`Description`,p.`Last_Updated_Date`,p.`Model_No`,p.`Price`,p.`Product_Name`,i.`Image_Name`  FROM t_products_master p, t_product_images i WHERE p.`Product_Name` LIKE '%".$searchtype."%' AND p.`Id`=i.`Product_Id` AND p.`Status`='Active' GROUP BY p.Id "; 
     return $this->db->query($query)->result_array();
-}
+  }
+  public function sendmail($email="",$subject="",$htmlContent=""){
+    //https://myaccount.google.com/lesssecureapps?gar=1&pli=1&rapt=AEjHL4OXAOCed0mI3C3xzgRvnUHiGsmjZVZ7xYiXMoaqCaOGGgUCwJbAm9aJYs5C_-X_XwA4HpXItpBO1L37B8REBosPSNo9YA
+    $this->load->library('email');
+    $config = array(
+      'protocol'  => 'smtp',//ssmtp
+      'smtp_host' => 'ssl://smtp.googlemail.com',//ssl://ssmtp.googlemail.com
+      'smtp_port' => 465, 
+      'smtp_user' => 'noreplydcsitechnology@gmail.com',
+      'smtp_pass' => 'Admin@2021',
+      'mailtype'  => 'html',
+      'smtp_crypto' => 'security', //can be 'ssl' or 'tls' for example
+      'charset'   => 'utf-8'
+    );
+    $this->email->initialize($config);
+    $this->email->set_mailtype("html");
+    $this->email->set_newline("\r\n");
+    $this->email->set_crlf( "\r\n" );
+    $this->load->helper('string');
+    $this->email->to($email);
+    $this->email->from('noreplydcsitechnology@gmail.com','DCSI');
+    $this->email->subject($subject);
+    $this->email->message($htmlContent);
+    $this->email->send();
+  }
 }
 

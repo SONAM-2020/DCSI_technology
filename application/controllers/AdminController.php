@@ -76,19 +76,31 @@ class AdminController extends CI_Controller {
       $upate_data['Remarks']=$this->input->post('remarks');
       $upate_data['Update_date']=date('Y-m-d h:i:s');
       $upate_data['Updated_By']=$this->session->userdata('User_Id');
+      $mail_type="";
       if($id=="reject"){
         $upate_data['Status_Id']=3;
+        $mail_type="REGISTRATION_REJECT";
+        
       }
       if($id=="approve"){
         $upate_data['Status_Id']=2;
         $upate_user_data['Status']='Active';
         $this->db->where('Id', $this->input->post('userid'));
         $this->db->update('t_user_master', $upate_user_data);
+        $mail_type="REGISTRATION_APPROVE";
       }
       $this->db->where('Id', $this->input->post('companyid'));
       $this->db->update('t_supplier_company', $upate_data);
+
+      //mail notification
+      $emailparam='';
+      $maildetails=$this->db->get_where('t_mail_template', array( 'Template_Module' => $mail_type))->row();
+      $t_mail_template=$maildetails->Template_Mail_Body;
+      $t_mail_template=str_replace("##Name##", ''.$this->input->post('name'),  $t_mail_template);
+      $t_mail_template=str_replace("##REJECT_REASON##", ''.$this->input->post('remarks'),  $t_mail_template);
+      $htmlContent =$t_mail_template;
+      $val=$this->CommonModel->sendmail($this->input->post('email'), $maildetails->Template_Subject.' (This is system generated mail. Please donot reply)',$htmlContent);
       
-      //send mail notification
       $this->new_registration_list('listall','Data updated successfully');
     }
     
@@ -102,6 +114,16 @@ class AdminController extends CI_Controller {
       $page_data['product_list'] = $this->CommonModel->get_productDetails($this->session->userdata('User_Id')); 
       $this->load->view('backend/pages/supplier/add_products', $page_data);
     }
+    
+    if($type=="orderrequested"){
+      $page_data['product_list'] = $this->CommonModel->get_requestedDetails($this->session->userdata('User_Id')); 
+      $this->load->view('backend/pages/supplier/requested_products', $page_data);
+    }
+    if($type=="ViewproductDetails"){
+      $page_data['product_details'] = $this->db->get_where('t_products_master', array( 'Id' => $param2))->row();; 
+      $this->load->view('backend/pages/supplier/requested_products_detials', $page_data);
+    }
+    
     if($type=="addproduct"){
       $upate_data['Product_Name']= $this->input->post('product');
       $upate_data['Category_Id']= $this->input->post('category');
@@ -423,5 +445,6 @@ class AdminController extends CI_Controller {
         $this->load->view('backend/pages/changepassword', $page_data);
 
     }
+    
 
 }
