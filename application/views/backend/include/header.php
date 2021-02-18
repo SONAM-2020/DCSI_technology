@@ -11,7 +11,7 @@
 	<meta property="og:description" content="CSI Technology Database" />
 	<meta property="og:image" content="" />
 	<meta name="format-detection" content="telephone=no">
-	<link rel="icon" href="<?php echo base_url();?><?php echo base_url();?>uploads/dcsilogo.png" type="image/x-icon" />
+	<link rel="icon" href="<?php echo base_url();?>uploads/dcsilogo.png" type="image/x-icon" />
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>uploads/dcsilogo.png" />
 	<title>CSI Technology</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">

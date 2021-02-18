@@ -60,14 +60,14 @@
             <div class="col-lg-4 col-md-4 text-center pt-xs-30">
                 <div class="single-banner">
                     <a href="#">
-                        <img src="<?php echo base_url();?>uploads/category2.png" alt="Li's Static Banner">
+                        <img src="<?php echo base_url();?>uploads/category3.png" alt="Li's Static Banner">
                     </a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 text-center pt-xs-30">
                 <div class="single-banner">
                     <a href="#">
-                        <img src="<?php echo base_url();?>uploads/category3.png" alt="Li's Static Banner">
+                        <img src="<?php echo base_url();?>uploads/category2.png" alt="Li's Static Banner">
                     </a>
                 </div>
             </div>
@@ -125,13 +125,13 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <h4><a class="product_name" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_productdetails/<?=$pro['Id']?>')"><?=$pro['Product_Name']?></a></h4>
-                                                <div class="price-box">
-                                                    <span class="new-price">Nu.<?=$pro['Price']?></span>
+                                                <h3 style="text-align: center;"><a class="product_name" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_productdetails/<?=$pro['Id']?>')"><?=$pro['Product_Name']?></a></h3>
+                                                <div class="price-box" style="text-align: center;">
+                                                    <span  class="new-price">Nu.<?=$pro['Price']?></span>
                                                 </div>
                                             </div>
-                                            <div class="add-actions">
-                                                <ul class="add-actions-link">
+                                            <div class="add-actions" style="text-align: center;">
+                                                <ul class="add-actions-link m-md-5" >
                                                     <li class="add-cart active"><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_productdetails/<?=$pro['Id']?>')">View Details</a></li>
                                                 </ul>
                                             </div>

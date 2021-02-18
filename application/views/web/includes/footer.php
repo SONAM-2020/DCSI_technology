@@ -1,4 +1,56 @@
 <div class="footer">
+    <div class="footer-static-top">
+        <div class="container">
+            <div class="footer-shipping pt-60 pb-55 pb-xs-25">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                        <div class="li-shipping-inner-box">
+                            <div class="shipping-icon">
+                                <img src="<?php echo base_url();?>uploads/works/register.png" alt="Shipping Icon">
+                            </div>
+                            <div class="shipping-text">
+                                <h2>1. Registration</h2>
+                                <p>And free returns. See checkout for delivery dates.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                        <div class="li-shipping-inner-box">
+                            <div class="shipping-icon">
+                                <img src="<?php echo base_url();?>uploads/works/approved.png" alt="Shipping Icon">
+                            </div>
+                            <div class="shipping-text">
+                                <h2>2. Approval</h2>
+                                <p>Pay with the world's most popular and secure payment methods.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
+                        <div class="li-shipping-inner-box">
+                            <div class="shipping-icon">
+                                <img src="<?php echo base_url();?>uploads/works/add.png" alt="Shipping Icon">
+                            </div>
+                            <div class="shipping-text">
+                                <h2>3. Products</h2>
+                                <p>Our Buyer Protection covers your purchasefrom click to delivery.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
+                        <div class="li-shipping-inner-box">
+                            <div class="shipping-icon">
+                                <img src="<?php echo base_url();?>uploads/works/shopping-bag.png" alt="Shipping Icon">
+                            </div>
+                            <div class="shipping-text">
+                                <h2>4. Contact</h2>
+                                <p>Have a question? Call a Specialist or chat online.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="footer-static-middle">
         <div class="container">
             <div class="footer-logo-wrap pt-10 pb-10">
@@ -22,7 +74,7 @@
                                 </li>
                                 <li class="mb-0">
                                     <span>Phone: 
-                                    <a href="#"><?=$CompanyInfo->Contact_Number;?></a></span>
+                                    <a href="#">(+975)-<?=$CompanyInfo->Contact_Number;?></a></span>
                                 </li>
                                 <li>
                                     <span>Email: 
@@ -97,7 +149,7 @@
 <script src="<?php echo base_url();?>assest/website/js/ajax-mail.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/jquery.meanmenu.min.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/wow.min.js"></script>
-<script src="<?php echo base_url();?>assest/website/js/slick.min.js"></script>
+<script src="<?php echo base_url();?>assest/slick/slick.min.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/owl.carousel.min.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/jquery.magnific-popup.min.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/isotope.pkgd.min.js"></script>
@@ -186,5 +238,4 @@
             $('#'+buttonId).show();
         }
     }
-    
 </script>

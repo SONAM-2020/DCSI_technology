@@ -3,7 +3,7 @@
         <div class="row single-product-area">
             <div class="col-lg-5 col-md-6">
                 <div class="product-details-left">
-                    <div class="product-details-images slider-navigation-1">
+                    <div class="product-details-images slider-navigation-1" id="AboutUsSlider" style="width: 100%; display: inline-block;">
                     	<?php  foreach($product_images_details as $i=> $img):?>
                     		<div class="lg-image">
 	                            <a class="popup-img venobox vbox-item" href="<?=$img['Image_Name']?>" data-gall="myGallery">
@@ -12,11 +12,11 @@
 	                        </div>
                 	 	<?php endforeach; ?>
                     </div>
-                    <div class="product-details-thumbs slider-thumbs-1">  
+                    <!-- <div class="product-details-thumbs slider-thumbs-1">  
                     	<?php  foreach($product_images_details as $i=> $image):?>
                     		 <div class="sm-image">ff:<img src="<?=$image['Image_Name']?>" alt="product image thumb"></div>
                 	 	<?php endforeach; ?>                                      
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -46,3 +46,20 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+    $("#AboutUsSlider").slick({
+        infinite:true,
+        centerMode: true,
+        variableWidth: true,
+        dots: true,
+        speed: 500,
+        cssEase: 'linear',
+        useTransform:false,
+//      autoplay: true,
+//      autoplaySpeed: 6000,
+        arrows: true
+    });
+});
+</script>
+

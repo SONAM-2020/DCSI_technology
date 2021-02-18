@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assest/website/css/fontawesome-stars.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assest/website/css/meanmenu.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assest/website/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>assest/website/css/slick.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assest/slick/slick.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assest/slick/slick-theme.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assest/website/css/animate.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assest/website/css/jquery-ui.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assest/website/css/venobox.css">
