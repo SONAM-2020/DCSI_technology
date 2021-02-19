@@ -11,7 +11,7 @@
                                 <h2 style="color: white;"><?php echo$event['Name'];?></h2>
                                 <h3 style="color: white;"><?php echo$event['Description'];?></h3>
                                 <div class="default-btn slide-btn">
-                                    <a class="links" href="https://www.google.com">Read More</a>
+                                    <a class="links bg-info text-white" href="https://www.google.com">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                     Diversify your investment portfolio with access to highly curated and personalised deal flow from India and beyond  highly curated and personalised deal flow from</p>
                    
                     <div class="default-btn">
-                        <a class="links" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/localregister/')">Register Here</a>
+                        <a class="links bg-info text-white" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/localregister/')">Register Here</a>
                     </div>
                     <br>
                 </div>
@@ -38,7 +38,7 @@
                     <p style="color: black;">
                     Diversify your investment portfolio with access to highly curated and personalised deal flow from India and beyond  highly curated and personalised deal flow from</p>
                     <div class="default-btn">
-                        <a class="links" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/globalregister/')">Register Here</a>
+                        <a class="links bg-info text-white" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/globalregister/')">Register Here</a>
                     </div>
                     <br><br>
                 </div>
@@ -53,7 +53,7 @@
             <?php foreach($t_imagecategory as $i=> $event): ?>
             <div class="col-lg-4 col-md-4 text-center">
                 <div class="single-banner">
-                    <a href="#">
+                    <a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_allproductdetails/<?=$event['Id']?>')">
                         <img src="uploads/CategoryImage/<?=$event['Image']?>" alt="Li's Static Banner">
                     </a>
                 </div>
@@ -89,7 +89,6 @@
                     <div class="row">
                         <div class="product-active owl-carousel">
                             <?php  foreach($product_list as $i=> $pro): ?>
-                            
                                 <div class="col-lg-12">
                                     <div class="single-product-wrap">
                                         <div class="product-image">

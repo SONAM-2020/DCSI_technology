@@ -124,7 +124,7 @@
             </div>
         </div>
     </div>
-    <div class="footer-static-bottom pt-0 pb-55">
+    <div class="footer-static-bottom pt-0 pb-55" style="background-image: url('<?php echo base_url();?>uploads/header1.JPG')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

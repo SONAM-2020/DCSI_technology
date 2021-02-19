@@ -54,16 +54,16 @@
 						</span>
 						<span class="wc-stats counter">
 							<?php
-              		$size=sizeof($this->db->get_where('t_technology_request', array(
-			            'Status' => 'Active'
-    			        ))->result_array());
-    			        if($size>0){
-    			        	echo $size;
-    			        }
-    			        else{
-    			        	echo 0;
-    			        }
-            		?>
+								$size=sizeof($this->db->get_where('t_technology_request', array(
+								'Status' => 'Active'
+								))->result_array());
+								if($size>0){
+									echo $size;
+								}
+								else{
+									echo 0;
+								}
+							?>
 						</span>		
 						<div class="progress wc-progress">
 							<div class="progress-bar" role="progressbar" style="width: 88%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>

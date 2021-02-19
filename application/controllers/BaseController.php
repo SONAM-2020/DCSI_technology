@@ -231,4 +231,10 @@ class BaseController extends CI_Controller {
         $page_data['t_announcement'] = $this->db->get_where('t_news_announcement',array('Id'=>$id))->result_array();
         $this->load->view('web/pages/newsdetails', $page_data);
     }
+    
+    function load_allproductdetails($id=""){
+        $query="SELECT p.`Id`,p.`Description`,p.`Last_Updated_Date`,p.`Model_No`,p.`Price`,p.`Product_Name`,i.`Image_Name`  FROM t_products_master p, t_product_images i WHERE p.`Category_Id` = ".$id." AND p.`Id`=i.`Product_Id` AND p.`Status`='Active' GROUP BY p.Id, p.`Last_Updated_Date` DESC ";
+        $page_data['product_details'] =$this->db->query($query)->result_array();
+        $this->load->view('web/list_product_details', $page_data);
+    }
 }
