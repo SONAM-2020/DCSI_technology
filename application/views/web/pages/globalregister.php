@@ -8,7 +8,7 @@
         <div class="container">
             <div class="breadcrumb-content pl-10">
                 <ul>
-                    <li class="text-white"><b>Global Registration Form</b></li>
+                    <li class="text-white"><b>Supplier Registration Form</b></li>
                 </ul>
             </div>
         </div>
@@ -23,69 +23,75 @@
                             <div class="row">
                                 <div class="col-sm-4 col-sm-4 col-md-4 col-lg-4 col-xs-12 col-lg-4 col-xs-12 mb-20">
                                     <label class="mb-1">Name<span class="text-danger">*</span></label> 
-                                    <input class="mb-0 form-control" type="text" name="name" id="name" placeholder="Name" onchange="remove_err('name_err','name')" >
+                                    <input class="mb-0 form-control" type="text" name="name" id="name" onchange="remove_err('name_err','name')" >
                                     <span id="name_err" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-4 col-sm-4 col-md-4 col-lg-4 col-xs-12 col-lg-4 col-xs-12 mb-20">
                                     <label class="mb-1">Designation<span class="text-danger">*</span></label>
-                                     <input class="mb-0 form-control" type="text" name="designation" id="designation" placeholder="Designation" onchange="remove_err('designation_err','designation')">
-                                    <span id="designation_err" class="text-danger"></span>
+                                     <!-- <input class="mb-0 form-control" type="text" name="designation" id="designation" onchange="remove_err('designation_err','designation')">
+                                    <span id="designation_err" class="text-danger"></span> -->
+                                    <select id="designation" name="designation">
+                                      <option value="-1">Select Designation</option>
+                                      <?php foreach($designationList as $i=> $ent): ?>
+                                        <option value="<?= $ent['Name'];?>"><?= $ent['Name'];?></option>
+                                        <?php endforeach;?>
+                                     </select>
                                 </div>
                                 
                                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 mb-20">
                                     <label class="mb-1">Mobile Number<span class="text-danger">*</span></label>
-                                     <input class="mb-0 form-control" type="number" name="phone" id="phone" placeholder="Phone No." onchange="remove_err('phone_err','phone')">
+                                     <input class="mb-0 form-control" type="number" name="phone" id="phone" onchange="remove_err('phone_err','phone')">
                                     <span id="phone_err" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-4 col-sm-4 col-md-4 col-lg-4 col-xs-12 col-lg-4 col-xs-12 mb-20">
                                     <label class="mb-1">Email Address (Will be your user name)<span class="text-danger">*</span></label>
-                                     <input class="mb-0 form-control" type="email" name="email" id="email" placeholder="E-mail Address" onchange="remove_err('email_err','email')">
+                                     <input class="mb-0 form-control" type="email" name="email" id="email" onchange="remove_err('email_err','email')">
                                     <span id="email_err" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 mb-20">
                                     <label class="mb-1">Password<span class="text-danger">*</span></label>
-                                     <input class="mb-0 form-control" type="password" name="password" id="password" placeholder="Password" onchange="remove_err('password_err','password')">
+                                     <input class="mb-0 form-control" type="password" name="password" id="password" onchange="remove_err('password_err','password')">
                                     <span id="password_err" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 mb-20">
                                     <label class="mb-1">Confirm Password<span class="text-danger">*</span></label>
-                                     <input class="mb-0 form-control" type="password" name="confirmpassword" id="confirmpassword" placeholder="Re-type the Password" onchange="remove_err('confirmpassword_err','confirmpassword')">
+                                     <input class="mb-0 form-control" type="password" name="confirmpassword" id="confirmpassword" onchange="remove_err('confirmpassword_err','confirmpassword')">
                                     <span id="confirmpassword_err" class="text-danger"></span>
                                 </div>
                             </div>
-                            <h4 class="login-title">2.Company Registration Form</h4>
+                            <h4 class="login-title">2.Business Details</h4>
                             <div class="row">
                                 <div class="col-sm-6 col-sm-6 col-md-6 col-lg-6 col-xs-12 col-lg-6 col-xs-12 mb-20">
                                     <label class="mb-1">Name of Company<span class="text-danger">*</span></label>
-                                    <input class="mb-0 form-control" type="text" name="company" id="company" placeholder="Name of Company" onchange="remove_err('company_err','company')">
+                                    <input class="mb-0 form-control" type="text" name="company" id="company"  onchange="remove_err('company_err','company')">
                                     <span id="company_err" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-6 col-sm-6 col-md-6 col-lg-6 col-xs-12 col-lg-6 col-xs-12 mb-20">
-                                    <label class="mb-1">Company Website<span class="text-danger">*</span></label>
-                                    <input class="mb-0 form-control" type="text" name="website" id="website" placeholder="https://www.company.bt" onchange="remove_err('website_err','website')">
+                                    <label class="mb-1">Business Website</label>
+                                    <input class="mb-0 form-control" type="text" name="website" id="website" onchange="remove_err('website_err','website')">
                                     <span id="website_err" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
                                     <label class="mb-1">Telephone Number<span class="text-danger">*</span></label>
-                                    <input class="mb-0 form-control" type="text" name="telephone" id="telephone" placeholder="Telephone Number" onchange="remove_err('telephone_err','telephone')">
+                                    <input class="mb-0 form-control" type="text" name="telephone" id="telephone"  onchange="remove_err('telephone_err','telephone')">
                                     <span id="telephone_err" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
-                                    <label class="mb-1">Company Address</label>
+                                    <label class="mb-1">Location Address</label>
                                     <textarea class="mb-0 form-control" onchange="remove_err('address_err','address')" name="address" id="address" style="height: 70;"></textarea>
                                     <span id="address_err" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
-                                    <label class="mb-1">Company Description</label>
+                                    <label class="mb-1">Business Description</label>
                                     <textarea class="mb-0 form-control"  name="description" id="description" style="height: 70;"></textarea>
                                 </div>
                                
                                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 mb-20">
                                 <label for="Country">Country<span class="text-danger">*</span></label>
                                     <select class="mb-0 form-control" name="Country" id="Country" onchange="remove_err('Country_err','Country')">
-                                      <option value="-1">----select Your Country----</option>
+                                      <option value="-1">----Select Your Country----</option>
                                       <?php  
                                         foreach($t_country_master as $i=> $des):
                                       ?>
@@ -98,17 +104,17 @@
                                 </div>
                                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 mb-20">
                                     <label>City <span class="text-danger">*</span></label>
-                                    <input class="mb-0 form-control" type="text" name="city" id="city" placeholder="City" onchange="remove_err('city_err','city')">
+                                    <input class="mb-0 form-control" type="text" name="city" id="city" onchange="remove_err('city_err','city')">
                                     <span id="city_err" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 mb-20">
                                     <label>Zip/Pin Code<span class="text-danger">*</span></label>
-                                    <input class="mb-0 form-control" type="text" name="postalcode" id="postalcode" placeholder="Zip/Postal Code" onchange="remove_err('postalcode_err','postalcode')">
+                                    <input class="mb-0 form-control" type="text" name="postalcode" id="postalcode" onchange="remove_err('postalcode_err','postalcode')">
                                     <span id="postalcode_err" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20 input-group-append">
                                      <input type="checkbox"  class="" onclick="removevalidationhceckbox('agree_err','agree')" id="agree" name="agree">
-                                     <label for="agree" class="pt-10 pl-10 mt-1">Declarations-The knowledge provide above is true to the best of my Knowledge.</label> 
+                                     <label for="agree" class="pt-10 pl-10 mt-1">Declarations-The information provide above is true to the best of my Knowledge.</label> 
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                                     <span id="agree_err" class="text-danger"></span>
@@ -182,11 +188,11 @@
         $('#company').focus();
         returnt=false;
       }
-      if($('#website').val()==""){
-        $('#website_err').html('Please Mention Your Company Website');
-        $('#website').focus();
-        returnt=false;
-      }
+      // if($('#website').val()==""){
+      //   $('#website_err').html('Please Mention Your Company Website');
+      //   $('#website').focus();
+      //   returnt=false;
+      // }
     if($('#Image').val()==""){
         $('#Image_err').html('Upload license copy');
         $('#Image').focus();

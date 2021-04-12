@@ -7,6 +7,7 @@ class loginController extends CI_Controller {
     public function index(){
         $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
         $page_data['t_announcement'] = $this->db->get_where('t_news_announcement',array('Status'=>'Active'))->result_array();
+         $page_data['t_imagecategory'] = $this->db->get_where('t_category_master',array('Status'=>'Active'))->result_array();
         $page_data['t_imageslider'] = $this->db->get_where('t_image_slider',array('Status'=>'Active'))->result_array();
         
         $page_data['category_list'] = $this->CommonModel->get_active_category_list();

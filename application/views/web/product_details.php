@@ -24,14 +24,14 @@
                 <div class="product-details-view-content pt-60">
                     <div class="product-info">
                         <h2><?=$product_details->Product_Name?></h2>
-                        <span class="product-details-ref">Modal: <?=$product_details->Model_No?>
+                        <span class="product-details-ref">Modal No.: <?=$product_details->Model_No?>
                         <div class="rating-box pull-right ">
                             <a href="#"><?=$product_details->Last_Updated_Date?> </a>
                         </div>
                         </span>
                         <div class="rating-box pt-20">
                             <ul class="rating rating-with-review-item">
-                                <li class="fa fa-home"><a href="#">Company: <?=$company_details->Company_Description?></a></li><br>
+                                <li class="fa fa-home"><a href="#">Company: <?=$company_details->Company_Name?></a></li><br>
                                 <li class="fa fa-phone"><a href="#">Contact:<?=$company_details->Telephone_No?> </a></li>
                             </ul>
                         </div>

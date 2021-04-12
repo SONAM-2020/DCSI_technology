@@ -15,6 +15,7 @@ class BaseController extends CI_Controller {
     }
     function loadpage($param1="",$param2=""){
         $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
+        $page_data['designationList'] = $this->db->get_where('t_designation_master',array('Status'=>'Active'))->result_array();
         if($param1=="localregister"){
             $page_data['linktype']=$param1;
             $this->load->view('web/pages/localregister', $page_data);   
@@ -38,12 +39,12 @@ class BaseController extends CI_Controller {
             $page_data['linktype']=$param1;
             $this->load->view('web/pages/News', $page_data);   
         }
-        if($param1=="allproduct"){
+        if($param1=="Downloads"){
             $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
             // $page_data['product_list'] = $this->CommonModel->gethomeproductDetails();
             $page_data['category_list'] = $this->CommonModel->get_active_category_list();
             $page_data['linktype']=$param1;
-            $this->load->view('web/pages/allproduct', $page_data);   
+            $this->load->view('web/pages/download', $page_data);   
         }
         if($param1=="TechnologyRequest"){
             $page_data['linktype']=$param1;
@@ -99,7 +100,7 @@ class BaseController extends CI_Controller {
             //$sup_data['City']=$this->input->post('Registration');
             //$sup_data['Postal_Code']=$this->input->post('address');
             $new_file_name = $_FILES["Image"]["name"];
-            $file_directory = "../uploads/";
+            $file_directory = "./uploads/License/";
             if(!is_dir($file_directory)){
                 mkdir($file_directory,0777,TRUE); 
             }

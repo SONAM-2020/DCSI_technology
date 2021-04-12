@@ -32,7 +32,7 @@
                                     <td><?php echo $reg['Email'];?></td>
                                     <td><?php echo $reg['Company_Name'];?></td>
                                     <td>
-                                        <button type="button" class="btn-info btn-block"><a style="color: white;" href="#" onclick="loadpage('<?php echo base_url();?>index.php?adminController/new_registration_list/approved_details/<?php echo $reg['user_id']?>')"><i class="fa fa-eye"></i> View</a></button> 
+                                        <button type="button" class="btn btn-primary btn-block"><a style="color: white;" href="#" onclick="loadpage('<?php echo base_url();?>index.php?adminController/new_registration_list/approved_details/<?php echo $reg['user_id']?>')"><i class="fa fa-eye"></i> View</a></button> 
                                     </td>
                                 </tr>
                                 <?php endforeach;?>
@@ -50,4 +50,9 @@
         $('#messages').hide();
       }, 9000);
     }); 
+     $(document).ready(function() {
+    $('#example1').DataTable( {
+        "pagingType": "full_numbers"
+    } );
+} );
 </script> 

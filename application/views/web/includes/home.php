@@ -23,9 +23,9 @@
             <div class="col-lg-4 col-md-4 text-center pt-xs-30">
                 <div class="li-banner" style="background-image: url('<?php echo base_url();?>uploads/banner.png">
                     <br>
-                    <h3>I AM LOCAL SUPPLIER</h3>
+                    <h3>LOCAL SUPPLIER</h3>
                     <p style="color: black;">
-                    Diversify your investment portfolio with access to highly curated and personalised deal flow from India and beyond  highly curated and personalised deal flow from</p>
+                    The distributor who can supply equipments for your business.</p>
                    
                     <div class="default-btn">
                         <a class="links bg-info text-white" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/localregister/')">Register Here</a>
@@ -34,9 +34,9 @@
                 </div>
                 <div class="li-banner mt-15 mt-sm-30 mt-xs-30" style="background-image: url('<?php echo base_url();?>uploads/banner.png">
                     <br>
-                    <h2>I AM GLOBLE SUPPLIER</h2>
+                    <h2>GLOBAL SUPPLIER</h2>
                     <p style="color: black;">
-                    Diversify your investment portfolio with access to highly curated and personalised deal flow from India and beyond  highly curated and personalised deal flow from</p>
+                    The distributor who can supply equipments for your business.</p>
                     <div class="default-btn">
                         <a class="links bg-info text-white" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/globalregister/')">Register Here</a>
                     </div>
@@ -79,7 +79,7 @@
         </div>
         <div class="tab-content">
             <?php  foreach($category_list as $i=> $itm): 
-            $query="SELECT p.`Id`,p.`Description`,p.`Last_Updated_Date`,p.`Model_No`,p.`Price`,p.`Product_Name`,i.`Image_Name`  FROM t_products_master p, t_product_images i WHERE p.`Category_Id` = ".$itm['Id']." AND p.`Id`=i.`Product_Id` AND p.`Status`='Active' GROUP BY p.Id, p.`Last_Updated_Date` DESC LIMIT 10 "; 
+            $query="SELECT  p.`Id`,p.`Description`,p.`Last_Updated_Date`,p.`Model_No`,p.`Price`,p.`Product_Name`,i.`Image_Name`  FROM t_products_master p, t_product_images i WHERE p.`Category_Id` = ".$itm['Id']." AND p.`Id`=i.`Product_Id` AND p.`Status`='Active' GROUP BY p.Id, p.`Last_Updated_Date` DESC LIMIT 10 "; 
                 $product_list=$this->db->query($query)->result_array();
                 if($i==0){?>
                 <div id="product<?=$i?>" class="tab-pane active show" role="tabpanel">
@@ -92,7 +92,7 @@
                                 <div class="col-lg-12">
                                     <div class="single-product-wrap">
                                         <div class="product-image">
-                                            <a href="single-product.html">
+                                            <a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_productdetails/<?=$pro['Id']?>')">
                                                 <img src="<?=$pro['Image_Name']?>" alt="Li's Product Image">
                                             </a> 
                                         </div>

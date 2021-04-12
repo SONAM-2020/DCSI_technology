@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20">
                     <label class="mb-0 mt-3">Description:</label>
-                    <textarea class="mb-0 form-control" id="discription" name="discription" style="height: 70;" class="form-control">
+                    <textarea class="mb-0 form-control summernote" id="discription" name="discription" style="height: 70;" class="form-control">
                     <?=$product_details->Description?></textarea>
                 </div>
                 
@@ -67,6 +67,9 @@
     </div>
 </div><br><br><br><br>
 <script>
+    $('.summernote').summernote({
+      height:250
+    });
     $('#category').val('<?=$product_details->Category_Id?>');
     $('input[name=current_status][value="<?=$product_details->Status?>"]').prop('checked',true);
     function addproducts(){

@@ -15,7 +15,7 @@
                   <div class="col-lg-5 offset-lg-1 col-md-12 order-1 order-lg-2">
                       <div class="contact-page-side-content">
                           <h4 class="contact-page-title">Contact Us</h4>
-                          <p class="contact-page-message mb-25">We serves as an online database for the exchange of technology offers and requests in Bhutan.</p>
+                          <p class="contact-page-message mb-25">We serves as an online database for the exchange of technology offers and requests both in Bhutan and globally.The Online database search engine is connected to selected international database centers.</p>
                           <div class="single-contact-block">
                               <h5><i class="fa fa-fax"></i> Address</h5>
                               <p><?=$CompanyInfo->Location_Address;?></p>

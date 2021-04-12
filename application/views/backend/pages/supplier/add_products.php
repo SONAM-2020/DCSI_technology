@@ -24,7 +24,7 @@
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Category</th>
-                                    <th>Description</th>
+                                    <th style="display: none;">Description</th>
                                     <th>Price</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -37,7 +37,7 @@
                                     <td><img style="width: 100px; height: 80px;" src="<?php echo $pro['Image_Name'];?>"></td>
                                     <td><?php echo $pro['Product_Name'];?></td>
                                     <td><?php echo $pro['Category_Name'];?></td>
-                                    <td><?php echo $pro['Description'];?></td>
+                                    <td style="display: none;"><?php echo $pro['Description'];?></td>
                                     <td><?php echo $pro['Price'];?></td>
                                     <td><?php echo $pro['Status'];?></td>
                                     <td>
@@ -106,7 +106,7 @@
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20">
                         <label class="mb-0 mt-3">Description:</label>
-                            <textarea class="mb-0 form-control" id="discription" name="discription" style="height: 70;" class="form-control"></textarea>
+                            <textarea class="mb-0 form-control summernote" id="discription" name="discription" style="height: 70;" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="row pt-2 pull-right">
@@ -122,6 +122,14 @@
     </div>
 </div>
 <script type="text/javascript">
+     $(document).ready(function() {
+    $('#example1').DataTable( {
+        "pagingType": "full_numbers"
+    } );
+} );
+  $('.summernote').summernote({
+      height:250
+    });
     function remove_error(error,id){
         if($('#'+id).val()!=""){
             $('#'+error).html('');

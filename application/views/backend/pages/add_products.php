@@ -23,7 +23,7 @@
 						      <th>No.</th>
 						      <th>Name</th>
                   <th>Category</th>
-						      <th style="display: none;">Description</th>
+						      <!-- <th style="display: none;">Description</th> -->
 						      <th>Price</th>
                   <th>Status</th>
 						      <th>Image</th>
@@ -36,7 +36,7 @@
 						      <td><?=$i+1?></td>
 	              	<td><?php echo $event['name'];?></td>
                   <td><?php echo $event['categoryId'];?></td>
-						      <td style="display: none;"><?php echo $event['description'];?></td>
+						      <!-- <td style="display: none;"><?php echo $event['description'];?></td> -->
 						      <td><?php echo $event['price'];?></td>
                   <td><?php echo $event['status'];?></td>
 						      <td><img style="width: 100px; height: 100px;" src="<?php echo $event['Image'];?>"></td></td>
@@ -142,6 +142,11 @@
     </div>
 </div>
 <script type="text/javascript">
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        "pagingType": "full_numbers"
+    } );
+} );
     function addinfo(){
       $('#actiontype').val('add');
       $('#modalheader').html('Add Product');

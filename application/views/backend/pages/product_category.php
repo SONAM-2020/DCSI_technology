@@ -243,7 +243,7 @@
       $('#category').val(status);
       $('#discription3').val(discription);
       $('#updateId').val(id);
-       $('#uploadedImage').val(imageId);
+      $('#uploadedImage').val(imageId);
       $('#loadimage').html('<img src="'+image+'" alt="no imaged" width="100%" align="left">');
       $('#actiontype').val('add');
       $('#modeledit').html('Edit Product Category');

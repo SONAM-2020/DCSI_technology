@@ -1,8 +1,5 @@
-
 <?php header('Access-Control-Allow-Origin: *'); ?>
-<?php
-$this->load->view('web/includes/header.php');
-?> 
+<?php $this->load->view('web/includes/header.php'); ?> 
 <body>
 	<?php $this->load->view('web/includes/nevagation.php'); ?> 
 	<div id="mainpublicContent">

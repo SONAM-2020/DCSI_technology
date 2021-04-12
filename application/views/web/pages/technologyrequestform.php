@@ -24,17 +24,17 @@
                             <div class="row">
                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20">
                                     <label class="mb-1">Name<span class="text-danger">*</span></label> 
-                                    <input class="mb-0 form-control" type="text" name="name" id="name" placeholder="Name" onchange="remove_err('name_err','name')" >
+                                    <input class="mb-0 form-control" type="text" name="name" id="name"  onchange="remove_err('name_err','name')" >
                                     <span id="name_err" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20">
                                     <label class="mb-1">Mobile Number<span class="text-danger">*</span></label>
-                                     <input class="mb-0 form-control" type="number" name="phone" id="phone" placeholder="Phone No." onchange="remove_err('phone_err','phone')">
+                                     <input class="mb-0 form-control" type="number" name="phone" id="phone"  onchange="remove_err('phone_err','phone')">
                                     <span id="phone_err" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20">
                                     <label class="mb-1">Email Address<span class="text-danger">*</span></label>
-                                     <input class="mb-0 form-control" type="email" name="email" id="email" placeholder="E-mail Address" onchange="remove_err('email_err','email')">
+                                     <input class="mb-0 form-control" type="email" name="email" id="email"  onchange="remove_err('email_err','email')">
                                     <span id="email_err" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20">
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20">
                                     <label class="mb-1">Equiptment/Tools Name<span class="text-danger">*</span></label>
-                                     <input class="mb-0 form-control" type="text" name="equipment" id="equipment" placeholder="Equiptment/Tools" onchange="remove_err('equipment_err','equipment')">
+                                     <input class="mb-0 form-control" type="text" name="equipment" id="equipment"  onchange="remove_err('equipment_err','equipment')">
                                     <span id="email_err" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20">
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20 input-group-append">
                                      <input type="checkbox"  class="" onclick="removevalidationhceckbox('agree_err','agree')" id="agree" name="agree">
-                                     <label for="agree" class="pt-10 pl-10 mt-1">Declarations-The knowledge provide above is true to the best of my Knowledge.</label> 
+                                     <label for="agree" class="pt-10 pl-10 mt-1">Declarations-The Information provided above is true to the best of my knowledge.</label> 
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                                     <span id="agree_err" class="text-danger"></span>

@@ -28,23 +28,23 @@
                             <input type="text" value="<?=$registration_details->Contact_No?>" class="form-check-inline form-control" id="mobile" name="mobile" readonly>
                         </div>
                     </div>
-                    <label><u>Company Details </u>(Supplier Type: <?=$registration_details->Supplier_Type?>)</lavel><br>
+                    <label><u>Business Details </u>(Supplier Type: <?=$registration_details->Supplier_Type?>)</lavel><br>
                     
                     <div class="row form-group"> 
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Name Of Company</lavel>
+                            <label>Name of Business</lavel>
                             <input type="text" value="<?=$registration_details->Company_Name?>" class="form-check-inline form-control" id="Company_Name" name="Company_Name" readonly>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Company Website</lavel>
+                            <label>Business Website</lavel>
                             <input type="text" value="<?=$registration_details->Company_Website?>" class="form-check-inline form-control" id="Company_Website" name="Company_Website" readonly>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Company Address</lavel>
+                            <label>Location Address</lavel>
                             <input type="text" value="<?=$registration_details->Company_Address?>" class="form-check-inline form-control" id="Company_Address" name="Company_Address" readonly>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Company Description</lavel>
+                            <label>Business Description</lavel>
                             <input type="text" value="<?=$registration_details->Company_Description?>" class="form-check-inline form-control" id="Company_Description" name="Company_Description" readonly>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -66,16 +66,16 @@
                             </div>
                         <?php }else{?>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label>Comapny Registration Date</lavel>
+                                <label>Business Registration Date</lavel>
                                 <input type="text" value="<?=$registration_details->License_Registration_Date?>" class="form-check-inline form-control" id="License_Registration_Date" name="License_Registration_Date" readonly>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label>Company Trade License No</lavel>
+                                <label>Business License No</lavel>
                                 <input type="text" value="<?=$registration_details->License_No?>" class="form-check-inline form-control" id="License_No" name="License_No" readonly>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label>Company Trade License</lavel><br>
-                                <button class="btn btn-primary" type="button"> View/Download</button>
+                                <label>Business License</label><br>
+                               <button class="btn btn-primary" type="button"><a href="<?=$registration_details->License_Img?>" download="<?=$registration_details->License_Img?>" target="_blank"> View/Download</a></button> 
                             </div>
                         <?php }?>
                     </div>

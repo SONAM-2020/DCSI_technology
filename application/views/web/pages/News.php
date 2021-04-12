@@ -22,7 +22,7 @@
                       <div class="col-sm-6 col-md-6 col-lg-4 col-xs-12">
                           <div class="li-blog-single-item pb-25">
                               <div class="li-blog-banner">
-                                  <a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_NewsDestails/<?=$event['Id']?>')"><img class="img-full" src="NewsAnnouncement/<?php echo$event['Image'];?>" alt=""></a>
+                                  <a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_NewsDestails/<?=$event['Id']?>')"><img class="img-full" src="uploads/NewsAnnouncement/<?php echo$event['Image'];?>" alt=""></a>
                               </div>
                               <div class="li-blog-content">
                                   <div class="li-blog-details">

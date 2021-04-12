@@ -1,56 +1,58 @@
 <div class="footer">
-    <div class="footer-static-top">
+    <!-- <div class="footer-static-top">
         <div class="container">
             <div class="footer-shipping pt-60 pb-55 pb-xs-25">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
                         <div class="li-shipping-inner-box">
                             <div class="shipping-icon">
-                                <img src="<?php echo base_url();?>uploads/works/register.png" alt="Shipping Icon">
                             </div>
                             <div class="shipping-text">
-                                <h2>1. Registration</h2>
-                                <p>And free returns. See checkout for delivery dates.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                        <div class="li-shipping-inner-box">
+                            <div class="shipping-text">
+                                <h4 style="text-align: center;">Advisory Support By:</h4>
+                            </div>
+                            <div class="shipping-icon">
+                                <img src="<?php echo base_url();?>uploads/appctt.png" alt="Shipping Icon">
+                            </div>
+                            <div class="shipping-text">
+                                <h5>
+                                    <a href="#">Asian Pacific Center of Technology Transfer</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                        <div class="li-shipping-inner-box">
+                            <div class="shipping-text">
+                                <h4 style="text-align: center;">Funding Support By:</h4>
+                            </div>
+                            <div class="shipping-icon">
+                                <img src="<?php echo base_url();?>uploads/icimod.png" alt="Shipping Icon">
+                            </div>
+                            <div class="shipping-text">
+                                <h5>
+                                    <a href="#">International Centre for Integrated Mountain Development </a>
+                                </h5>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
                         <div class="li-shipping-inner-box">
                             <div class="shipping-icon">
-                                <img src="<?php echo base_url();?>uploads/works/approved.png" alt="Shipping Icon">
                             </div>
                             <div class="shipping-text">
-                                <h2>2. Approval</h2>
-                                <p>Pay with the world's most popular and secure payment methods.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
-                        <div class="li-shipping-inner-box">
-                            <div class="shipping-icon">
-                                <img src="<?php echo base_url();?>uploads/works/add.png" alt="Shipping Icon">
-                            </div>
-                            <div class="shipping-text">
-                                <h2>3. Products</h2>
-                                <p>Our Buyer Protection covers your purchasefrom click to delivery.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
-                        <div class="li-shipping-inner-box">
-                            <div class="shipping-icon">
-                                <img src="<?php echo base_url();?>uploads/works/shopping-bag.png" alt="Shipping Icon">
-                            </div>
-                            <div class="shipping-text">
-                                <h2>4. Contact</h2>
-                                <p>Have a question? Call a Specialist or chat online.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="footer-static-middle">
         <div class="container">
             <div class="footer-logo-wrap pt-10 pb-10">
@@ -59,7 +61,7 @@
                         <div class="footer-logo">
                             <img src="<?php echo base_url();?>uploads/1.png" alt="Footer Logo">
                             <p class="info">
-                                We serves as an online database for the exchange of technology offers and requests in Bhutan.
+                                We serves as an online database for the exchange of technology offers and requests both in Bhutan and globally.The Online database search engine is connected to selected international database centers.
                             </p>
                         </div>
                        
@@ -164,7 +166,7 @@
 <script src="<?php echo base_url();?>assest/website/js/jquery.nice-select.min.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/scrollUp.min.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/main.js"></script>
-
+<script type="text/javascript" src="<?php echo base_url();?>assest/summernote/summernote-lite.js"></script>
 <script src="<?php echo base_url();?>assest/JqueryAjaxFormSubmit.js"></script>
 <script src="<?php echo base_url();?>assest/jquery.form.js"></script>
 <script src="<?php echo base_url();?>assest/jquery-blockUI.js"></script>

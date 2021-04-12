@@ -46,7 +46,7 @@
 		            <li>
 						<a href="#" class="ttr-material-button" onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/product_category/')">
 							<span class="ttr-icon"><i class="ti-layout-media-center-alt"></i></span>
-		                	<span class="ttr-label">Product Category Management</span>
+		                	<span class="ttr-label">Category Management</span>
 		                </a>
 		            </li>
 					<li>
@@ -62,10 +62,25 @@
 		                </a>
 		            </li>
 		            <li>
-						<a href="#" class="ttr-material-button" onclick="loadpage('<?php echo base_url();?>index.php?adminController/new_registration_list/list_approved_rejected/3')">
+						<a href="#" class="ttr-material-button" onclick="loadpage('<?php echo base_url();?>index.php?adminController/new_registration_list/list_rejected/3')">
 							<span class="ttr-icon"><i class="ti-layout-media-center-alt"></i></span>
 		                	<span class="ttr-label">Rejected Supplier List</span>
 		                </a>
+		            </li>
+		            <li>
+						<a href="#" class="ttr-material-button">
+							<span class="ttr-icon"><i class="ti-layout-media-center-alt"></i></span>
+		                	<span class="ttr-label">Reports</span>
+		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+		                </a>
+		                <ul>
+		                	<li>
+		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/reportIndex/')"><span class="ttr-label">Product Reports</span></a>
+		                	</li>
+		                	<li>
+		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/techreportIndex/')"><span class="ttr-label">Technology Request Reports</span></a>
+		                	</li>
+		                </ul>
 		            </li>
 				<?php }else{ ?>
 					<li>

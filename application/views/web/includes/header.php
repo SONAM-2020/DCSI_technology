@@ -24,4 +24,5 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assest/website/css/style.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assest/website/css/responsive.css">
     <script src="<?php echo base_url();?>assest/website/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url();?>assest/summernote/summernote-lite.css"/>
 </head>

@@ -2,8 +2,7 @@
 SQLyog Ultimate v8.82 
 MySQL - 5.0.86-community-nt : Database - csitechnology_db
 *********************************************************************
-*/
-
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -32,7 +31,7 @@ CREATE TABLE `t_category_master` (
 
 /*Data for the table `t_category_master` */
 
-insert  into `t_category_master`(`Id`,`Category_Name`,`Description`,`Image`,`Status`) values (1,'Machinery','fewfewffew','category3.png','Active'),(2,'Tools & Equipment',NULL,NULL,'Active'),(3,'Accessories',NULL,NULL,'Active');
+insert  into `t_category_master`(`Id`,`Category_Name`,`Description`,`Image`,`Status`) values (1,'Machinery','fewfewffewfwefwefcecf','category1.png','Active'),(2,'Tools & Equipment','dawfjkjfd','category3.png','Active'),(3,'Accessories','dfer','category2.png','Active');
 
 /*Table structure for table `t_company_details` */
 
@@ -82,13 +81,14 @@ CREATE TABLE `t_image_slider` (
   `Image` varchar(255) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Description` text NOT NULL,
+  `Links` varchar(255) default NULL,
   `Status` enum('Active','InActive') NOT NULL default 'Active',
   PRIMARY KEY  (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_image_slider` */
 
-insert  into `t_image_slider`(`Id`,`Image`,`Name`,`Description`,`Status`) values (10,'slider122.png','TECHNOLOGY TRANSFER AND DATABASE CENTER','This technology transfer website serves as an online database for the exchange of technology offers and requests in Bhutan. The website has several features including a technology offers and requests database in Bhutan and International, technology transfer partner links,','Active'),(13,'slider1.png','The Asian and Pacific Centre for Transfer of Technology','The Asian and Pacific Centre for Transfer of Technology (APCTT) is a regional institution of the United Nations Economic and Social Commission for Asia and the Pacific servicing the Asia-Pacific region.','Active');
+insert  into `t_image_slider`(`Id`,`Image`,`Name`,`Description`,`Links`,`Status`) values (10,'Mainslider.png','TECHNOLOGY TRANSFER AND DATABASE CENTER','This technology transfer website serves as an online database for the exchange of technology offers and requests in Bhutan. The website has several features including a technology offers and requests database in Bhutan and International, technology transfer partner links,','https://www.moea.gov.bt/?page_id=592','Active'),(13,'Mainslider4.png','The Asian and Pacific Centre for Transfer of Technology','The Asian and Pacific Centre for Transfer of Technology (APCTT) is a regional institution of the United Nations Economic and Social Commission for Asia and the Pacific servicing the Asia-Pacific region.','https://www.moea.gov.bt/?page_id=592','Active'),(14,'Mainslider3.png','Sonam Dorji','aacasvsvedvd','https://www.moea.gov.bt/?page_id=592','Active');
 
 /*Table structure for table `t_mail_template` */
 
@@ -138,11 +138,11 @@ CREATE TABLE `t_order_details` (
   `Company_Id` int(11) NOT NULL,
   `Submitted_Date` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   PRIMARY KEY  (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_order_details` */
 
-insert  into `t_order_details`(`Id`,`Name`,`Email`,`Contact_No`,`Quantity`,`Product_Id`,`Company_Id`,`Submitted_Date`) values (1,'Tshewang Tenzin','sjdfbaskdfnajknfajksdbf','12312312','2',2,5,'2021-02-17 06:05:29');
+insert  into `t_order_details`(`Id`,`Name`,`Email`,`Contact_No`,`Quantity`,`Product_Id`,`Company_Id`,`Submitted_Date`) values (1,'Tshewang Tenzin','sjdfbaskdfnajknfajksdbf','12312312','2',2,5,'2021-02-17 06:05:29'),(2,'Sonam Dorji','sdorji815@gmail.com','17458669','1',2,5,'2021-02-18 10:03:54');
 
 /*Table structure for table `t_partner_details` */
 
@@ -195,13 +195,11 @@ CREATE TABLE `t_products_master` (
   PRIMARY KEY  (`Id`),
   KEY `FK_t_products_category_mapping` (`Category_Id`),
   CONSTRAINT `FK_t_products_category_mapping` FOREIGN KEY (`Category_Id`) REFERENCES `t_category_master` (`Id`)
-
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_products_master` */
 
-insert  into `t_products_master`(`Id`,`Product_Name`,`Category_Id`,`Company_Id`,`Price`,`Model_No`,`Description`,`Last_Updated_Date`,`Status`) values (2,'Baking Machine',1,5,'2000','122333','Power Source	Gas, Electric, Diesel\nCapacity	20Kg - 5000 Kg per Hour\nMachine Body Material	Steel\nDesign Type	Standard\nBaking Capacity	36 trays, 32 trays, Upto 500 Trays, 12 trays, 64 trays, 16 trays\nAutomation Grade	Automatic\nVoltage (V)	220 Volt / 440 Volt\nDisplay Type	PLC\nWarranty	1 year','2021-02-15 09:44:55','Active'),(3,'Ketichen Set',2,5,'2000','122333','Capacity	5 kg - 30 kg per Batch\nMachine Type	Automatic\nMachine Body Material	Metal\nDesign Type	Standard\nBaking Capacity	2 Trays or 4 Trays\nAutomation Grade	Automatic\nCondition	New\nVoltage (V)	220 Volt\nFrequency (Hertz)	50Hz','2021-02-15 10:00:26','Active'),(4,'Planetary Mixer',3,5,'2000','122333','Minimum Order Quantity	1 Set\nCapacity	3 litres - 100 litres\nUsage/Application	For Making Soft Dough\nDesign Type	Standard\nVoltage (volts)	220 Volt/ 440 Volt\nVoltage (V)	220 Volt / 440 Volt\nBowl Capacity (L)	3 Litres to 100 Litres\nCondition	New\nAutomation Grade	Automatic','2021-02-15 10:01:20','Active'),(5,'Dehydrator',1,6,'2000','122333','derbrthtyjbthy6','2021-02-16 11:07:03','Active'),(6,'Dehydrator',2,6,'2000','122333','fergergerg rthtytyh','2021-02-16 11:08:25','Active');
-
+insert  into `t_products_master`(`Id`,`Product_Name`,`Category_Id`,`Company_Id`,`Price`,`Model_No`,`Description`,`Last_Updated_Date`,`Status`) values (2,'Baking Machine',1,5,'2000','122333','Power Source	Gas, Electric, Diesel\nCapacity	20Kg - 5000 Kg per Hour\nMachine Body Material	Steel\nDesign Type	Standard\nBaking Capacity	36 trays, 32 trays, Upto 500 Trays, 12 trays, 64 trays, 16 trays\nAutomation Grade	Automatic\nVoltage (V)	220 Volt / 440 Volt\nDisplay Type	PLC\nWarranty	1 year','2021-02-15 09:44:55','Active'),(3,'Ketichen Set',2,5,'2000','122333','Capacity	5 kg - 30 kg per Batch\nMachine Type	Automatic\nMachine Body Material	Metal\nDesign Type	Standard\nBaking Capacity	2 Trays or 4 Trays\nAutomation Grade	Automatic\nCondition	New\nVoltage (V)	220 Volt\nFrequency (Hertz)	50Hz','2021-02-15 10:00:26','Active'),(4,'Planetary Mixer',3,5,'2000','122333','Minimum Order Quantity	1 Set\nCapacity	3 litres - 100 litres\nUsage/Application	For Making Soft Dough\nDesign Type	Standard\nVoltage (volts)	220 Volt/ 440 Volt\nVoltage (V)	220 Volt / 440 Volt\nBowl Capacity (L)	3 Litres to 100 Litres\nCondition	New\nAutomation Grade	Automatic','2021-02-15 10:01:20','Active'),(5,'Dehydrator',1,6,'2000','122333','derbrthtyjbthy6','2021-02-16 11:07:03','Active'),(6,'Dehydrator',2,6,'2000','122333','fergergerg rthtytyh','2021-02-16 11:08:25','Active'),(7,'Mixer',2,7,'120','Model-122333','use for making cake and breads','2021-02-17 11:15:15','Active');
 
 /*Table structure for table `t_request_equipment_details` */
 
@@ -294,14 +292,11 @@ CREATE TABLE `t_supplier_company` (
   KEY `FK_t_supplier_company` (`Country_Id`),
   CONSTRAINT `FK_t_supplier_company` FOREIGN KEY (`Country_Id`) REFERENCES `t_country_master` (`Id`),
   CONSTRAINT `FK_t_supplier_status_mapping` FOREIGN KEY (`Status_Id`) REFERENCES `t_status_master` (`Id`)
-
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_supplier_company` */
 
 insert  into `t_supplier_company`(`Id`,`Supplier_Type_Id`,`User_Id`,`Company_Name`,`Country_Id`,`City`,`Postal_Code`,`License_No`,`License_Img`,`Telephone_No`,`License_Registration_Date`,`Company_Address`,`Company_Description`,`Company_Website`,`Submitted_Date`,`Update_date`,`Updated_By`,`Remarks`,`Status_Id`) values (5,1,10,'Druk Green Kitchen',NULL,NULL,NULL,'123456','../uploads/online.jpg','02333566','2021-02-16','1212212 4r34r34r34','343t34t4t43t4t43','http://bhutansyncits.com','2021-02-15 04:18:01','2021-02-15 09:26:47',1,'approved',2),(6,1,11,'DCSI',NULL,NULL,NULL,'12333','../uploads/banner11.png','02333566','2021-02-01','cfsduvgdvgdfu','dfvdfjgvdfvdfjkv','www.mymusicentertainment.com','2021-02-16 06:03:52','2021-02-16 11:04:58',1,'all docc updte',2);
-
-
 
 /*Table structure for table `t_supplier_type` */
 
@@ -357,13 +352,11 @@ CREATE TABLE `t_user_master` (
   PRIMARY KEY  (`Id`),
   KEY `FK_t_user_role_mapping` (`Role_Id`),
   CONSTRAINT `FK_t_user_role_mapping` FOREIGN KEY (`Role_Id`) REFERENCES `t_role_master` (`Id`)
-
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_user_master` */
 
-insert  into `t_user_master`(`Id`,`Name`,`Email`,`Password`,`Image`,`Contact_No`,`Designation`,`Role_Id`,`Status`) values (1,'SONAM','admin@gmail.com','$2y$10$oVQ6BavZ3QGabxRjyvKxduBq4lJFSQwAR6cPfGzLb9F6CDFP38iay',NULL,'',NULL,1,'Active'),(10,'Tshewang Tenzin','wangzin53@gmail.com12','$2y$10$gMp0pl73EppXoruHujgKn.UybSqTIq8NmNbLiNNROCltP7VqkSXOu','91869138_10151334439614944_5415809410700148736_o.jpg','17880455','Programmer',2,'Active'),(11,'Tshewang Tenzin','wangzin53@gmail.com1','$2y$10$XaRyLSNaqYYWZYQqGeXNEeO7Yl7VH16OAVh3PT0nDtw5iCgReqzgC',NULL,'12312312','designation',2,'Active'),(12,'Tshewang Tenzin','wangzin53@gmail.com2','$2y$10$0w4Qs7efwphqOIQdeipOLO69WiI5AyeqproWHubIovSmsz3bPl4rW',NULL,'12312312','designation',2,'InActive'),(13,'Tshewang Tenzin','sss','$2y$10$f4Szlu0wP81XMnISkKTWkeaVrwzvj2SGTP0IAw6RaBRMlsLGIVaY.',NULL,'12312312','designation',2,'InActive'),(14,'Sonam Dorji','sdorji815@gmail.com','$2y$10$tGOjlTqDGwMDz2tP2m2XQe8JR19JWTe.dcv8XfYXv/MEqQjpzrUmm',NULL,'12312312','Programmer',2,'InActive'),(15,'sjdfbnjksdfnakjsfn','wangzin53@gmail.com','$2y$10$iTNzDmjP6pDCVbKH.BTQw.8v5f2KUHbN//eqcuibgSAPRX9DZvl1m',NULL,'12312312','skdjfn',3,'InActive');
-
+insert  into `t_user_master`(`Id`,`Name`,`Email`,`Password`,`Image`,`Contact_No`,`Designation`,`Role_Id`,`Status`) values (1,'SONAM','admin@gmail.com','$2y$10$oVQ6BavZ3QGabxRjyvKxduBq4lJFSQwAR6cPfGzLb9F6CDFP38iay',NULL,'',NULL,1,'Active');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

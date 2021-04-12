@@ -60,6 +60,9 @@ class CommonModel extends CI_Model{
     if($type=="approved_details"){
       $query.=" WHERE s.Status_Id=2 AND u.Role_Id <> 1 AND u.Id='".$id."'";
     }
+    if($type=="Reject_details"){
+      $query.=" WHERE s.Status_Id=3 AND u.Role_Id <> 1 AND u.Id='".$id."'";
+    }
     //die($query);
     return $this->db->query($query)->row();
   }

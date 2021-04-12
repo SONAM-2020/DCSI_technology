@@ -53,9 +53,35 @@ class AdminController extends CI_Controller {
             'Id' => $param2))->row();
         $this->load->view('backend/pages/supplier/ViewTechnologyRequestDetails', $page_data);
     }
+    if($param1=="reportIndex"){
+            $this->load->view('backend/reports/reportIndex');
+        }
+    if($param1=="generatereport"){
+        $fromdate=$this->input->post('fromdate');
+        $todate=$this->input->post('todate');
+        $query ="SELECT  p.`Id`,p.`Description`,p.`Last_Updated_Date`,p.`Model_No`,p.`Price`,p.`Product_Name`,
+        i.`Image_Name` FROM t_products_master p, t_product_images i WHERE  p.`Last_Updated_Date` BETWEEN '".$fromdate."' AND '".$todate."'";
+        $page_data['reportDetils'] = $this->db->query($query)->result_array(); 
+        $this->load->view('backend/reports/reportDetails',$page_data);
+    }
+    if($param1=="techreportIndex"){
+            $this->load->view('backend/reports/technologyreportIndex');
+        }
+    if($param1=="generatetechnologyreport"){
+        $fromdate=$this->input->post('fromdate');
+        $todate=$this->input->post('todate');
+        $query ="SELECT  * FROM t_technology_request  WHERE  Submitted_Date BETWEEN '".$fromdate."' AND '".$todate."'";
+        $page_data['reportDetils'] = $this->db->query($query)->result_array(); 
+        $this->load->view('backend/reports/reportTechnology',$page_data);
+    }
         
       
   }
+  // function myPdfPage(){
+  //   $url = base_url('assets/your.pdf');
+  //   $html = '<iframe src="'.$url.'" style="border:none; width: 100%; height: 100%"></iframe>';
+  //   echo $html;
+  // }
   function new_registration_list($type="",$id=""){
     date_default_timezone_set('Asia/Dhaka');
     $page_data['message'] =$id;
@@ -67,7 +93,16 @@ class AdminController extends CI_Controller {
       $page_data['registration_list'] = $this->CommonModel->get_registration_list('approved_rejected',$id);
       $this->load->view('backend/pages/registration/approved_registration_list', $page_data);
     }
+    if($type=="list_rejected"){
+      $page_data['registration_list'] = $this->CommonModel->get_registration_list('approved_rejected',$id);
+      $this->load->view('backend/pages/registration/reject_registration_list', $page_data);
+    }
     if($type=="details" || $type=="approved_details"){
+      $page_data['registration_details'] = $this->CommonModel->get_registration_details($type,$id);
+      $page_data['actiontype'] = $type;
+      $this->load->view('backend/pages/registration/new_registration_details', $page_data);
+    }
+    if($type=="Reject_details"){
       $page_data['registration_details'] = $this->CommonModel->get_registration_details($type,$id);
       $page_data['actiontype'] = $type;
       $this->load->view('backend/pages/registration/new_registration_details', $page_data);
@@ -349,8 +384,8 @@ class AdminController extends CI_Controller {
             $this->load->view('backend/pages/acknowledgement', $page_data);           
         }
         if($param1=='NewsInfo'){
-           $data['News_title']=$this->input->post('name');
-           $data['Description']=$this->input->post('description');
+           $data['News_title']=$this->input->post('Name');
+           $data['Description']=$this->input->post('Description');
             if(!empty($_FILES["Image"]["name"])){
                 $fle="../uploads/NewsAnnouncement/".$this->input->post('currentlogoinivalue');
                 if (file_exists($fle)){
@@ -359,7 +394,7 @@ class AdminController extends CI_Controller {
                 move_uploaded_file($_FILES['Image']['tmp_name'],'./uploads/NewsAnnouncement/'.$_FILES["Image"]["name"]);
                 $data['Image']=$_FILES["Image"]["name"];
             }
-            $this->db->where('Id', "1");
+            $this->db->where('Id', $this->input->post('updateId'));
             $this->db->update('t_news_announcement', $data);
             if($this->db->affected_rows()>0){
                 $page_data['message']='Your News and Announcement has been Updated Successfully. Thank you';
@@ -375,14 +410,10 @@ class AdminController extends CI_Controller {
         $page_data['messagefail']="";
         $data['News_title']=$this->input->post('name');
         $data['Description']=$this->input->post('description');
-        $new_file_name = $_FILES["Image"]["name"];
-        $file_directory = "../uploads/NewsAnnouncement/";
-        if(!is_dir($file_directory)){
-            mkdir($file_directory,0777,TRUE);
-        }
-        if($new_file_name!=""){
-          move_uploaded_file($_FILES["Image"]["tmp_name"], $file_directory . $new_file_name);
-          $data['Image']=$file_directory . $new_file_name;
+        
+        if(!empty($_FILES["Image"]["name"])){
+            move_uploaded_file($_FILES['Image']['tmp_name'],'./uploads/NewsAnnouncement/'.$_FILES["Image"]["name"]);
+            $data['Image']=$_FILES["Image"]["name"];
         }
         $this->CommonModel->do_insert('t_news_announcement', $data); 
         if($this->db->affected_rows()>0){

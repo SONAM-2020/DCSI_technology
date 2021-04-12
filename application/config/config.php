@@ -1,6 +1,8 @@
 <?php
+
+//cpanal user name--->dcsitechnology password---->bhutan@2021
 defined('BASEPATH') OR exit('No direct script access allowed');
-$config['base_url'] = 'http://localhost:82/DCSI_technology/';
+$config['base_url'] = 'http://localhost/DCSI_technology/';
 $config['index_page'] = 'index.php';
 $config['uri_protocol']	= 'QUERY_STRING';
 $config['url_suffix'] = '';
