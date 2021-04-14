@@ -39,7 +39,6 @@
 <script src="<?php echo base_url();?>assest/JqueryAjaxFormSubmit.js"></script>
 <script src="<?php echo base_url();?>assest/jquery.form.js"></script>
 <script src="<?php echo base_url();?>assest/jquery-blockUI.js"></script>
-
 <script type="text/javascript">
   function remove_err(err_Id){
     $('#'+err_Id).html('');
@@ -98,5 +97,14 @@
             $('#'+buttonId).show();
         }
     }
+
+
 </script>
+    <script type="text/javascript">
+     $(document).ready(function() {
+    $('#example1').DataTable( {
+        "pagingType": "full_numbers"
+    } );
+} );
+</script> 
 </body>

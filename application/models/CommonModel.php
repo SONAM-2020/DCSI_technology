@@ -36,6 +36,11 @@ class CommonModel extends CI_Model{
     $query=$this->db->query("
     SELECT * FROM t_products p LEFT JOIN t_supplier r ON r.`supplier_Id`=p.`product_Id` where p.`product_Id`='".$id."'")->result_array();
   }
+  
+  function getusersproducts($id=""){
+    $query=$this->db->query("
+    SELECT c.`Category_Name`,c.`Description` FROM t_products_master p LEFT JOIN t_category_master c ON c.`Id`=p.`Category_Id` LEFT JOIN t_supplier_company s ON p.`Company_Id`=s.`Id` LEFT JOIN t_user_master u ON u.`Id`=s.`User_Id` WHERE u.`Id`='1'")->result_array();
+  }
   function get_registration_list($type="",$id=""){
     $query="SELECT u.`Contact_No`,u.`Designation`,u.`Email`,u.`Id` user_id,u.`Name`,s.`Company_Name`,s.`Company_Website`,s.`Submitted_Date`,s.`Company_Address` FROM t_user_master u JOIN t_supplier_company s ON s.`User_Id`=u.`Id`";
     if($type=="submitted"){
@@ -71,24 +76,36 @@ class CommonModel extends CI_Model{
   }
   function get_productDetails($userId=""){
     $query="SELECT p.`Id`,p.`Product_Name`,c.`Category_Name`,p.`Description`,p.`Price`,p.`Status`,i.`Image_Name` FROM t_products_master p JOIN t_product_images i ON i.`Product_Id`=p.`Id` JOIN t_supplier_company s ON s.`Id`=p.`Company_Id` JOIN t_category_master c ON c.`Id`=p.`Category_Id` ";
+    $this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode, 'ONLY_FULL_GROUP_BY', ''));");
     return $this->db->query($query." WHERE s.User_Id='".$userId."' GROUP BY p.Id ")->result_array();
   }
   function searchfromtable($searchtype=""){
     $query="SELECT p.`Id`,p.`Description`,p.`Last_Updated_Date`,p.`Model_No`,p.`Price`,p.`Product_Name`,i.`Image_Name`  FROM t_products_master p, t_product_images i WHERE p.`Product_Name` LIKE '%".$searchtype."%' AND p.`Id`=i.`Product_Id` AND p.`Status`='Active' GROUP BY p.Id "; 
+    $this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode, 'ONLY_FULL_GROUP_BY', ''));");
     return $this->db->query($query)->result_array();
   }
   public function sendmail($email="",$subject="",$htmlContent=""){
     //https://myaccount.google.com/lesssecureapps?gar=1&pli=1&rapt=AEjHL4OXAOCed0mI3C3xzgRvnUHiGsmjZVZ7xYiXMoaqCaOGGgUCwJbAm9aJYs5C_-X_XwA4HpXItpBO1L37B8REBosPSNo9YA
     $this->load->library('email');
     $config = array(
-      'protocol'  => 'smtp',//ssmtp
-      'smtp_host' => 'ssl://smtp.googlemail.com',//ssl://ssmtp.googlemail.com
+    //   'protocol'  => 'smtp',//ssmtp
+    //   'smtp_host' => 'ssl://smtp.googlemail.com',//ssl://ssmtp.googlemail.com
+    'protocol'  => 'ssmtp',
+      'smtp_host' => 'ssl://ssmtp.gmail.com',//ssl://ssmtp.googlemail.com
       'smtp_port' => 465, 
       'smtp_user' => 'noreplydcsitechnology@gmail.com',
       'smtp_pass' => 'Admin@2021',
+     'smtp_timeout' => '7',
       'mailtype'  => 'html',
       'smtp_crypto' => 'security', //can be 'ssl' or 'tls' for example
       'charset'   => 'utf-8'
+    // 'protocol'  => 'smtp',
+    // 'smtp_host' => 'mail.dcsitechnology.bt',
+    // 'smtp_port' => 587,
+    // 'smtp_user' => 'noreply@dcsitechnology.bt',
+    // 'smtp_pass' => 'sonam@2020',
+    // 'mailtype'  => 'html',
+    // 'charset'   => 'utf-8'
     );
     $this->email->initialize($config);
     $this->email->set_mailtype("html");
@@ -96,7 +113,7 @@ class CommonModel extends CI_Model{
     $this->email->set_crlf( "\r\n" );
     $this->load->helper('string');
     $this->email->to($email);
-    $this->email->from('noreplydcsitechnology@gmail.com','DCSI');
+    $this->email->from('noreply@dcsitechnology.bt','DCSI');
     $this->email->subject($subject);
     $this->email->message($htmlContent);
     $this->email->send();

@@ -38,7 +38,7 @@
                         <img style="width: 100px; height: 80px;" src="<?php echo $img['Image_Name'];?>"><br>
                         <input type="hidden" name="existimage<?=$i+1?>" value="<?=$img['Image_Name']?>">
                         <input type="hidden" name="existimageId<?=$i+1?>" value="<?=$img['Id']?>">
-                        <label class="mb-0 mt-3">Image<?=$i+1?>:</label><span style="color: red;"><i>(Recommended Size:376x230 px)</i></span>
+                        <label class="mb-0 mt-3">Image<?=$i+1?>:</label><span style="color: red;"><i>(Recommended Size:500x500 px)</i></span>
                         <input type="file" id="Image<?=$i+1?>" onchange="checkfilesize(this,'images','Image_err','addBtn')" name="Image<?=$i+1?>" class="form-control">
                         <span id="Image<?=$i+1?>_err" class="text-danger"></span>
                     </div>

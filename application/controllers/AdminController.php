@@ -2,6 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class AdminController extends CI_Controller { 
   public function index(){
+    $page_data['Message'] = $this->db->get_where('t_contactus',array('Status'=>'Active'))->result_array();
+
 	}
   function loadpage($param1="",$param2="",$param3=""){
     if($param1=="userprofile"){
@@ -13,6 +15,11 @@ class AdminController extends CI_Controller {
       $page_data['userDetils'] = $this->db->get_where('t_user_master',array('Id'=>$param2))->row(); 
       $page_data['message']="";
       $this->load->view('backend/pages/changepassword', $page_data);
+    }
+    if($param1=="User"){
+      $page_data['Admin'] = $this->db->get_where('t_user_master',array('Role_Id'=>'1'))->result_array(); 
+      $page_data['message']="";
+      $this->load->view('backend/pages/adminuser', $page_data);
     }
     if($param1=="product_category"){
       $page_data['categoryList'] = $this->db->get_where('t_category_master')->result_array();
@@ -28,6 +35,11 @@ class AdminController extends CI_Controller {
       $page_data['ImageSlider'] = $this->db->get_where('t_image_slider')->result_array();
       $page_data['message']="";
       $this->load->view('backend/pages/ImageSlider', $page_data);
+    }
+    if($param1=="Downloads"){
+      $page_data['Downloads'] = $this->db->get_where('t_downloads')->result_array();
+      $page_data['message']="";
+      $this->load->view('backend/pages/Downloads', $page_data);
     }
     if($param1=="PartnerProfile"){
       $page_data['PartnerInfo'] = $this->db->get_where('t_partner_details')->row(); 
@@ -74,8 +86,17 @@ class AdminController extends CI_Controller {
         $page_data['reportDetils'] = $this->db->query($query)->result_array(); 
         $this->load->view('backend/reports/reportTechnology',$page_data);
     }
-        
-      
+    
+    if($param1=="SupplierIndex"){
+            $this->load->view('backend/reports/suppliersreportIndex');
+        }
+    if($param1=="generatesuppliersreport"){
+        $fromdate=$this->input->post('fromdate');
+        $todate=$this->input->post('todate');
+        $query ="SELECT Company_Name, License_No, Telephone_No, Company_Address,Updated_By, Remarks, Update_date FROM t_supplier_company WHERE  Update_date BETWEEN '".$fromdate."' AND '".$todate."'";
+        $page_data['reportDetils'] = $this->db->query($query)->result_array(); 
+        $this->load->view('backend/reports/reportSupplierDetails',$page_data);
+    }      
   }
   // function myPdfPage(){
   //   $url = base_url('assets/your.pdf');
@@ -110,7 +131,7 @@ class AdminController extends CI_Controller {
     if($type=="update"){
       $upate_data['Remarks']=$this->input->post('remarks');
       $upate_data['Update_date']=date('Y-m-d h:i:s');
-      $upate_data['Updated_By']=$this->session->userdata('User_Id');
+      $upate_data['Updated_By']=$this->session->userdata('Name');
       $mail_type="";
       if($id=="reject"){
         $upate_data['Status_Id']=3;
@@ -155,7 +176,7 @@ class AdminController extends CI_Controller {
       $this->load->view('backend/pages/supplier/requested_products', $page_data);
     }
     if($type=="ViewproductDetails"){
-      $page_data['product_details'] = $this->db->get_where('t_products_master', array( 'Id' => $param2))->row();; 
+      $page_data['product_details'] = $this->db->get_where('t_products_master', array( 'Id' => $param2))->row(); 
       $this->load->view('backend/pages/supplier/requested_products_detials', $page_data);
     }
     
@@ -277,6 +298,39 @@ class AdminController extends CI_Controller {
     $page_data['categoryList'] = $this->db->get_where('t_category_master')->result_array();
     $this->load->view('backend/pages/product_category', $page_data);
   }
+  function AddFiles(){
+    $page_data['message']="";
+    $page_data['messagefail']="";
+    if(!empty($_FILES["Image"]["name"])){
+            move_uploaded_file($_FILES['Image']['tmp_name'],'./uploads/Downloads/'.$_FILES["Image"]["name"]);
+            $data['Image']=$_FILES["Image"]["name"];
+        }
+    $data['Name']=$this->input->post('name');
+    $data['Status']='Active';
+    $page_data['Downloads'] = $this->db->get('t_downloads')->result_array();
+    $this->CommonModel->do_insert('t_downloads', $data);
+    if($this->db->affected_rows()>0){
+        $page_data['message']="Files has been added.Thank you for using our system";
+    }
+    else{
+        $page_data['messagefail']='Files is not able to submit. Please try again';
+    }
+    $this->load->view('backend/pages/acknowledgement', $page_data); 
+  }
+   function DeleteDownloads($sliderId="",$page=""){ 
+        $page_data['Downloads'] = $this->db->get('t_downloads')->result_array();
+        $page_data['message']="";
+        $page_data['messagefail']="";
+        $this->db->where('Id', $sliderId);
+        $this->db->delete('t_downloads');
+        if($this->db->affected_rows()>0){
+          $page_data['message']="Files has been deleted Successfully";
+        }
+        else{
+            $page_data['messagefail']='Unable to Delete Files. Please try again';
+        }
+        $this->load->view('backend/pages/acknowledgement', $page_data); 
+      }
   function AddSlider(){
     $page_data['message']="";
     $page_data['messagefail']="";
@@ -298,9 +352,10 @@ class AdminController extends CI_Controller {
     }
     $this->load->view('backend/pages/acknowledgement', $page_data); 
   }
+
     function EditSliders($param1="",$param2=""){
         if(!empty($_FILES["uploadedImageedit"]["name"])){
-            $fle="./uploads/Imageslider/".$this->input->post('uploadedImage');
+            $fle="../uploads/Imageslider/".$this->input->post('uploadedImage');
             if (file_exists($fle)){
                 unlink($fle);
             }
@@ -451,20 +506,29 @@ class AdminController extends CI_Controller {
         ///email the response to request applier
       }
       function updateusers(){
+        $page_data['userDetils'] =$this->CommonModel->getuserDetails($this->input->post('userId'));
         $data['Name']=$this->input->post('Name');
         $data['Contact_No']=$this->input->post('Phone');
         $data['Designation']=$this->input->post('Designation');
+      //  if(!empty($_FILES["Image"]["name"])){
+      //     $fle="../uploads/users/".$this->input->post('currentlogoinivalue');
+      //     if (file_exists($fle)){
+      //         unlink($fle);
+      //     }
+      //     move_uploaded_file($_FILES['Image']['tmp_name'],'./uploads/users/'.$_FILES["Image"]["name"]);
+      //     $data['Image']=$_FILES["Image"]["name"];
+      // }
         if(!empty($_FILES["Image"]["name"])){
-            $fle="../uploads/".$this->input->post('currentlogoinivalue');
-            if (file_exists($fle)){
-                unlink($fle);
+                $fle="../uploads/Users/".$this->input->post('currentlogoinivalue');
+                if (file_exists($fle)){
+                    unlink($fle);
+                }
+                move_uploaded_file($_FILES['Image']['tmp_name'],'./uploads/Users/'.$_FILES["Image"]["name"]);
+                $data['Image']=$_FILES["Image"]["name"];
             }
-            move_uploaded_file($_FILES['Image']['tmp_name'],'../uploads/'.$_FILES["Image"]["name"]);
-            $data['Image']=$_FILES["Image"]["name"];
-        }
         $this->db->where('Id', $this->input->post('userId'));
         $this->db->update('t_user_master', $data);
-        $page_data['userDetils'] =$this->CommonModel->getuserDetails($this->input->post('userId'));
+        
         $page_data['message']="Update Information successfully";
         $this->load->view('backend/pages/userprofile', $page_data);
 
@@ -478,6 +542,37 @@ class AdminController extends CI_Controller {
         $this->load->view('backend/pages/changepassword', $page_data);
 
     }
+    function Addadminusers(){
+       $page_data['message']="";
+        $page_data['messagefail']="";
+        $data['Name']=$this->input->post('name');
+        $data['Email']=$this->input->post('email');
+        $data['Contact_No']=$this->input->post('phone');
+        $data['Status']="Active";
+        $data['Password']=password_hash("dcsi@2021", PASSWORD_BCRYPT);
+        $data['Role_Id']="1";
+        
+        $this->CommonModel->do_insert('t_user_master', $data); 
+        if($this->db->affected_rows()>0){
+            $page_data['message']="New Users has been Created.Thank you for using our system";
+        }
+        else{
+            $page_data['messagefail']='Unable to create New Users. Please try again';
+        }
+        $this->load->view('backend/pages/acknowledgement', $page_data);
+
+    }
+    function Editadminusers(){
+    // die($this->input->post('category'));
+        $data['Status']=$this->input->post('category');
+        $this->db->where('Id', $this->input->post('EditId'));
+        $this->db->update('t_user_master', $data);
+        $page_data['Admin'] = $this->db->get_where('t_user_master',array('Role_Id'=>'1'))->result_array(); 
+        $page_data['message']="Status resetted successfully";
+        $this->load->view('backend/pages/adminuser', $page_data);
+
+    }
+
     
 
 }

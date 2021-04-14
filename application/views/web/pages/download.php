@@ -18,15 +18,17 @@
                                 <th>Action</th>
                             </tr>
                             </thead>
+                            <?php foreach($t_downloads as $i=> $event): ?> 
                             <tbody style="text-align: center">
                                 <tr>
                                     <td>1.</td>
-                                    <td>Annual-Report-2019-2020.pdf</td>
+                                    <td><?php echo$event['Name'];?></td>
                                     <td>
-                                        <button type="button" class="btn btn-primary btn-block"><a style="color: white;" href="<?php echo base_url();?>/uploads/Downloads/Annual-Report-2019-2020.pdf"><i class="fa fa-download"></i> Download</a></button> 
+                                        <button type="button" class="btn btn-primary btn-block"><a style="color: white;" href="<?php echo base_url();?>uploads/Downloads/<?php echo$event['Image'];?>"><i class="fa fa-download"></i> Download</a></button> 
                                     </td>
                                 </tr>
                             </tbody>
+                          <?php endforeach; ?>
                         </table>
                   </div>
               </div>

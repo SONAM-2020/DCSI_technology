@@ -5,17 +5,25 @@ class BaseController extends CI_Controller {
         parent::_construct();
     }
     public function index(){
+        $this->load->library('user_agent');
+        $data['browser'] = $this->agent->browser();
+        $data['browser_version'] = $this->agent->version();
+        $data['os'] = $this->agent->platform();
+        $data['ip_address'] = $this->input->ip_address();
+        $this->CommonModel->do_insert('t_visiter_detls', $data);
+
         $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
         $page_data['t_announcement'] = $this->db->get_where('t_news_announcement',array('Status'=>'Active'))->result_array();
         $page_data['t_imagecategory'] = $this->db->get_where('t_category_master',array('Status'=>'Active'))->result_array();
         $page_data['t_imageslider'] = $this->db->get_where('t_image_slider',array('Status'=>'Active'))->result_array();
+        $page_data['t_downloads'] = $this->db->get_where('t_downloads',array('Status'=>'Active'))->result_array();
         
         $page_data['category_list'] = $this->CommonModel->get_active_category_list();
         $this->load->view('web/index',$page_data);
     }
     function loadpage($param1="",$param2=""){
-        $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
         $page_data['designationList'] = $this->db->get_where('t_designation_master',array('Status'=>'Active'))->result_array();
+        $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
         if($param1=="localregister"){
             $page_data['linktype']=$param1;
             $this->load->view('web/pages/localregister', $page_data);   
@@ -35,11 +43,13 @@ class BaseController extends CI_Controller {
             $this->load->view('web/pages/Partner', $page_data);   
         }
         if($param1=="News"){
+            $page_data['news_list'] = $this->db->get_where('t_news_announcement',array('Status'=>'Active'))->result_array();
             $page_data['t_announcement'] = $this->db->get_where('t_news_announcement',array('Status'=>'Active'))->result_array();
             $page_data['linktype']=$param1;
             $this->load->view('web/pages/News', $page_data);   
         }
         if($param1=="Downloads"){
+            $page_data['t_downloads'] = $this->db->get_where('t_downloads',array('Status'=>'Active'))->result_array();
             $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
             // $page_data['product_list'] = $this->CommonModel->gethomeproductDetails();
             $page_data['category_list'] = $this->CommonModel->get_active_category_list();
@@ -56,6 +66,7 @@ class BaseController extends CI_Controller {
         }
         if($param1=="Newsdetails"){
             $page_data['t_announcement'] = $this->db->get_where('t_news_announcement',array('Id'=>$param2))->result_array();
+            $page_data['news_list'] = $this->db->get_where('t_news_announcement',array('Status'=>'Active'))->result_array();
             $page_data['linktype']=$param1;
             $this->load->view('web/pages/newsdetails', $page_data);   
         }
@@ -228,14 +239,36 @@ class BaseController extends CI_Controller {
         $this->load->view('web/acknowledgement', $page_data);
     }
     function load_NewsDestails($id=""){
+        $page_data['t_imagecategory'] = $this->db->get_where('t_category_master',array('Status'=>'Active'))->result_array();
         $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
-        $page_data['t_announcement'] = $this->db->get_where('t_news_announcement',array('Id'=>$id))->result_array();
+        $page_data['t_announcement'] = $this->db->get_where('t_news_announcement',array('Id'=>$id))->row();
+        $page_data['news_list'] = $this->db->get_where('t_news_announcement',array('Status'=>'Active'))->result_array();
         $this->load->view('web/pages/newsdetails', $page_data);
     }
     
     function load_allproductdetails($id=""){
         $query="SELECT p.`Id`,p.`Description`,p.`Last_Updated_Date`,p.`Model_No`,p.`Price`,p.`Product_Name`,i.`Image_Name`  FROM t_products_master p, t_product_images i WHERE p.`Category_Id` = ".$id." AND p.`Id`=i.`Product_Id` AND p.`Status`='Active' GROUP BY p.Id, p.`Last_Updated_Date` DESC ";
+        $this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode, 'ONLY_FULL_GROUP_BY', ''));") ;
         $page_data['product_details'] =$this->db->query($query)->result_array();
         $this->load->view('web/list_product_details', $page_data);
+    }
+    function Addcontactus(){
+        $page_data['message']="";
+        $page_data['messagefail']="";
+        $data['Name']=$this->input->post('name');
+        $data['Phone']=$this->input->post('phone');
+        $data['Email']=$this->input->post('email');
+        $data['Subject']=$this->input->post('contactSubject');
+        $data['Message']=$this->input->post('contactMessage');
+        $this->CommonModel->do_insert('t_contactus', $data); 
+        
+        if($this->db->affected_rows()>0){
+            $page_data['message']="Thank you for contacting us. You will be contacted with your provided information.Thank you for using our system";
+        }
+        else{
+            $page_data['messagefail']='Your Information  is not able to submit. Please try again';
+        }
+        $this->load->view('web/acknowledgement', $page_data); 
+
     }
 }

@@ -24,7 +24,7 @@
               </div>
               <div class="col-sm-10 col-md-10 col-lg-6 col-xs-12">
                   <div class="about-image-wrap">
-                      <img class="img-full" src="<?php echo base_url();?>uploads/13.jpg" alt="About Us" />
+                      <img class="img-full" src="<?php echo base_url();?>uploads/aboutus.png" alt="About Us" />
                   </div>
               </div>
           </div>

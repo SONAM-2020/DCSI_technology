@@ -1,0 +1,163 @@
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 5px;
+}
+
+.row {margin: 0 -5px;}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #609ee0;
+  color: white;
+}
+
+.fa {font-size:50px;}
+</style>
+
+
+<?php
+/**
+ * The header for our theme.
+ *
+ * This is the template that displays all of the <head> section and everything up until <div id="content">
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package University_Hub
+ */
+
+?>
+<?php
+	/**
+	 * Hook - university_hub_action_doctype.
+	 *
+	 * @hooked university_hub_doctype -  10
+	 */
+	do_action( 'university_hub_action_doctype' );
+?>
+<head>
+	<?php
+	/**
+	 * Hook - university_hub_action_head.
+	 *
+	 * @hooked university_hub_head -  10
+	 */
+	do_action( 'university_hub_action_head' );
+	?>
+
+<?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
+
+	<?php
+	/**
+	 * Hook - university_hub_action_before.
+	 *
+	 * @hooked university_hub_page_start - 10
+	 * @hooked university_hub_skip_to_content - 15
+	 */
+	do_action( 'university_hub_action_before' );
+	?>
+
+    <?php
+	  /**
+	   * Hook - university_hub_action_before_header.
+	   *
+	   * @hooked university_hub_header_start - 10
+	   */
+	  do_action( 'university_hub_action_before_header' );
+	?>
+		<?php
+		/**
+		 * Hook - university_hub_action_header.
+		 *
+		 * @hooked university_hub_site_branding - 10
+		 */
+		do_action( 'university_hub_action_header' );
+		?>
+    <?php
+	  /**
+	   * Hook - university_hub_action_after_header.
+	   *
+	   * @hooked university_hub_header_end - 10
+	   */
+	  do_action( 'university_hub_action_after_header' );
+	?>
+
+<div class="container">
+  <div class="column">
+    <div class="card" style="background-color: #609ee0; width: 18rem;">
+      <img src="./wp-content/uploads/2021/04/g2c.jpg" style="width:300px ;height: 100px;"><br>
+      <a href="https://sso.dit.gov.bt/authenticationendpoint/login.do?client_id=b5cC61SfitRf_NHnftMFzA_FfVMa&commonAuthCallerPath=%2Foauth2%2Fauthorize&forceAuth=false&passiveAuth=false&redirect_uri=https%3A%2F%2Fwww.citizenservices.gov.bt%2FMoea%2Fsso%2Facs&response_type=code&scope=openid&tenantDomain=carbon.super&sessionDataKey=42f61404-263b-4cf5-8f66-6393b4ef272e&relyingParty=b5cC61SfitRf_NHnftMFzA_FfVMa&type=oidc&sp=G2CMoEA_G2CMoEAservices_PRODUCTION&isSaaSApp=false&authenticators=BasicAuthenticator:LOCAL" target="_blank"><p style="color:white;">Check how to apply for new business licenses, renew license online and other services.</p></a>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card" style="background-color: #609ee0">
+      <img src="./wp-content/uploads/2021/04/mosic.jpg" style="width:300px ;height: 100px;">
+      <a href="http://202.144.157.66:8088/mosic" target="_blank"><p style="color:white;">
+Click here to avail all the services partianing to all department within the MoEA</p></a>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card" style="background-color: #609ee0">
+      <img src="./wp-content/uploads/2021/04/mosic.jpg" style="width:300px ;height: 100px;">
+      <a href="http://202.144.157.66:8088/mosic" target="_blank"><p style="color:white;">
+Click here to avail all the services partianing to all department within the MoEA1</p></a>
+    </div>
+  </div>
+<div class="column">
+    <div class="card" style="background-color: #609ee0">
+      <img src="./wp-content/uploads/2021/04/mosic.jpg" style="width:300px ;height: 100px;">
+      <a href="http://202.144.157.66:8088/mosic" target="_blank"><p style="color:white;">
+Click here to avail all the services partianing to all department within the MoEA2</p></a>
+    </div>
+  </div>
+</div>
+    
+
+    
+
+	<?php
+	/**
+	 * Hook - university_hub_action_before_content.
+	 *
+	 * @hooked university_hub_content_start - 10
+	 */
+	do_action( 'university_hub_action_before_content' );
+	?>
+
+
+    <?php
+	  /**
+	   * Hook - university_hub_action_content.
+	   */
+	  do_action( 'university_hub_action_content' );
+	?>

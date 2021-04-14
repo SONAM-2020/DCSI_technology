@@ -51,14 +51,14 @@
                     <div class="col-6">
                       <div class="form-group row" style="margin-bottom: -50px;">
                         <div class="col-12">
-                            <img src="<?php echo base_url();?>uploads/<?=$userDetils->Image;?>" alt="no imaged" onerror="this.src='<?php echo base_url();?>uploads/user.jpg'" class="pull-right mr-5 h-75">
+                            <img style="width: 128px; height: auto;" src="<?php echo base_url();?>uploads/Users/<?=$userDetils->Image;?>" alt="no imaged" onerror="this.src='<?php echo base_url();?>uploads/user.jpg'" class="pull-right mr-5 h-75">
                         </div>
                       </div>
                       <div class="form-group row text-right">
                         <div class="col-12">
                             <input type="file" id="Image" name="Image"><br>
                             <span style="color: red;">Choose Image (Recommebded Size:128*128)</span>
-                            <input type="hidden" name="currentlogoinivalue" value="<?=$userDetils->Image;?>">
+                            <input type="hidden" name="currentlogoinivalue" value="uploads/Users/<?=$userDetils->Image;?>">
                         </div>
                       </div>
                     </div>

@@ -5,13 +5,13 @@
                 <div class="slider-area">
                     <div class="slider-active owl-carousel">
                         <?php foreach($t_imageslider as $i=> $event): ?>
-                        <div class="single-slide align-center-left  animation-style-01 bg-1" style="background-image: url('<?php echo base_url();?>uploads/<?php echo$event['Image'];?>">
+                        <div class="single-slide align-center-left  animation-style-01 bg-1" style="background-image: url('<?php echo base_url();?>uploads/Imageslider/<?php echo$event['Image'];?>">
                             <div class="slider-progress"></div>
                             <div class="slider-content">
                                 <h2 style="color: white;"><?php echo$event['Name'];?></h2>
                                 <h3 style="color: white;"><?php echo$event['Description'];?></h3>
                                 <div class="default-btn slide-btn">
-                                    <a class="links bg-info text-white" href="https://www.google.com">Read More</a>
+                                    <a class="links bg-info text-white" href="<?php echo$event['Links'];?>">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-                
+                <br><br><br><br><br><br>
             <div class="col-lg-4 col-md-4 text-center pt-xs-30">
                 <div class="li-banner" style="background-image: url('<?php echo base_url();?>uploads/banner.png">
                     <br>
@@ -32,14 +32,21 @@
                     </div>
                     <br>
                 </div>
+                <!--<div class="li-banner mt-15 mt-sm-30 mt-xs-30" style="background-image: url('<?php echo base_url();?>uploads/banner.png">-->
+                <!--    <br>-->
+                <!--    <h2>GLOBAL SUPPLIER</h2>-->
+                <!--    <p style="color: black;">-->
+                <!--    The distributor who can supply equipments for your business.</p>-->
+                <!--    <div class="default-btn">-->
+                <!--        <a class="links bg-info text-white" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/globalregister/')">Register Here</a>-->
+                <!--    </div>-->
+                <!--    <br><br>-->
+                <!--</div>-->
                 <div class="li-banner mt-15 mt-sm-30 mt-xs-30" style="background-image: url('<?php echo base_url();?>uploads/banner.png">
-                    <br>
-                    <h2>GLOBAL SUPPLIER</h2>
+                    <br><img src="<?php echo base_url();?>uploads/icimod.png" alt="Shipping Icon">
+                    <h3>Funding Support By:</h3>
                     <p style="color: black;">
-                    The distributor who can supply equipments for your business.</p>
-                    <div class="default-btn">
-                        <a class="links bg-info text-white" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/globalregister/')">Register Here</a>
-                    </div>
+                    International Centre for Integrated Mountain Development </p>
                     <br><br>
                 </div>
             </div>
@@ -80,6 +87,7 @@
         <div class="tab-content">
             <?php  foreach($category_list as $i=> $itm): 
             $query="SELECT  p.`Id`,p.`Description`,p.`Last_Updated_Date`,p.`Model_No`,p.`Price`,p.`Product_Name`,i.`Image_Name`  FROM t_products_master p, t_product_images i WHERE p.`Category_Id` = ".$itm['Id']." AND p.`Id`=i.`Product_Id` AND p.`Status`='Active' GROUP BY p.Id, p.`Last_Updated_Date` DESC LIMIT 10 "; 
+                $this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode, 'ONLY_FULL_GROUP_BY', ''));") ;
                 $product_list=$this->db->query($query)->result_array();
                 if($i==0){?>
                 <div id="product<?=$i?>" class="tab-pane active show" role="tabpanel">

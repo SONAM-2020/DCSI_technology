@@ -28,8 +28,8 @@
                                 </div>
                                 <div class="col-sm-4 col-sm-4 col-md-4 col-lg-4 col-xs-12 col-lg-4 col-xs-12 mb-20">
                                     <label class="mb-1">Designation<span class="text-danger">*</span></label>
-                                     <!-- <input class="mb-0 form-control" type="text" name="designation" id="designation" onchange="remove_err('designation_err','designation')">
-                                    <span id="designation_err" class="text-danger"></span> -->
+                                    <!-- <input class="mb-0 form-control" type="text" name="designation" id="designation" onchange="remove_err('designation_err','designation')">-->
+                                    <!--<span id="designation_err" class="text-danger"></span>-->
                                     <select id="designation" name="designation">
                                       <option value="-1">Select Designation</option>
                                       <?php foreach($designationList as $i=> $ent): ?>

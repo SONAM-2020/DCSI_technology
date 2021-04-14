@@ -6,7 +6,7 @@
 				<li>
 					<a href="<?php echo base_url();?>index.php?loginController/dashboard" class="ttr-material-button">
 						<span class="ttr-icon"><i class="ti-home"></i></span>
-	                	<span class="ttr-label">Dashborad</span>
+	                	<span class="ttr-label">Dashboard</span>
 	                </a>
 	            </li>
 				<?php
@@ -33,12 +33,36 @@
 		            <li>
 						<a href="#" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-layout-media-center-alt"></i></span>
+		                	<span class="ttr-label">User Management</span>
+		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+		                </a>
+		                <ul>
+		                	<li>
+		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/User/')"><span class="ttr-label">Add/View Users</span></a>
+		                	</li>
+		                </ul>
+		            </li>
+		            <li>
+						<a href="#" class="ttr-material-button">
+							<span class="ttr-icon"><i class="ti-layout-media-center-alt"></i></span>
 		                	<span class="ttr-label">News Management</span>
 		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
 		                </a>
 		                <ul>
 		                	<li>
 		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/News/')"><span class="ttr-label">Add News & Announcement</span></a>
+		                	</li>
+		                </ul>
+		            </li>
+		            <li>
+						<a href="#" class="ttr-material-button">
+							<span class="ttr-icon"><i class="ti-layout-media-center-alt"></i></span>
+		                	<span class="ttr-label">Downloads Management</span>
+		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+		                </a>
+		                <ul>
+		                	<li>
+		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/Downloads/')"><span class="ttr-label">Add Downloads Files</span></a>
 		                	</li>
 		                </ul>
 		            </li>
@@ -61,7 +85,7 @@
 		                	<span class="ttr-label">Approved Supplier List</span>
 		                </a>
 		            </li>
-		            <li>
+		            <li> 
 						<a href="#" class="ttr-material-button" onclick="loadpage('<?php echo base_url();?>index.php?adminController/new_registration_list/list_rejected/3')">
 							<span class="ttr-icon"><i class="ti-layout-media-center-alt"></i></span>
 		                	<span class="ttr-label">Rejected Supplier List</span>
@@ -79,6 +103,9 @@
 		                	</li>
 		                	<li>
 		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/techreportIndex/')"><span class="ttr-label">Technology Request Reports</span></a>
+		                	</li>
+		                	<li>
+		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/SupplierIndex/')"><span class="ttr-label">Suppliers Information Reports</span></a>
 		                	</li>
 		                </ul>
 		            </li>

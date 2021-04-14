@@ -9,13 +9,15 @@ class loginController extends CI_Controller {
         $page_data['t_announcement'] = $this->db->get_where('t_news_announcement',array('Status'=>'Active'))->result_array();
          $page_data['t_imagecategory'] = $this->db->get_where('t_category_master',array('Status'=>'Active'))->result_array();
         $page_data['t_imageslider'] = $this->db->get_where('t_image_slider',array('Status'=>'Active'))->result_array();
-        
+
         $page_data['category_list'] = $this->CommonModel->get_active_category_list();
         $this->load->view('web/index', $page_data);
     }
     //edited this method
     function login(){
         $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
+        $page_data['Message'] = $this->db->get_where('t_contactus',array('Status'=>'Active'))->result_array();
+
          $page_data['message']="";
         if($this->input->post('email')!="" &&  $this->input->post('password')!=""){
             $query = $this->db->get_where('t_user_master', array('Email' => $this->input->post('email')));
@@ -28,6 +30,7 @@ class loginController extends CI_Controller {
                     }
                     else{
                         $this->session->set_userdata('User_Id', $row['Id']);
+                        $this->session->set_userdata('Image', $row['Image']);
                         $this->session->set_userdata('Name', $row['Name']);
                         $this->session->set_userdata('Email', $row['Email']);
                         $this->session->set_userdata('Contact_No', $row['Contact_No']);
@@ -51,6 +54,8 @@ class loginController extends CI_Controller {
         }
     }
     function dashboard($param=""){
+        $page_data['Message'] = $this->db->get_where('t_contactus',array('Status'=>'Active'))->result_array();
+
         $page_data['message']="";
         if ($this->session->userdata('User_Id') == null ){
             redirect(base_url(), 'refresh');

@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label>Business License</label><br>
-                               <button class="btn btn-primary" type="button"><a href="<?=$registration_details->License_Img?>" download="<?=$registration_details->License_Img?>" target="_blank"> View/Download</a></button> 
+                               <button class="btn btn-primary" type="button"><a href="<?=$registration_details->License_Img?>"  target="_blank"> View/Download</a></button> 
                             </div>
                         <?php }?>
                     </div>

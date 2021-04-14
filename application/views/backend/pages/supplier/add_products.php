@@ -90,17 +90,17 @@
                         </div>
                         
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
-                            <label class="mb-0 mt-3">Image1:<span class="text-danger">*</span></label><span style="color: red;"><i>(Recommended Size:376x230 px)</i></span>
+                            <label class="mb-0 mt-3">Image1:<span class="text-danger">*</span></label><span style="color: red;"><i>(Recommended Size:500x500 px)</i></span>
                             <input type="file" id="Image" onchange="checkfilesize(this,'images','Image_err','addBtn')" name="Image1" class="form-control">
                             <span id="Image1_err" class="text-danger"></span>
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
-                            <label class="mb-0 mt-3">Image2:</label><span style="color: red;"><i>(Recommended Size:376x230 px)</i></span>
+                            <label class="mb-0 mt-3">Image2:</label><span style="color: red;"><i>(Recommended Size:500x500 px)</i></span>
                             <input type="file" id="Image2" onchange="checkfilesize(this,'Image2','Image2_err','addBtn')" name="Image2" class="form-control">
                             <span id="Image2_err" class="text-danger"></span>
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
-                            <label class="mb-0 mt-3">Image3:</label><span style="color: red;"><i>(Recommended Size:376x230 px)</i></span>
+                            <label class="mb-0 mt-3">Image3:</label><span style="color: red;"><i>(Recommended Size:500x500 px)</i></span>
                             <input type="file" id="Image3" onchange="checkfilesize(this,'Image3','Image3_err','addBtn')" name="Image3" class="form-control">
                             <span id="Image3_err" class="text-danger"></span>
                         </div>

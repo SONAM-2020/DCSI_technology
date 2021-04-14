@@ -46,7 +46,7 @@
                         </div>
                         <div class="single-add-to-cart">
                             <form action="#" class="cart-quantity" id="orderform">
-                                <button class="add-to-cart" id="createorderbtn" type="button" onclick="orderpage('<?=$product_details->Id?>')">Create Order</button>
+                                <button class="add-to-cart" id="createorderbtn" type="button" onclick="orderpage('<?=$product_details->Id?>')">Contact Technology Provider</button>
                                 <br><br>
                                 <div id="createform" style="display:none">
                                     <div class="row">
@@ -76,7 +76,8 @@
                                     </div>
                                     <input type="hidden" name="productId" value="<?=$product_details->Id?>">
                                     <input type="hidden" name="companyId" value="<?=$company_details->Id?>">
-                                    <button class="add-to-cart" id="createorderbtn" type="button" onclick="submitorder('<?=$product_details->Id?>')">Submit Order</button>
+                                    <button class="add-to-cart" id="createorderbtn" type="button" onclick="submitorder('<?=$product_details->Id?>')">Submit Technology Request Details</button>
+                                    <br><br>
                                 </div>
                             </form>
                         </div>
