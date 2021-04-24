@@ -8,7 +8,7 @@
         <div class="container">
             <div class="breadcrumb-content pl-10">
                 <ul>
-                    <li class="text-white"><b>Local Technology Request Form</b></li>
+                    <li class="text-white"><b>Technology Request Form</b></li>
                 </ul>
             </div>
         </div>
@@ -41,6 +41,15 @@
                                     <label class="mb-1">Present Address</label>
                                     <textarea class="mb-0 form-control" onchange="remove_err('address_err','address')" name="address" id="address" style="height: 100;"></textarea>
                                     <span id="address_err" class="text-danger"></span>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20">
+                                    <label>Select Request Type: <span class="text-danger">*</span></label>
+                                    <select class="form-control pager" onclick="remove_err('request_err')" name="request" id="request">
+                                    <option value="">----Select Request Type----</option>
+                                      <option value="Local">Local Request</option>
+                                      <option value="Global">Global Request</option>
+                                    </select>
+                                    <span id="request_err" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20">
                                     <label class="mb-1">Equiptment/Tools Name<span class="text-danger">*</span></label>
@@ -120,6 +129,11 @@
       if($('#agree').prop('checked')==false){
         $('#agree_err').html('You need to agree declaration <br>');
         $('#agree').focus();
+        returnt=false;
+      }
+      if($('#request').val()==""){
+        $('#request_err').html('Please select a request type');
+        $('#request').focus();
         returnt=false;
       }
       return returnt;

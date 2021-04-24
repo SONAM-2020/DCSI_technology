@@ -55,9 +55,19 @@ class AdminController extends CI_Controller {
         'Id' => $param2))->row();
         $this->load->view('backend/pages/newsandAnnouncement/news_announcementdetails', $page_data);
     }
+    if($param1=="listproductmaster"){
+        $page_data['List_all_product'] = $this->db->get_where('t_products_master', array(
+        'Status' => 'Active'))->result_array();
+        $this->load->view('backend/pages/Adminproductlist', $page_data);
+    }
+    if($param1=="adminviewtechnologyrequest"){
+        $page_data['technologyrequestformList'] = $this->db->get_where('t_technology_request', array(
+        'Type' => 'Global'))->result_array();
+        $this->load->view('backend/pages/supplier/adminviewtechnologyrequest', $page_data);
+    }
     if($param1=="viewtechnologyrequest"){
         $page_data['technologyrequestformList'] = $this->db->get_where('t_technology_request', array(
-        'Status' => 'Active'))->result_array();
+        'Type' => 'Local'))->result_array();
         $this->load->view('backend/pages/supplier/viewtechnologyrequest', $page_data);
     }
     if($param1=="ViewRequestDetails"){
@@ -301,9 +311,14 @@ class AdminController extends CI_Controller {
   function AddFiles(){
     $page_data['message']="";
     $page_data['messagefail']="";
-    if(!empty($_FILES["Image"]["name"])){
-            move_uploaded_file($_FILES['Image']['tmp_name'],'./uploads/Downloads/'.$_FILES["Image"]["name"]);
-            $data['Image']=$_FILES["Image"]["name"];
+    $new_file_name = $_FILES["Image"]["name"];
+        $file_directory = "../uploads/Downloads/";
+        if(!is_dir($file_directory)){
+            mkdir($file_directory,0777,TRUE);
+        }
+        if($new_file_name!=""){
+          move_uploaded_file($_FILES["Image"]["tmp_name"],''.$file_directory . $new_file_name);
+          $data['file']=$file_directory . $new_file_name;
         }
     $data['Name']=$this->input->post('name');
     $data['Status']='Active';
@@ -352,7 +367,6 @@ class AdminController extends CI_Controller {
     }
     $this->load->view('backend/pages/acknowledgement', $page_data); 
   }
-
     function EditSliders($param1="",$param2=""){
         if(!empty($_FILES["uploadedImageedit"]["name"])){
             $fle="../uploads/Imageslider/".$this->input->post('uploadedImage');
@@ -384,7 +398,21 @@ class AdminController extends CI_Controller {
         }
         $this->load->view('backend/pages/acknowledgement', $page_data); 
       }
-
+      function Deleteproduct($sliderId="",$page=""){ 
+        $page_data['List_all_product'] = $this->db->get_where('t_products_master', array(
+        'Status' => 'Active'))->result_array();
+        $page_data['message']="";
+        $page_data['messagefail']="";
+        $this->db->where('Id', $sliderId);
+        $this->db->delete('t_products_master');
+        if($this->db->affected_rows()>0){
+          $page_data['message']="Product has been deleted Successfully";
+        }
+        else{
+            $page_data['messagefail']='Unable to Delete Product. Please try again';
+        }
+        $this->load->view('backend/pages/acknowledgement', $page_data); 
+      }
       function UpdateInfo($param1=""){
         $page_data['formSubmit']="";
         $page_data['message']="";

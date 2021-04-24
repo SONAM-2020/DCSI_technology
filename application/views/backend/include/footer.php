@@ -1,23 +1,12 @@
-<!-- 
 
-<footer>
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 text-center"> <a target="_blank" href="https://www.Bhutansyncits.com">&#169; Developed By Bhutansyncits.com 2021 | Version 2.0.0</a></div>
-            </div>
-        </div>
-    </div>
 </footer> -->
 <script src="<?php echo base_url();?>assest/admin/assets/js/jquery.min.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
 <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
-
 <script src="<?php echo base_url();?>assest/admin/assets/vendors/bootstrap/js/popper.min.js"></script>
 <script src="<?php echo base_url();?>assest/admin/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url();?>assest/admin/assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
@@ -82,13 +71,13 @@
     }
     function checkfilesize(file,fileId,errorId,buttonId){
       var val=file.files[0].size/1024/1024,ext=$('#'+fileId).val().split('.').pop();
-        if(val > 2){
+        if(val > 50){
             $('#'+errorId).html('Your file size should be below 2 mb. your current file size is '+val+' mb');
             file.value = "";
             $('#'+buttonId).hide();
         }
-        else if(ext.toUpperCase()!="PNG" && ext.toUpperCase()!="JPG" && ext.toUpperCase()!="JPEG"){
-            $('#'+errorId).html('you are not allow to attach this file. only png/jpg/jpeg are allowed ');
+        else if(ext.toUpperCase()!="PNG" && ext.toUpperCase()!="JPG" && ext.toUpperCase()!="JPEG"&& ext.toUpperCase()!="PDF"){
+            $('#'+errorId).html('you are not allow to attach this file. only png/jpg/jpeg/PDF are allowed ');
             file.value = "";
             $('#'+buttonId).hide();
         }

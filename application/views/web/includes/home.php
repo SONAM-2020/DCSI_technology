@@ -1,7 +1,7 @@
 <div class="slider-with-banner">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-8">
+            <div class="col-lg-12 col-md-12">
                 <div class="slider-area">
                     <div class="slider-active owl-carousel">
                         <?php foreach($t_imageslider as $i=> $event): ?>
@@ -20,18 +20,18 @@
                 </div>
             </div>
                 <br><br><br><br><br><br>
-            <div class="col-lg-4 col-md-4 text-center pt-xs-30">
-                <div class="li-banner" style="background-image: url('<?php echo base_url();?>uploads/banner.png">
-                    <br>
-                    <h3>LOCAL SUPPLIER</h3>
-                    <p style="color: black;">
-                    The distributor who can supply equipments for your business.</p>
+            <!--<div class="col-lg-4 col-md-4 text-center pt-xs-30">-->
+            <!--    <div class="li-banner" style="background-image: url('<?php echo base_url();?>uploads/banner.png">-->
+            <!--        <br>-->
+            <!--        <h3>LOCAL SUPPLIER</h3>-->
+            <!--        <p style="color: black;">-->
+            <!--        The distributor who can supply equipments for your business.</p>-->
                    
-                    <div class="default-btn">
-                        <a class="links bg-info text-white" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/localregister/')">Register Here</a>
-                    </div>
-                    <br>
-                </div>
+            <!--        <div class="default-btn">-->
+            <!--            <a class="links bg-info text-white" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/localregister/')">Register Here</a>-->
+            <!--        </div>-->
+            <!--        <br>-->
+            <!--    </div>-->
                 <!--<div class="li-banner mt-15 mt-sm-30 mt-xs-30" style="background-image: url('<?php echo base_url();?>uploads/banner.png">-->
                 <!--    <br>-->
                 <!--    <h2>GLOBAL SUPPLIER</h2>-->
@@ -42,14 +42,14 @@
                 <!--    </div>-->
                 <!--    <br><br>-->
                 <!--</div>-->
-                <div class="li-banner mt-15 mt-sm-30 mt-xs-30" style="background-image: url('<?php echo base_url();?>uploads/banner.png">
-                    <br><img src="<?php echo base_url();?>uploads/icimod.png" alt="Shipping Icon">
-                    <h3>Funding Support By:</h3>
-                    <p style="color: black;">
-                    International Centre for Integrated Mountain Development </p>
-                    <br><br>
-                </div>
-            </div>
+                <!--<div class="li-banner mt-15 mt-sm-30 mt-xs-30" style="background-image: url('<?php echo base_url();?>uploads/banner.png">-->
+                <!--    <br><img src="<?php echo base_url();?>uploads/icimod.png" alt="Shipping Icon">-->
+                <!--    <h3>Funding Support By:</h3>-->
+                <!--    <p style="color: black;">-->
+                <!--    International Centre for Integrated Mountain Development </p>-->
+                <!--    <br><br>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
     </div>
 </div>
@@ -61,7 +61,7 @@
             <div class="col-lg-4 col-md-4 text-center">
                 <div class="single-banner">
                     <a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_allproductdetails/<?=$event['Id']?>')">
-                        <img src="uploads/CategoryImage/<?=$event['Image']?>" alt="Li's Static Banner">
+                        <img src="uploads/CategoryImage/<?=$event['Image']?>" alt="CSI Product">
                     </a>
                 </div>
             </div>
@@ -101,25 +101,25 @@
                                     <div class="single-product-wrap">
                                         <div class="product-image">
                                             <a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_productdetails/<?=$pro['Id']?>')">
-                                                <img src="<?=$pro['Image_Name']?>" alt="Li's Product Image">
+                                                <img src="<?=$pro['Image_Name']?>" alt="Csi Product Image">
                                             </a> 
                                         </div>
                                         <div class="product_desc">
                                             <div class="product_desc_info">
-                                                <div class="product-review">
-                                                    <h5 class="manufacturer">
-                                                        <a href="#"><?=$pro['Last_Updated_Date']?></a>
-                                                    </h5>
-                                                    <div class="rating-box">
-                                                        <ul class="rating">
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
+                                                <!--<div class="product-review">-->
+                                                <!--    <h5 class="manufacturer">-->
+                                                <!--        <a href="#"><?=$pro['Last_Updated_Date']?></a>-->
+                                                <!--    </h5>-->
+                                                <!--    <div class="rating-box">-->
+                                                <!--        <ul class="rating">-->
+                                                <!--            <li><i class="fa fa-star-o"></i></li>-->
+                                                <!--            <li><i class="fa fa-star-o"></i></li>-->
+                                                <!--            <li><i class="fa fa-star-o"></i></li>-->
+                                                <!--            <li class="no-star"><i class="fa fa-star-o"></i></li>-->
+                                                <!--            <li class="no-star"><i class="fa fa-star-o"></i></li>-->
+                                                <!--        </ul>-->
+                                                <!--    </div>-->
+                                                <!--</div>-->
                                                 <h3 style="text-align: center;"><a class="product_name" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_productdetails/<?=$pro['Id']?>')"><?=$pro['Product_Name']?></a></h3>
                                                 <div class="price-box" style="text-align: center;">
                                                     <span  class="new-price">Nu.<?=$pro['Price']?></span>

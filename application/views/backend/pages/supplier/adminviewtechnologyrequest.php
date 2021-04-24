@@ -18,24 +18,24 @@
 							<table id="table1" class="table table-bordered table-striped">
 						    <thead style="text-align: center">
 						    <tr>
-						      <th>No.</th>
-						      <th>Name</th>
+                  <th>No.</th>
+                  <th>Name</th>
                   <th>Contact</th>
                   <th>Email</th>
                   <th>Equipment Name</th>
-						      <th style="display: none;">Address</th>
-                  <th>Request Type</th>
+                  <th style="display: none;">Address</th>
+                  <th >Request Type</th>
                   <th style="display: none;">Description</th>
                   <th>Date</th>
-						      <th>Action</th>
-						    </tr>
-						    </thead>
-						    <tbody style="text-align: center">
-						    <?php foreach($technologyrequestformList as $i=> $event): ?>
-						    <tr>
-						      <td><?=$i+1?></td>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody style="text-align: center">
+                <?php foreach($technologyrequestformList as $i=> $event): ?>
+                <tr>
+                  <td><?=$i+1?></td>
                   <td><?php echo $event['Name'];?></td>
-						      <td><?php echo $event['Contact_No'];?></td>
+                  <td><?php echo $event['Contact_No'];?></td>
                   <td><?php echo $event['Email'];?></td>
                   <td><?php echo $event['Equipment_Name'];?></td>
                   <td style="display: none;"><?php echo $event['Present_Address'];?></td>
@@ -46,8 +46,8 @@
                     <button class="btn-secondry" onclick="viewRequest('<?php echo $event['Id'];?>')" type="button"><i class="fa fa-eye"></i> View Request</button>
                     <br><br>
                     <!-- <button type="button" class="btn" onclick="Reply('<?php echo $event['Id']?>','<?php echo $event['Name']?>','<?php echo $event['Email']?>',)"><i class="fa fa-edit"></i>Reply Request</button> --> 
-						      </td>
-						      </tr>
+                  </td>
+                  </tr>
                   <?php endforeach;?>
 						    </tbody>
 						  </table>
@@ -167,3 +167,16 @@
   }
 
 </script> 
+<script>
+    $(document).ready(function() {
+        $('#table1').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        } );
+    } );
+</script>

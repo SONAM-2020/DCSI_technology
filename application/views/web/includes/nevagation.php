@@ -45,7 +45,7 @@
                     <div class="col-lg-7 pl-0 ml-sm-15 ml-xs-15">
                         <!-- Begin Header Middle Searchbox Area -->
                         <form action="#" class="hm-searchbox" id="searchdetails">
-                            <input type="text" id="searchdetailsfom" name="searchdetails" placeholder="Enter product and category name...">
+                            <input type="text" id="searchdetailsfom" name="searchdetails" placeholder="Enter Name of Product">
                             <button class="li-btn" type="button" onclick="searchproductdetails()"><i class="fa fa-search"></i></button>
                         </form>
                         <span class="text-danger" id="searcherr"></div>
@@ -80,6 +80,7 @@
                                   <li><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/Downloads/')">Downloads</a></li>
                                   <li><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/Contact/')">Contact Us</a></li>
                                   <li><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/TechnologyRequest/')">Technology Request</a></li>
+                                  <li><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/localregister/')">Registration</a></li>
                                 </ul>
                             </nav>
                         </div>

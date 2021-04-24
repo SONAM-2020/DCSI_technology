@@ -1,58 +1,58 @@
 <div class="footer">
-    <!-- <div class="footer-static-top">
-        <div class="container">
-            <div class="footer-shipping pt-60 pb-55 pb-xs-25">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
-                        <div class="li-shipping-inner-box">
-                            <div class="shipping-icon">
-                            </div>
-                            <div class="shipping-text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
-                        <div class="li-shipping-inner-box">
-                            <div class="shipping-text">
-                                <h4 style="text-align: center;">Advisory Support By:</h4>
-                            </div>
-                            <div class="shipping-icon">
-                                <img src="<?php echo base_url();?>uploads/appctt.png" alt="Shipping Icon">
-                            </div>
-                            <div class="shipping-text">
-                                <h5>
-                                    <a href="#">Asian Pacific Center of Technology Transfer</a>
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
-                        <div class="li-shipping-inner-box">
-                            <div class="shipping-text">
-                                <h4 style="text-align: center;">Funding Support By:</h4>
-                            </div>
-                            <div class="shipping-icon">
-                                <img src="<?php echo base_url();?>uploads/icimod.png" alt="Shipping Icon">
-                            </div>
-                            <div class="shipping-text">
-                                <h5>
-                                    <a href="#">International Centre for Integrated Mountain Development </a>
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
-                        <div class="li-shipping-inner-box">
-                            <div class="shipping-icon">
-                            </div>
-                            <div class="shipping-text">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
+ <!--<div class="footer-static-top">-->
+ <!--       <div class="container">-->
+ <!--           <div class="footer-shipping pt-60 pb-55 pb-xs-25">-->
+ <!--               <div class="row">-->
+ <!--                   <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">-->
+ <!--                       <div class="li-shipping-inner-box">-->
+ <!--                           <div class="shipping-icon">-->
+ <!--                           </div>-->
+ <!--                           <div class="shipping-text">-->
+ <!--                           </div>-->
+ <!--                       </div>-->
+ <!--                   </div>-->
+ <!--                   <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">-->
+ <!--                       <div class="li-shipping-inner-box">-->
+ <!--                           <div class="shipping-text">-->
+ <!--                               <h4 style="text-align: center;">Advisory Support By:</h4>-->
+ <!--                           </div>-->
+ <!--                           <div class="shipping-icon">-->
+ <!--                               <img src="<?php echo base_url();?>uploads/appctt.png" alt="Shipping Icon">-->
+ <!--                           </div>-->
+ <!--                           <div class="shipping-text">-->
+ <!--                               <h5>-->
+ <!--                                   <a href="#">Asian Pacific Center of Technology Transfer</a>-->
+ <!--                               </h5>-->
+ <!--                           </div>-->
+ <!--                       </div>-->
+ <!--                   </div>-->
+ <!--                   <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">-->
+ <!--                       <div class="li-shipping-inner-box">-->
+ <!--                           <div class="shipping-text">-->
+ <!--                               <h4 style="text-align: center;">Funding Support By:</h4>-->
+ <!--                           </div>-->
+ <!--                           <div class="shipping-icon">-->
+ <!--                               <img src="<?php echo base_url();?>uploads/icimod.png" alt="Shipping Icon">-->
+ <!--                           </div>-->
+ <!--                           <div class="shipping-text">-->
+ <!--                               <h5>-->
+ <!--                                   <a href="#">International Centre for Integrated Mountain Development </a>-->
+ <!--                               </h5>-->
+ <!--                           </div>-->
+ <!--                       </div>-->
+ <!--                   </div>-->
+ <!--                   <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">-->
+ <!--                       <div class="li-shipping-inner-box">-->
+ <!--                           <div class="shipping-icon">-->
+ <!--                           </div>-->
+ <!--                           <div class="shipping-text">-->
+ <!--                           </div>-->
+ <!--                       </div>-->
+ <!--                   </div>-->
+ <!--               </div>-->
+ <!--           </div>-->
+ <!--       </div>-->
+ <!--   </div> -->
     <div class="footer-static-middle">
         <div class="container">
             <div class="footer-logo-wrap pt-10 pb-10">
@@ -61,7 +61,7 @@
                         <div class="footer-logo">
                             <img src="<?php echo base_url();?>uploads/1.png" alt="Footer Logo">
                             <p class="info">
-                                We serves as an online database for the exchange of technology offers and requests both in Bhutan and globally.The Online database search engine is connected to selected international database centers.
+                                We serve as an online database for the exchange of technology offers and requests both in Bhutan and global.The Online database search engine is connected to selected international database centers.
                             </p>
                         </div>
                        
@@ -88,8 +88,7 @@
                     <div class="col-lg-4">
                         <div class="footer-block">
                             <h3 class="footer-block-title" style="color: 
-                            red;">Number of Visitor: &nbsp; </h3>
-                            <h1 style="text-align: justify; color: green;"><?php
+                            red;">Visitor Count:&nbsp; <button class="btn btn-success"><?php
                     $size=sizeof($this->db->get_where('t_visiter_detls', array(
                         'Status' => 'Active'
                         ))->result_array());
@@ -99,7 +98,9 @@
                         else{
                             echo 0;
                         }
-                    ?> </h1>
+                    ?></button> </h3>
+                            <img src="<?php echo base_url();?>uploads/icimod.png" alt="Shipping Icon">
+                    <p>Supported By: International Centre for Integrated Mountain Development(ICIMOD) & Asian Pacific Center of Technology Transfer(APCTT)</p>
                         </div>
                     </div>
                 </div>
