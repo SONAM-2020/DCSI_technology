@@ -19,7 +19,7 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                     <?php echo form_open('#' , array('class' => 'form-horizontal validatable', 'enctype' => 'multipart/form-data','id'=>'localform'));?>
                         <div class="login-form">
-                            <h4 class="login-title mb-10">1.User Detials</h4>
+                            <h4 class="login-title mb-10">1.User Details</h4>
                             <div class="row">
                                 <div class="col-sm-4 col-sm-4 col-md-4 col-lg-4 col-xs-12 col-lg-4 col-xs-12 mb-20">
                                     <label class="mb-1">Name<span class="text-danger">*</span></label> 

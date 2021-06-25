@@ -24,7 +24,7 @@
                                     <td>1.</td>
                                     <td><?php echo$event['Name'];?></td>
                                     <td>
-                                        <button type="button" class="btn btn-primary btn-block"><a style="color: white;" href="<?php echo base_url();?>uploads/Downloads/<?php echo$event['Image'];?>"><i class="fa fa-download"></i> Download</a></button> 
+                                        <button type="button" class="btn btn-primary btn-block"><a style="color: white;" href="<?php echo base_url();?><?php echo$event['file'];?>" target="_blank"><i class="fa fa-download"></i> Download</a></button> 
                                     </td>
                                 </tr>
                             </tbody>

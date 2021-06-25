@@ -202,6 +202,7 @@ class BaseController extends CI_Controller {
         $data['Present_Address']=$this->input->post('address');
         $data['Equipment_Name']=$this->input->post('equipment');
         $data['Equipment_Description']=$this->input->post('description');
+        $data['Type']=$this->input->post('request');
         $this->CommonModel->do_insert('t_technology_request', $data); 
         if($this->db->affected_rows()>0){
             $page_data['message']="Your Information has been added. You will be notified throught email once our the Supplier take further action.Thank you for using our system";

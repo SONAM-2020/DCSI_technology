@@ -32,7 +32,7 @@
 						    <tr>
 						      <td><?=$i+1?></td>
                   <th><?php echo $event['Name'];?></th>
-                  <th><?php echo $event['Image'];?></th>
+                  <th><?php echo $event['file'];?></th>
                   <td>
                     <?php if($event['Status']=="Active"){ ?>
                           <span class="btn">
@@ -82,8 +82,8 @@
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
                             <label>Upload Files:<span class="text-danger">*</span></label><span style="color: red;">
-                            <input type="file" id="Image" onchange="checkfilesize(this,'images','Image_err','addBtn')" name="Image" class="form-control">
-                            <span id="Image_err" class="text-danger"></span>
+                            <input type="file" id="file"  name="file" class="form-control">
+                            <p id="output"></p>
                         </div>
                         </div>
                         <br>
@@ -157,3 +157,17 @@
          setTimeout($.unblockUI, 1000);
     }
 </script> 
+<script type="text/javascript">
+    $('#file').on('change', function() {
+
+        const size =
+           (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 100 || size < 2) {
+            alert("File must be between the size of 2-100 MB");
+        } else {
+            $("#output").html('<b>' +
+               'This file size is: ' + size + " MB" + '</b>');
+        }
+    });
+</script>

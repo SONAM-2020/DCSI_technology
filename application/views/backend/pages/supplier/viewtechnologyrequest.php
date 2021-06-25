@@ -15,7 +15,7 @@
 						</div>
             <br>
 						<div class="widget-inner">
-							<table id="example1" class="table table-bordered table-striped">
+							<table id="table1" class="table table-bordered table-striped">
 						    <thead style="text-align: center">
 						    <tr>
 						      <th>No.</th>
@@ -23,7 +23,8 @@
                   <th>Contact</th>
                   <th>Email</th>
                   <th>Equipment Name</th>
-						      <th>Address</th>
+						      <th style="display: none;">Address</th>
+                  <th>Request Type</th>
                   <th style="display: none;">Description</th>
                   <th>Date</th>
 						      <th>Action</th>
@@ -37,7 +38,8 @@
 						      <td><?php echo $event['Contact_No'];?></td>
                   <td><?php echo $event['Email'];?></td>
                   <td><?php echo $event['Equipment_Name'];?></td>
-                  <td><?php echo $event['Present_Address'];?></td>
+                  <td style="display: none;"><?php echo $event['Present_Address'];?></td>
+                  <td><button class="btn" type="button"><?php echo $event['Type'];?></button></td>
                   <td style="display: none;"><?php echo $event['Equipment_Description'];?></td>
                   <td><?php echo $event['Submitted_Date'];?></td>
                   <td>

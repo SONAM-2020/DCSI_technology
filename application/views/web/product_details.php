@@ -4,18 +4,18 @@
             <div class="col-lg-5 col-md-6">
                 <div class="product-details-left">
                     <div class="product-details-images slider-navigation-1" id="productSlider" style="width: 100%; display: inline-block;">
-                    	<?php  foreach($product_images_details as $i=> $img):?>
-                    		<div class="lg-image">
-	                            <a class="popup-img venobox vbox-item" href="#" data-gall="myGallery">
-	                                <img src="<?=$img['Image_Name']?>" alt="product image">
-	                            </a>
-	                        </div>
-                	 	<?php endforeach; ?>
+                        <?php  foreach($product_images_details as $i=> $img):?>
+                            <div class="lg-image">
+                                <a class="popup-img venobox vbox-item" href="#" data-gall="myGallery">
+                                    <img src="<?=$img['Image_Name']?>" alt="product image">
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                     <!-- <div class="product-details-thumbs slider-thumbs-1">  
-                    	<?php  foreach($product_images_details as $i=> $image):?>
-                    		 <div class="sm-image"><img src="<?=$image['Image_Name']?>" alt="product image thumb"></div>
-                	 	<?php endforeach; ?>                                      
+                        <?php  foreach($product_images_details as $i=> $image):?>
+                             <div class="sm-image"><img src="<?=$image['Image_Name']?>" alt="product image thumb"></div>
+                        <?php endforeach; ?>                                      
                     </div> -->
                 </div>
             </div>
@@ -25,14 +25,14 @@
                     <div class="product-info">
                         <h2><?=$product_details->Product_Name?></h2>
                         <span class="product-details-ref">Modal No.: <?=$product_details->Model_No?>
-                        <div class="rating-box pull-right ">
-                            <a href="#"><?=$product_details->Last_Updated_Date?> </a>
-                        </div>
+                        <!--<div class="rating-box pull-right ">-->
+                        <!--    <a href="#"><?=$product_details->Last_Updated_Date?> </a>-->
+                        <!--</div>-->
                         </span>
                         <div class="rating-box pt-20">
                             <ul class="rating rating-with-review-item">
-                                <li class="fa fa-home"><a href="#">Company: <?=$company_details->Company_Name?></a></li><br>
-                                <li class="fa fa-phone"><a href="#">Contact:<?=$company_details->Telephone_No?> </a></li>
+                                <li class="fa fa-home"><a href="#">Company:&nbsp; <?=$company_details->Company_Name?></a></li><br>
+                                <li class="fa fa-phone"><a href="#">Contact:&nbsp;<?=$company_details->Telephone_No?> </a></li>
                             </ul>
                         </div>
                         <div class="price-box pt-20">

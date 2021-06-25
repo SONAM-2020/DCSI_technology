@@ -17,20 +17,20 @@
                                             </div>
                                             <div class="product_desc">
                                                 <div class="product_desc_info">
-                                                    <div class="product-review">
-                                                        <h5 class="manufacturer">
-                                                            <a href="#"><?=$pro['Last_Updated_Date']?></a>
-                                                        </h5>
-                                                        <div class="rating-box">
-                                                            <ul class="rating">
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                    <!--<div class="product-review">-->
+                                                    <!--    <h5 class="manufacturer">-->
+                                                    <!--        <a href="#"><?=$pro['Last_Updated_Date']?></a>-->
+                                                    <!--    </h5>-->
+                                                    <!--    <div class="rating-box">-->
+                                                    <!--        <ul class="rating">-->
+                                                    <!--            <li><i class="fa fa-star-o"></i></li>-->
+                                                    <!--            <li><i class="fa fa-star-o"></i></li>-->
+                                                    <!--            <li><i class="fa fa-star-o"></i></li>-->
+                                                    <!--            <li class="no-star"><i class="fa fa-star-o"></i></li>-->
+                                                    <!--            <li class="no-star"><i class="fa fa-star-o"></i></li>-->
+                                                    <!--        </ul>-->
+                                                    <!--    </div>-->
+                                                    <!--</div>-->
                                                     <h3 style="text-align: center;"><a class="product_name" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_productdetails/<?=$pro['Id']?>')"><?=$pro['Product_Name']?></a></h3>
                                                     <div class="price-box" style="text-align: center;">
                                                         <span  class="new-price">Nu.<?=$pro['Price']?></span>

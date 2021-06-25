@@ -41,6 +41,10 @@ class CommonModel extends CI_Model{
     $query=$this->db->query("
     SELECT c.`Category_Name`,c.`Description` FROM t_products_master p LEFT JOIN t_category_master c ON c.`Id`=p.`Category_Id` LEFT JOIN t_supplier_company s ON p.`Company_Id`=s.`Id` LEFT JOIN t_user_master u ON u.`Id`=s.`User_Id` WHERE u.`Id`='1'")->result_array();
   }
+  function getadminproducts($id=""){
+    $query=$this->db->query("
+    SELECT c.`Category_Name`,c.`Description` FROM t_products_master p LEFT JOIN t_category_master c ON c.`Id`=p.`Category_Id` LEFT JOIN t_supplier_company s ON p.`Company_Id`=s.`Id` WHERE u.`Id`='1'")->result_array();
+  }
   function get_registration_list($type="",$id=""){
     $query="SELECT u.`Contact_No`,u.`Designation`,u.`Email`,u.`Id` user_id,u.`Name`,s.`Company_Name`,s.`Company_Website`,s.`Submitted_Date`,s.`Company_Address` FROM t_user_master u JOIN t_supplier_company s ON s.`User_Id`=u.`Id`";
     if($type=="submitted"){
