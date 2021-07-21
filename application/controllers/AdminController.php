@@ -311,17 +311,27 @@ class AdminController extends CI_Controller {
   function AddFiles(){
     $page_data['message']="";
     $page_data['messagefail']="";
+<<<<<<< HEAD
     $new_file_name = $_FILES["file"]["name"];
         $file_directory = "uploads/Downloads/";
+=======
+    $new_file_name = $_FILES["Image"]["name"];
+        $file_directory = "../uploads/Downloads/";
+>>>>>>> f4f111c6c524b4fe25111e9f488380c0ba1bf206
         if(!is_dir($file_directory)){
             mkdir($file_directory,0777,TRUE);
         }
         if($new_file_name!=""){
+<<<<<<< HEAD
           move_uploaded_file($_FILES["file"]["tmp_name"],''.$file_directory . $new_file_name);
           $data['file']=$file_directory . $new_file_name;
         }
         else{
           $page_data['message']="uploading file has been failed.Try again later";
+=======
+          move_uploaded_file($_FILES["Image"]["tmp_name"],''.$file_directory . $new_file_name);
+          $data['file']=$file_directory . $new_file_name;
+>>>>>>> f4f111c6c524b4fe25111e9f488380c0ba1bf206
         }
     $data['Name']=$this->input->post('name');
     $data['Status']='Active';

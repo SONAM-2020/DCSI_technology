@@ -82,8 +82,12 @@
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
                             <label>Upload Files:<span class="text-danger">*</span></label><span style="color: red;">
+<<<<<<< HEAD
                             <input type="file" id="file"  name="file" class="form-control">
                             <p id="output"></p>
+=======
+                            <input type="file" id="Image" onchange="checkfilesize(this,'images','Image_err','addBtn')" onclick="remove_err('Image_err')" name="Image" class="form-control">
+>>>>>>> f4f111c6c524b4fe25111e9f488380c0ba1bf206
                         </div>
                         </div>
                         <br>

@@ -53,7 +53,11 @@
  <!--           </div>-->
  <!--       </div>-->
  <!--   </div> -->
+<<<<<<< HEAD
     <div class="footer-static-middle" >
+=======
+    <div class="footer-static-middle">
+>>>>>>> f4f111c6c524b4fe25111e9f488380c0ba1bf206
         <div class="container">
             <div class="footer-logo-wrap pt-10 pb-10">
                 <div class="row">
