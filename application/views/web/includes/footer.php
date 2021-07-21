@@ -53,7 +53,7 @@
  <!--           </div>-->
  <!--       </div>-->
  <!--   </div> -->
-    <div class="footer-static-middle">
+    <div class="footer-static-middle" >
         <div class="container">
             <div class="footer-logo-wrap pt-10 pb-10">
                 <div class="row">
@@ -107,7 +107,7 @@
             </div>
         </div>
     </div>
-    <div class="footer-static-bottom pt-0 pb-55" style="background-image: url('<?php echo base_url();?>uploads/header1.JPG')">
+    <div class="footer-static-bottom pt-0 pb-55" style="background-color: #ff0000;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
