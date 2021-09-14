@@ -2,6 +2,7 @@
 <?php
     $this->load->view('web/includes/header.php');
 ?>
+
 <body>
   <div id="mainpublicContent">
     <div class="breadcrumb-area">
@@ -41,7 +42,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mt-10 mb-20 text-left text-md-right">
-                                    <a href="#"> Forgotten pasward?</a>
+                                    <a href="#"  onclick="reset()"> Forgotten Password?</a>
                                 </div>
                                 <div class="col-md-12">
                                     <button class="register-button mt-0" onclick="login()">Login</button>
@@ -53,7 +54,6 @@
             </div>
         </div>
     </div>
- <?php  $this->load->view('web/includes/footer.php'); ?>
 </div>
 <script>
 function login(){
@@ -90,6 +90,25 @@ function validate(){
 function remove_err(err_Id){
   $('#'+err_Id).html('');
 }
+function reset(){
+      $.blockUI
+      ({ 
+        css: 
+        { 
+              border: 'none', 
+              padding: '15px', 
+              backgroundColor: '#000', 
+              '-webkit-border-radius': '10px', 
+              '-moz-border-radius': '10px', 
+              opacity: .5, 
+              color: '#fff' 
+        } 
+      });
+      var url='<?php echo base_url();?>index.php?baseController/loadpage/resetpassword';
+    $("#mainpublicContent").load(url);
+      setTimeout($.unblockUI, 1000); 
+  }
 </script>
+
 </body>
 </html>

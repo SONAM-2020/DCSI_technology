@@ -1,5 +1,5 @@
 
-</footer> -->
+</footer> 
 <script src="<?php echo base_url();?>assest/admin/assets/js/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
@@ -89,11 +89,9 @@
 
 
 </script>
-    <script type="text/javascript">
-     $(document).ready(function() {
-    $('#example1').DataTable( {
-        "pagingType": "full_numbers"
-    } );
-} );
+<script type="text/javascript">
+   $(document).ready( function () {
+  $('#example1').DataTable();
+  } );
 </script> 
 </body>

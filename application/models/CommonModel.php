@@ -56,7 +56,7 @@ class CommonModel extends CI_Model{
     return $query;
   }
   function get_requestedDetails($userdi=""){
-    $query="SELECT o.`Contact_No`,o.`Company_Id`,o.`Email`,o.`Id`,o.`Name`,o.`Product_Id`,p.`Product_Name`,o.`Quantity`,o.`Submitted_Date` FROM t_order_details o JOIN t_supplier_company s ON s.`Id`=o.`Company_Id` JOIN t_products_master p ON p.`Id`=o.`Product_Id` WHERE s.`User_Id`=".$userdi;
+    $query="SELECT o.`Contact_No`,o.`Company_Id`,o.`Email`,o.`Id`,o.`Name`,o.`Product_Id`,p.`Product_Name`,o.`Quantity`,o.`Submitted_Date`,o.`Status` FROM t_order_details o JOIN t_supplier_company s ON s.`Id`=o.`Company_Id` JOIN t_products_master p ON p.`Id`=o.`Product_Id` WHERE s.`User_Id`=".$userdi;
     return $this->db->query($query)->result_array();
   }
   function get_registration_details($type="",$id=""){
@@ -79,7 +79,7 @@ class CommonModel extends CI_Model{
     return $this->db->get_where('t_category_master', array('Status' => 'Active'))->result_array();
   }
   function get_productDetails($userId=""){
-    $query="SELECT p.`Id`,p.`Product_Name`,c.`Category_Name`,p.`Description`,p.`Price`,p.`Status`,i.`Image_Name` FROM t_products_master p JOIN t_product_images i ON i.`Product_Id`=p.`Id` JOIN t_supplier_company s ON s.`Id`=p.`Company_Id` JOIN t_category_master c ON c.`Id`=p.`Category_Id` ";
+    $query="SELECT p.`Id`,p.`Product_Name`,c.`Category_Name`,p.`Description`,p.`Price`,p.`Stock`,p.`Status`,i.`Image_Name` FROM t_products_master p JOIN t_product_images i ON i.`Product_Id`=p.`Id` JOIN t_supplier_company s ON s.`Id`=p.`Company_Id` JOIN t_category_master c ON c.`Id`=p.`Category_Id` ";
     $this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode, 'ONLY_FULL_GROUP_BY', ''));");
     return $this->db->query($query." WHERE s.User_Id='".$userId."' GROUP BY p.Id ")->result_array();
   }

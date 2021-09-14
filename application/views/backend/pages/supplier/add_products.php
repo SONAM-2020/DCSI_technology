@@ -26,6 +26,7 @@
                                     <th>Category</th>
                                     <th style="display: none;">Description</th>
                                     <th>Price</th>
+                                    <th>Stock</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -39,6 +40,7 @@
                                     <td><?php echo $pro['Category_Name'];?></td>
                                     <td style="display: none;"><?php echo $pro['Description'];?></td>
                                     <td><?php echo $pro['Price'];?></td>
+                                    <td><?php echo $pro['Stock'];?></td>
                                     <td><?php echo $pro['Status'];?></td>
                                     <td>
                                         <button type="button" class="btn-secondry btn-info btn-block"><a style="color: white;" href="#" onclick="loadpage('<?php echo base_url();?>index.php?adminController/supplierpage/edit/<?php echo $pro['Id']?>')"><i class="fa fa-edit"></i>Edit</a></button> 
@@ -88,7 +90,11 @@
                             <label class="mb-0 mt-3">Modal: </label>
                             <input type="text" id="modal" name="modal" class="form-control">
                         </div>
-                        
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
+                            <label class="mb-0 mt-3">Stock: </label><span style="color: red;"><i>Numbers Only</i></span>
+                            <input type="number" id="stock" name="stock" class="form-control">
+                        </div>
+                         
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
                             <label class="mb-0 mt-3">Image1:<span class="text-danger">*</span></label><span style="color: red;"><i>(Recommended Size:500x500 px)</i></span>
                             <input type="file" id="Image" onchange="checkfilesize(this,'images','Image_err','addBtn')" name="Image1" class="form-control">
@@ -112,7 +118,7 @@
                     <div class="row pt-2 pull-right">
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20">
                             <button type="button" class="btn" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn-secondry" id="addBtn" onclick="addproducts()"><span id="btnspan"></span> Add</button>
+                            <button type="button" class="btn-secondry" id="addBtn" onclick="addproducts()"><span id="btnspan"></span> Save Changes</button>
                         </div>
                     </div>
                     

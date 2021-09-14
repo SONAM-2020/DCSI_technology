@@ -1,3 +1,5 @@
+<?php header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Methods: GET, OPTIONS");?>
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class loginController extends CI_Controller {
@@ -15,8 +17,8 @@ class loginController extends CI_Controller {
     }
     //edited this method
     function login(){
-        $page_data['grequest_info'] = $this->db->get_where('t_technology_request',array('Type'=>'Global'))->result_array();
-        $page_data['lrequest_info'] = $this->db->get_where('t_technology_request',array('Type'=>'Local'))->result_array();
+        $page_data['grequest_info'] = $this->db->get_where('t_technology_request',array('Status'=>'Active'))->result_array();
+        $page_data['lrequest_info'] = $this->db->get_where('t_technology_request',array('Status'=>'Active'))->result_array();
         $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
         $page_data['Message'] = $this->db->get_where('t_contactus',array('Status'=>'Active'))->result_array();
         $page_data['urejected_info'] = $this->db->get_where('t_user_master',array('Status'=>'InActive'))->result_array();
@@ -57,10 +59,14 @@ class loginController extends CI_Controller {
         }
     }
     function dashboard($param=""){
-        $page_data['lrequest_info'] = $this->db->get_where('t_technology_request',array('Type'=>'Local'))->result_array();
-        $page_data['grequest_info'] = $this->db->get_where('t_technology_request',array('Type'=>'Global'))->result_array();
+        $page_data['lrequest_info'] = $this->db->get_where('t_technology_request',array('Status'=>'Active'))->result_array();
+        $page_data['grequest_info'] = $this->db->get_where('t_technology_request',array('Status'=>'Active'))->result_array();
         $page_data['Message'] = $this->db->get_where('t_contactus',array('Status'=>'Active'))->result_array();
         $page_data['urejected_info'] = $this->db->get_where('t_user_master',array('Status'=>'InActive'))->result_array();
+        /*$query=$this->db->query("SELECT COUNT(t.`Company_Id`) AS COUNT, t.`Company_Id` FROM `t_products_master` t WHERE Company_Id = User_Id  GROUP BY t.`Company_Id`;")->result();
+        $page_data['query'] = $query;*/
+
+        
         $page_data['message']="";
         if ($this->session->userdata('User_Id') == null ){
             redirect(base_url(), 'refresh');

@@ -1,5 +1,5 @@
 <div class="content-wraper">
-    <div class="container">
+    <div class="container"  style="background-color: white;">
         <div class="row single-product-area">
             <div class="col-lg-5 col-md-6">
                 <div class="product-details-left">
@@ -7,33 +7,23 @@
                         <?php  foreach($product_images_details as $i=> $img):?>
                             <div class="lg-image">
                                 <a class="popup-img venobox vbox-item" href="#" data-gall="myGallery">
-                                    <img src="<?=$img['Image_Name']?>" alt="product image">
+                                    <img src="<?=$img['Image_Name']?>" alt="product image" style="border-width: 1px;">
                                 </a>
                             </div>
                         <?php endforeach; ?>
                     </div>
-                    <!-- <div class="product-details-thumbs slider-thumbs-1">  
-                        <?php  foreach($product_images_details as $i=> $image):?>
-                             <div class="sm-image"><img src="<?=$image['Image_Name']?>" alt="product image thumb"></div>
-                        <?php endforeach; ?>                                      
-                    </div> -->
                 </div>
             </div>
 
             <div class="col-lg-7 col-md-6">
-                <div class="product-details-view-content pt-60">
+                <div class="product-details-view-content pt-60" >
                     <div class="product-info">
                         <h2><?=$product_details->Product_Name?></h2>
-                        <span class="product-details-ref">Modal No.: <?=$product_details->Model_No?>
-                        <!--<div class="rating-box pull-right ">-->
-                        <!--    <a href="#"><?=$product_details->Last_Updated_Date?> </a>-->
-                        <!--</div>-->
-                        </span>
+                       <h5>Modal No.: <?=$product_details->Model_No?></h5>
                         <div class="rating-box pt-20">
-                            <ul class="rating rating-with-review-item">
-                                <li class="fa fa-home"><a href="#">Company:&nbsp; <?=$company_details->Company_Name?></a></li><br>
-                                <li class="fa fa-phone"><a href="#">Contact:&nbsp;<?=$company_details->Telephone_No?> </a></li>
-                            </ul>
+                                <h5><a href="#">Company:&nbsp; <?=$company_details->Company_Name?></a></h5><br>
+                                <h5><a href="#">Contact:&nbsp;<?=$company_details->Telephone_No?> </a></h5>
+                                <h5><a href="#">Website:&nbsp;<?=$company_details->Company_Website?> </a></h5>
                         </div>
                         <div class="price-box pt-20">
                             <span class="new-price new-price-2">Nu. <?=$product_details->Price?></span>

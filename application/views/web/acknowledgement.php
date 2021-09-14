@@ -2,6 +2,9 @@
 <?php
     $this->load->view('web/includes/header.php');
 ?>
+<?php
+  error_reporting(0);
+?>
 <body>
   <div id="mainpublicContent">
     <div class="bg-info">

@@ -78,13 +78,21 @@
 				<div class="widget-card widget-bg3">					 
 					<div class="wc-item">
 						<h4 class="wc-title">
-							New Orders 
+							Total No. Orders 
 						</h4>
 						<span class="wc-des">
-							Fresh Order Amount 
+							Total Number of Order 
 						</span>
 						<span class="wc-stats counter">
-							7 
+							<?php
+								$size=sizeof($this->db->get('t_order_details')->result_array());
+								if($size>0){
+									echo $size;
+								}
+								else{
+									echo 0;
+								}
+							?>
 						</span>		
 						<div class="progress wc-progress">
 							<div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -230,13 +238,21 @@
 				<div class="widget-card widget-bg3">					 
 					<div class="wc-item">
 						<h4 class="wc-title">
-							New Orders 
+							Total No. Orders 
 						</h4>
 						<span class="wc-des">
-							Fresh Order Amount 
+							Total Number of Order 
 						</span>
 						<span class="wc-stats counter">
-							7 
+							<?php
+								$size=sizeof($this->db->get('t_order_details')->result_array());
+								if($size>0){
+									echo $size;
+								}
+								else{
+									echo 0;
+								}
+							?> 
 						</span>		
 						<div class="progress wc-progress">
 							<div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>

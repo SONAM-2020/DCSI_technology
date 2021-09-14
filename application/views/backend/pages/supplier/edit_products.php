@@ -33,6 +33,15 @@
                     <label class="mb-0 mt-3">Modal: </label>
                     <input type="text" id="modal" value="<?=$product_details->Model_No?>" name="modal" class="form-control">
                 </div>
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
+                    <label class="mb-0 mt-3">Stock: </label><span style="color: red;"><i>Numbers Only</i></span>
+                    <input type="number" id="stock" value="<?=$product_details->Stock?>" name="stock" class="form-control">
+                </div>
+                 <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
+                    <label class="mb-0 mt-3">Sold/ Not Sold:</label><br>
+                    <input type="radio" name="sold" value="Sold"> Sold
+                    <input type="radio" name="sold" value="Not_Sold"> Not Sold
+                </div>
                 <?php foreach($product_images as $i=> $img): ?>
                     <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 mb-20">
                         <img style="width: 100px; height: 80px;" src="<?php echo $img['Image_Name'];?>"><br>
@@ -59,7 +68,7 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20">
                     <input type="hidden" name="productId" value="<?=$product_details->Id?>">
                     <button type="button" class="btn" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn-secondry" id="addBtn" onclick="addproducts()"><span id="btnspan"></span> Edit</button>
+                    <button type="button" class="btn-secondry" id="addBtn" onclick="addproducts()"><span id="btnspan"></span> Save Changes</button>
                 </div>
             </div>
             
@@ -71,6 +80,7 @@
       height:250
     });
     $('#category').val('<?=$product_details->Category_Id?>');
+    $('input[name=sold][value="<?=$product_details->Sold_Status?>"]').prop('checked',true);
     $('input[name=current_status][value="<?=$product_details->Status?>"]').prop('checked',true);
     function addproducts(){
         if(validateaddformedit()){

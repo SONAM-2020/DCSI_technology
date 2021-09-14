@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20 input-group-append">
                                      <input type="checkbox"  class="" onclick="removevalidationhceckbox('agree_err','agree')" id="agree" name="agree">
-                                     <label for="agree" class="pt-10 pl-10 mt-1">Declarations-The information provide above is true to the best of my knowledge.</label> 
+                                     <label for="agree" class="pt-10 pl-10 mt-1">Declarations-<i>The information I have provided is the CSI Technology Request Database is correct and true to the best of my knowledge. In the event of detection of false or misleading information, I shall be fully liable and confer herewith the absolute authority to the Ministry of Economic Affairs to take any action deemed appropriate.</i></label> 
                                 </div>
                                 
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">

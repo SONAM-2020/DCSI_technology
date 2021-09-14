@@ -1,63 +1,6 @@
 <div class="footer">
- <!--<div class="footer-static-top">-->
- <!--       <div class="container">-->
- <!--           <div class="footer-shipping pt-60 pb-55 pb-xs-25">-->
- <!--               <div class="row">-->
- <!--                   <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">-->
- <!--                       <div class="li-shipping-inner-box">-->
- <!--                           <div class="shipping-icon">-->
- <!--                           </div>-->
- <!--                           <div class="shipping-text">-->
- <!--                           </div>-->
- <!--                       </div>-->
- <!--                   </div>-->
- <!--                   <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">-->
- <!--                       <div class="li-shipping-inner-box">-->
- <!--                           <div class="shipping-text">-->
- <!--                               <h4 style="text-align: center;">Advisory Support By:</h4>-->
- <!--                           </div>-->
- <!--                           <div class="shipping-icon">-->
- <!--                               <img src="<?php echo base_url();?>uploads/appctt.png" alt="Shipping Icon">-->
- <!--                           </div>-->
- <!--                           <div class="shipping-text">-->
- <!--                               <h5>-->
- <!--                                   <a href="#">Asian Pacific Center of Technology Transfer</a>-->
- <!--                               </h5>-->
- <!--                           </div>-->
- <!--                       </div>-->
- <!--                   </div>-->
- <!--                   <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">-->
- <!--                       <div class="li-shipping-inner-box">-->
- <!--                           <div class="shipping-text">-->
- <!--                               <h4 style="text-align: center;">Funding Support By:</h4>-->
- <!--                           </div>-->
- <!--                           <div class="shipping-icon">-->
- <!--                               <img src="<?php echo base_url();?>uploads/icimod.png" alt="Shipping Icon">-->
- <!--                           </div>-->
- <!--                           <div class="shipping-text">-->
- <!--                               <h5>-->
- <!--                                   <a href="#">International Centre for Integrated Mountain Development </a>-->
- <!--                               </h5>-->
- <!--                           </div>-->
- <!--                       </div>-->
- <!--                   </div>-->
- <!--                   <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">-->
- <!--                       <div class="li-shipping-inner-box">-->
- <!--                           <div class="shipping-icon">-->
- <!--                           </div>-->
- <!--                           <div class="shipping-text">-->
- <!--                           </div>-->
- <!--                       </div>-->
- <!--                   </div>-->
- <!--               </div>-->
- <!--           </div>-->
- <!--       </div>-->
- <!--   </div> -->
-<<<<<<< HEAD
-    <div class="footer-static-middle" >
-=======
     <div class="footer-static-middle">
->>>>>>> f4f111c6c524b4fe25111e9f488380c0ba1bf206
+
         <div class="container">
             <div class="footer-logo-wrap pt-10 pb-10">
                 <div class="row">
@@ -111,7 +54,7 @@
             </div>
         </div>
     </div>
-    <div class="footer-static-bottom pt-0 pb-55" style="background-color: #ff0000;">
+    <div class="footer-static-bottom pt-0 pb-55" style="background-color: #cc0606;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -129,8 +72,13 @@
     </div>
 </div>
 
-
-<script src="<?php echo base_url();?>assest/website/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/vendor/popper.min.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url();?>assest/website/js/ajax-mail.js"></script>
@@ -225,4 +173,9 @@
             $('#'+buttonId).show();
         }
     }
+</script>
+<script type="text/javascript">
+   $(document).ready( function () {
+  $('#example1').DataTable();
+  } );
 </script>

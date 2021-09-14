@@ -2,25 +2,72 @@
 <?php
     $this->load->view('web/includes/header.php');
 ?>
+<style type="text/css">
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  display: inline-block;
+  font-size: 9pt;
+  margin: 10px;
+}
+.dataTables_paginate>span>a {
+    margin-bottom: 0px !important;
+    padding: 1px 5px !important;
+}
+
+.dataTables_paginate>a {
+    margin-bottom: 0px !important;
+    padding: 1px 5px !important;
+}
+.dataTables_length input { 
+    width: 20px 
+}
+.dataTables_filter input { width: 100px }
+</style>
 <body>
   <div id="mainpublicContent">
-      <div class="bg-info">
-        <div class="container">
-            <div class="breadcrumb-content pl-10">
-                <ul>
-                    <li class="text-white"><b>Technology Request Form</b></li>
-                </ul>
-            </div>
-        </div>
-      </div>
     <div class="page-section mb-60">
         <div class="container">
             <div class="row">
-              <div class="col-sm-2 col-md-2 col-lg-2 col-xs-12 mb-20">
+              <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12 mb-20">
+                <!-- <h4>Technology/Equipment/ Machinary Request</h4>
+                <table id="example1" class="table table-bordered table-striped">
+                            <thead style="text-align: center">
+                            <tr>
+                              <th>No.</th>
+                              <th>Name</th>
+                              <th style="display: none;">Contact</th>
+                              <th>Email</th>
+                              <th>Equipment Name</th>
+                              <th style="display: none;">Address</th>
+                              <th style="display: none;">Request Type</th>
+                              <th style="display: none;">Description</th>
+                              <th>Date</th>
+                              <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody style="text-align: center">
+                            <?php foreach($technologyrequestformList as $i=> $event): ?>
+                            <tr>
+                              <td><?=$i+1?></td>
+                              <td><?php echo $event['Name'];?></td>
+                              <td style="display: none;"><?php echo $event['Contact_No'];?></td>
+                              <td><?php echo $event['Email'];?></td>
+                              <td><?php echo $event['Equipment_Name'];?></td>
+                              <td style="display: none;"><?php echo $event['Present_Address'];?></td>
+                              <td style="display: none;"><?php echo $event['Type'];?></td>
+                              <td style="display: none;"><?php echo $event['Equipment_Description'];?></td>
+                              <td><?php echo $event['Submitted_Date'];?></td>
+                              <td>
+                                <button class="btn btn-primary" onclick="viewRequest('<?php echo $event['Id'];?>')" type="button"><i class="fa fa-eye"></i> View Request</button>
+                              </td>
+                              </tr>
+                              <?php endforeach;?>
+                            </tbody>
+                          </table> -->
               </div>
-                <div class="col-sm-8 col-md-8 col-lg-8 col-xs-12 mb-20">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mb-20">
                     <?php echo form_open('#' , array('class' => 'form-horizontal validatable', 'enctype' => 'multipart/form-data','id'=>'globalform'));?>
                         <div class="login-form">
+                    <h4>Technology Request Form</h4>
                             <div class="row">
                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20">
                                     <label class="mb-1">Name<span class="text-danger">*</span></label> 
@@ -62,7 +109,7 @@
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 mb-20 input-group-append">
                                      <input type="checkbox"  class="" onclick="removevalidationhceckbox('agree_err','agree')" id="agree" name="agree">
-                                     <label for="agree" class="pt-10 pl-10 mt-1">Declarations-The Information provided above is true to the best of my knowledge.</label> 
+                                     <label for="agree" class="pt-10 pl-10 mt-1">Declarations-<i>The information I have provided is the CSI Technology Request Database is correct and true to the best of my knowledge. In the event of detection of false or misleading information, I shall be fully liable and confer herewith the absolute authority to the Ministry of Economic Affairs to take any action deemed appropriate.</label> 
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                                     <span id="agree_err" class="text-danger"></span>
@@ -76,7 +123,6 @@
         </div>
     </div>
 </div>
-
 <script type="text/javascript">
     function AddInfo(){
     if(validatefrom()){
@@ -138,5 +184,29 @@
       }
       return returnt;
     }
+    function viewRequest(id){
+    $.blockUI
+    ({ 
+      css: 
+      { 
+            border: 'none', 
+            padding: '15px', 
+            backgroundColor: '#000', 
+            '-webkit-border-radius': '10px', 
+            '-moz-border-radius': '10px', 
+            opacity: .5, 
+            color: '#fff' 
+      } 
+    });
+    var url='<?php echo base_url();?>index.php?baseController/loadpage/ViewRequestDetails/'+id;
+    $("#mainpublicContent").load(url);
+      setTimeout($.unblockUI, 1000); 
+  }
   </script>
+<script type="text/javascript">
+   $(document).ready( function () {
+    $('#example1').DataTable();
+  } );
+</script> 
 </body>
+

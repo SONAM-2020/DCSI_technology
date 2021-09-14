@@ -14,7 +14,7 @@
 							<h4>Add/View Users</h4>
 						</div>
 						<br>
-						<div><button class="btn-secondry fa-pull-right" onclick="addinfo()" type="button">Add</button></div>
+						<div><button class="btn-secondry fa-pull-right" onclick="addinfo()" type="button">Add hjytju</button></div>
 						<br>
 						<div class="widget-inner">
 							<table id="example1" class="table table-bordered table-striped">

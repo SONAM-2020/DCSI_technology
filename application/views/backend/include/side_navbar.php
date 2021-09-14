@@ -106,7 +106,7 @@
 		            <li> 
 						<a href="#" class="ttr-material-button" onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/adminviewtechnologyrequest/')">
 							<span class="ttr-icon"><i class="ti-layout-media-center-alt"></i></span>
-		                	<span class="ttr-label">Gobal Technology Request</span>
+		                	<span class="ttr-label">Technology Request</span>
 		                	<span class="ttr-label">
 							     <p style="color: red;"><?php echo sizeof($grequest_info);?></p>
 							</span>
@@ -120,7 +120,10 @@
 		                </a>
 		                <ul>
 		                	<li>
-		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/reportIndex/')"><span class="ttr-label">Product Reports</span></a>
+		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/reportIndex/')"><span class="ttr-label">All Product Reports</span></a>
+		                	</li>
+		                	<li>
+		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/SectorIndex/')"><span class="ttr-label">Category Wise Product Reports</span></a>
 		                	</li>
 		                	<li>
 		                		<a href="#" class="ttr-material-button"  onclick="loadpage('<?php echo base_url();?>index.php?adminController/loadpage/techreportIndex/')"><span class="ttr-label">Technology Request Reports</span></a>

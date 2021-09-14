@@ -1,3 +1,7 @@
+<?php
+     error_reporting(E_ALL);
+     ini_set('display_errors', 0);    
+?>
 <main class="ttr-wrapper">
 	<div class="container-fluid">
 		<div class="db-breadcrumb">

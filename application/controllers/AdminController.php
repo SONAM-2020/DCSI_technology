@@ -1,3 +1,5 @@
+<?php header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Methods: GET, OPTIONS");?>
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class AdminController extends CI_Controller { 
@@ -62,7 +64,7 @@ class AdminController extends CI_Controller {
     }
     if($param1=="adminviewtechnologyrequest"){
         $page_data['technologyrequestformList'] = $this->db->get_where('t_technology_request', array(
-        'Type' => 'Global'))->result_array();
+        'Status' => 'Active'))->result_array();
         $this->load->view('backend/pages/supplier/adminviewtechnologyrequest', $page_data);
     }
     if($param1=="viewtechnologyrequest"){
@@ -78,13 +80,27 @@ class AdminController extends CI_Controller {
     if($param1=="reportIndex"){
             $this->load->view('backend/reports/reportIndex');
         }
+
     if($param1=="generatereport"){
         $fromdate=$this->input->post('fromdate');
         $todate=$this->input->post('todate');
-        $query ="SELECT  p.`Id`,p.`Description`,p.`Last_Updated_Date`,p.`Model_No`,p.`Price`,p.`Product_Name`,
-        i.`Image_Name` FROM t_products_master p, t_product_images i WHERE  p.`Last_Updated_Date` BETWEEN '".$fromdate."' AND '".$todate."'";
+        $query ="SELECT  p.`Id`,p.`Description`,p.`Last_Updated_Date`,p.`Model_No`,p.`Price`,p.`Product_Name` FROM t_products_master p WHERE  p.`Last_Updated_Date` BETWEEN '".$fromdate."' AND '".$todate."'";
         $page_data['reportDetils'] = $this->db->query($query)->result_array(); 
         $this->load->view('backend/reports/reportDetails',$page_data);
+    }
+    if($param1=="SectorIndex"){
+      $page_data['category_list'] = $this->CommonModel->get_active_category_list();
+            $this->load->view('backend/reports/reportsectorIndex',$page_data);
+        }
+
+    if($param1=="generateSectorIndexreport"){
+        $fromdate=$this->input->post('fromdate');
+        $todate=$this->input->post('todate');
+        $category=$this->input->post('category');
+        $query ="SELECT  p.`Id`,p.`Description`,p.`Last_Updated_Date`,p.`Model_No`,p.`Price`,p.`Product_Name`, p.`Category_Id` FROM t_products_master p WHERE p.`Category_Id`='".$category."' AND  p.`Last_Updated_Date` BETWEEN '".$fromdate."' AND '".$todate."'";
+        $page_data['category_list'] = $this->CommonModel->get_active_category_list();
+        $page_data['reportDetils'] = $this->db->query($query)->result_array(); 
+        $this->load->view('backend/reports/generateSectorIndexreport',$page_data);
     }
     if($param1=="techreportIndex"){
             $this->load->view('backend/reports/technologyreportIndex');
@@ -98,7 +114,8 @@ class AdminController extends CI_Controller {
     }
     
     if($param1=="SupplierIndex"){
-            $this->load->view('backend/reports/suppliersreportIndex');
+      
+      $this->load->view('backend/reports/suppliersreportIndex');
         }
     if($param1=="generatesuppliersreport"){
         $fromdate=$this->input->post('fromdate');
@@ -195,6 +212,7 @@ class AdminController extends CI_Controller {
       $upate_data['Category_Id']= $this->input->post('category');
       $upate_data['Company_Id']= $this->db->get_where('t_supplier_company',array('User_Id'=>$this->session->userdata('User_Id')))->row()->Id;
       $upate_data['Price']= $this->input->post('price');
+      $upate_data['Stock']= $this->input->post('stock');
       $upate_data['Model_No']= $this->input->post('modal');
       $upate_data['Description']= $this->input->post('discription');
       $upate_data['Last_Updated_Date']=date('Y-m-d h:i:s');
@@ -235,6 +253,8 @@ class AdminController extends CI_Controller {
       $upate_data['Category_Id']= $this->input->post('category');
       $upate_data['Price']= $this->input->post('price');
       $upate_data['Model_No']= $this->input->post('modal');
+      $upate_data['Stock']= $this->input->post('stock');
+      $upate_data['Sold_Status']= $this->input->post('sold');
       $upate_data['Description']= $this->input->post('discription');
       $upate_data['Last_Updated_Date']=date('Y-m-d h:i:s');
       $upate_data['Status']=$this->input->post('current_status');
@@ -308,31 +328,44 @@ class AdminController extends CI_Controller {
     $page_data['categoryList'] = $this->db->get_where('t_category_master')->result_array();
     $this->load->view('backend/pages/product_category', $page_data);
   }
+  function EditorderStatus($param1="",$param2=""){    
+    $data['Status']=$this->input->post('category');
+    $this->db->where('Id', $this->input->post('EditId'));
+    $this->db->update('t_order_details`', $data); 
+    if($this->db->affected_rows()>0){
+          $page_data['message']="Order Status has been Edited Successfully";
+        }
+        else{
+            $page_data['messagefail']='Unable to Edit Order Status. Please try again';
+        }
+        $this->load->view('backend/pages/acknowledgement', $page_data);
+  }
+  function updatechnologyr($param1="",$param2=""){    
+    $data['Status']=$this->input->post('category');
+    $this->db->where('Id', $this->input->post('userId'));
+    $this->db->update('t_technology_request`', $data); 
+    if($this->db->affected_rows()>0){
+          $page_data['message']="Technology Request Status has been Edited Successfully";
+        }
+        else{
+            $page_data['messagefail']='Unable to Edit Technology Request Status. Please try again';
+        }
+        $this->load->view('backend/pages/acknowledgement', $page_data);
+  }
   function AddFiles(){
     $page_data['message']="";
     $page_data['messagefail']="";
-<<<<<<< HEAD
     $new_file_name = $_FILES["file"]["name"];
-        $file_directory = "uploads/Downloads/";
-=======
-    $new_file_name = $_FILES["Image"]["name"];
-        $file_directory = "../uploads/Downloads/";
->>>>>>> f4f111c6c524b4fe25111e9f488380c0ba1bf206
-        if(!is_dir($file_directory)){
-            mkdir($file_directory,0777,TRUE);
-        }
-        if($new_file_name!=""){
-<<<<<<< HEAD
-          move_uploaded_file($_FILES["file"]["tmp_name"],''.$file_directory . $new_file_name);
-          $data['file']=$file_directory . $new_file_name;
-        }
-        else{
-          $page_data['message']="uploading file has been failed.Try again later";
-=======
-          move_uploaded_file($_FILES["Image"]["tmp_name"],''.$file_directory . $new_file_name);
-          $data['file']=$file_directory . $new_file_name;
->>>>>>> f4f111c6c524b4fe25111e9f488380c0ba1bf206
-        }
+    $file_directory = "uploads/Downloads/";
+    if(!is_dir($file_directory)){
+        mkdir($file_directory,0777,TRUE);
+    }
+    if($new_file_name!=""){
+      move_uploaded_file($_FILES["file"]["tmp_name"],''.$file_directory . $new_file_name);
+      $data['file']=$file_directory . $new_file_name;
+    }else{
+      $page_data['message']="uploading file has been failed.Try again later";
+    }
     $data['Name']=$this->input->post('name');
     $data['Status']='Active';
     $page_data['Downloads'] = $this->db->get('t_downloads')->result_array();
@@ -397,6 +430,8 @@ class AdminController extends CI_Controller {
         $page_data['ImageSlider'] = $this->db->get('t_image_slider')->result_array(); 
         $this->load->view('backend/pages/ImageSlider', $page_data); 
       }
+
+     
     function Deleteslider($sliderId="",$page=""){ 
         $page_data['ImageSlider'] = $this->db->get('t_image_slider')->result_array();
         $page_data['message']="";
@@ -423,6 +458,26 @@ class AdminController extends CI_Controller {
         }
         else{
             $page_data['messagefail']='Unable to Delete Product. Please try again';
+        }
+        $this->load->view('backend/pages/acknowledgement', $page_data); 
+      }
+
+       function Editadminproduct($param1="",$param2=""){
+        $page_data['message']="";
+        $page_data['messagefail']="";
+        $data['Product_Name']=$this->input->post('Name');    
+        $data['Price']=$this->input->post('Price');  
+        $data['Status']=$this->input->post('Status');
+        $this->db->where('Id', $this->input->post('EditId'));
+        
+        $this->db->update('t_products_master`', $data); 
+        $page_data['List_all_product'] = $this->db->get_where('t_products_master', array(
+        'Status' => 'Active'))->result_array();
+        if($this->db->affected_rows()>0){
+          $page_data['message']="Product has been Edited Successfully";
+        }
+        else{
+            $page_data['messagefail']='Unable to Edit Product. Please try again';
         }
         $this->load->view('backend/pages/acknowledgement', $page_data); 
       }

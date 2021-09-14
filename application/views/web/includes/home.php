@@ -1,4 +1,4 @@
-<div class="slider-with-banner">
+<div class="li-static-banner pt-20 pt-sm-30 pt-xs-30">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
@@ -20,36 +20,6 @@
                 </div>
             </div>
                 <br><br><br><br><br><br>
-            <!--<div class="col-lg-4 col-md-4 text-center pt-xs-30">-->
-            <!--    <div class="li-banner" style="background-image: url('<?php echo base_url();?>uploads/banner.png">-->
-            <!--        <br>-->
-            <!--        <h3>LOCAL SUPPLIER</h3>-->
-            <!--        <p style="color: black;">-->
-            <!--        The distributor who can supply equipments for your business.</p>-->
-                   
-            <!--        <div class="default-btn">-->
-            <!--            <a class="links bg-info text-white" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/localregister/')">Register Here</a>-->
-            <!--        </div>-->
-            <!--        <br>-->
-            <!--    </div>-->
-                <!--<div class="li-banner mt-15 mt-sm-30 mt-xs-30" style="background-image: url('<?php echo base_url();?>uploads/banner.png">-->
-                <!--    <br>-->
-                <!--    <h2>GLOBAL SUPPLIER</h2>-->
-                <!--    <p style="color: black;">-->
-                <!--    The distributor who can supply equipments for your business.</p>-->
-                <!--    <div class="default-btn">-->
-                <!--        <a class="links bg-info text-white" href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/loadpage/globalregister/')">Register Here</a>-->
-                <!--    </div>-->
-                <!--    <br><br>-->
-                <!--</div>-->
-                <!--<div class="li-banner mt-15 mt-sm-30 mt-xs-30" style="background-image: url('<?php echo base_url();?>uploads/banner.png">-->
-                <!--    <br><img src="<?php echo base_url();?>uploads/icimod.png" alt="Shipping Icon">-->
-                <!--    <h3>Funding Support By:</h3>-->
-                <!--    <p style="color: black;">-->
-                <!--    International Centre for Integrated Mountain Development </p>-->
-                <!--    <br><br>-->
-                <!--</div>-->
-            <!--</div>-->
         </div>
     </div>
 </div>
@@ -58,7 +28,7 @@
     <div class="container">
         <div class="row">
             <?php foreach($t_imagecategory as $i=> $event): ?>
-            <div class="col-lg-6 col-md-6 text-center">
+            <div class="col-lg-3 col-md-3 text-center">
                 <div class="single-banner">
                     <a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_allproductdetails/<?=$event['Id']?>')">
                         <img src="uploads/CategoryImage/<?=$event['Image']?>" alt="CSI Product">

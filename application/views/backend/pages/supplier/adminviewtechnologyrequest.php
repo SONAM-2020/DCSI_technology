@@ -22,11 +22,12 @@
                   <th>Name</th>
                   <th>Contact</th>
                   <th>Email</th>
-                  <th>Equipment Name</th>
+                  <th style="display: none;">Equipment Name</th>
                   <th style="display: none;">Address</th>
                   <th >Request Type</th>
                   <th style="display: none;">Description</th>
                   <th>Date</th>
+                  <th>Status</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -37,11 +38,12 @@
                   <td><?php echo $event['Name'];?></td>
                   <td><?php echo $event['Contact_No'];?></td>
                   <td><?php echo $event['Email'];?></td>
-                  <td><?php echo $event['Equipment_Name'];?></td>
+                  <td style="display: none;"><?php echo $event['Equipment_Name'];?></td>
                   <td style="display: none;"><?php echo $event['Present_Address'];?></td>
-                  <td><button class="btn" type="button"><?php echo $event['Type'];?></button></td>
+                  <td><?php echo $event['Type'];?></td>
                   <td style="display: none;"><?php echo $event['Equipment_Description'];?></td>
                   <td><?php echo $event['Submitted_Date'];?></td>
+                  <td><?php echo $event['Status'];?></td>
                   <td>
                     <button class="btn-secondry" onclick="viewRequest('<?php echo $event['Id'];?>')" type="button"><i class="fa fa-eye"></i> View Request</button>
                     <br><br>

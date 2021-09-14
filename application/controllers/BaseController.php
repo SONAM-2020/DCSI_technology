@@ -1,3 +1,5 @@
+<?php header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Methods: GET, OPTIONS");?>
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class BaseController extends CI_Controller {
@@ -28,6 +30,14 @@ class BaseController extends CI_Controller {
             $page_data['linktype']=$param1;
             $this->load->view('web/pages/localregister', $page_data);   
         }
+        if($param1=="resetpassword"){
+            $page_data['linktype']=$param1;
+            $this->load->view('web/pages/resetpassword', $page_data);   
+        }
+        if($param1=="resetnewpassword"){
+            $page_data['linktype']=$param1;
+            $this->load->view('web/pages/password', $page_data);   
+        }
         if($param1=="globalregister"){
             $page_data['t_country_master'] = $this->db->get_where('t_country_master',array('Status'=>'Active'))->result_array();
             $page_data['linktype']=$param1;
@@ -57,6 +67,8 @@ class BaseController extends CI_Controller {
             $this->load->view('web/pages/download', $page_data);   
         }
         if($param1=="TechnologyRequest"){
+            $page_data['technologyrequestformList'] = $this->db->get_where('t_technology_request', array(
+        'Status' => 'Active'))->result_array();
             $page_data['linktype']=$param1;
             $this->load->view('web/pages/technologyrequestform', $page_data);   
         }
@@ -75,8 +87,51 @@ class BaseController extends CI_Controller {
             $page_data['linktype']=$param1;
             $this->load->view('web/pages/Contactus', $page_data);   
         }
+        if($param1=="ViewRequestDetails"){
+        $page_data['technologyrequestformList'] = $this->db->get_where('t_technology_request', array(
+            'Id' => $param2))->row();
+        $this->load->view('web/pages/technologyrequestformdetails', $page_data);
     }
+    }
+   
 
+    function linkresetpassword(){
+        $page_data['message']="";
+        $page_data['messagefail']="";
+        $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
+        $checkemail=$this->db->get_where('t_user_master',array('Email'=>$this->input->post('email')))->row();
+         if($checkemail==""){
+            $page_data['messagefail']='<div class="alert alert-danger">This email is not registred in our System. Pleaese provide your correct email and please try again.</div>';
+            $this->load->view('web/acknowledgement',$page_data);
+        }
+        else{
+            $emailparam='';
+            $maildetails=$this->db->get_where('t_mail_template', array( 'Template_Module' => 'PASSWORD'))->row();
+            $t_mail_template=$maildetails->Template_Mail_Body;
+            $htmlContent =$t_mail_template;
+            $val=$this->CommonModel->sendmail($this->input->post('email'), $maildetails->Template_Subject.' (This is system generated mail. Please donot reply)',$htmlContent);
+            $page_data['message']="<div class='alert alert-success alert-dismissible'>We have sent you the password reset Link in your email. Please check your inbox and reset your password now.Thank you for using our system.</div>";
+            $this->load->view('web/acknowledgement',$page_data);
+        }
+        
+    }
+    function replaceoldpassword(){
+            $page_data['message']="";
+            $page_data['messagefail']="";
+            $checkemail=$this->db->get_where('t_user_master',array('Email'=>$this->input->post('email')))->row();
+             if($checkemail==""){
+                $page_data['messagefail']='<div class="alert alert-danger">This email is not registred in our System. Pleaese provide your correct email and please try again.</div>';
+                $this->load->view('web/acknowledgement',$page_data);
+            }
+            else{
+                $data['Password']=password_hash($this->input->post('confirmpassword'), PASSWORD_BCRYPT);
+                $this->db->where('Email', $this->input->post('email'));
+                $this->db->update('t_user_master', $data);
+                $page_data['message']="<div class='alert alert-success alert-dismissible'>your password has been resseted successfully.Thank you for using our system.</div>";
+                $this->load->view('web/acknowledgement',$page_data);
+        }
+        
+    }
     //edited this method
     function localregistration(){
         $page_data['CompanyInfo'] = $this->db->get_where('t_company_details')->row(); 
@@ -203,13 +258,52 @@ class BaseController extends CI_Controller {
         $data['Equipment_Name']=$this->input->post('equipment');
         $data['Equipment_Description']=$this->input->post('description');
         $data['Type']=$this->input->post('request');
-        $this->CommonModel->do_insert('t_technology_request', $data); 
+        $this->CommonModel->do_insert('t_technology_request', $data);
+
         if($this->db->affected_rows()>0){
-            $page_data['message']="Your Information has been added. You will be notified throught email once our the Supplier take further action.Thank you for using our system";
+
+            $this->load->library('email');
+            $config = array(
+                'protocol'  => 'ssmtp',
+                'smtp_host' => 'ssl://ssmtp.googlemail.com',//ssl://ssmtp.googlemail.com
+                'smtp_port' => 465, 
+                'smtp_user' => 'noreply@dcsitechnology.bt',
+                'smtp_pass' => 'admin@2021',
+                'smtp_timeout' => '7',
+                'mailtype'  => 'html',
+                'smtp_crypto' => 'security', //can be 'ssl' or 'tls' for example
+                'charset'   => 'utf-8'
+            );
+            $this->email->initialize($config);
+            $this->email->set_mailtype("html");
+            $this->email->set_newline("\r\n");
+            $this->load->helper('string');
+            $sql = "SELECT Email FROM t_user_master";
+            $query = $this->db->query($sql);
+            $array = $query->result_array();
+            $arr = array_column($array,"Email");
+
+            $t_mail_template=$this->db->get_where('t_mail_template', array( 'Template_Module' => 'NOTIFICATION'))->row()->Template_Mail_Body;
+            $t_mail_template=str_replace("##NAME##", ''.$this->input->post('equipment'),  $t_mail_template);
+            $t_mail_template=str_replace("##SENDER##", ''.$this->input->post('name'),  $t_mail_template);
+            $t_mail_template=str_replace("##CONTACT##", ''.$this->input->post('phone'),  $t_mail_template);
+            $t_mail_template=str_replace("##EMAIL##", ''.$this->input->post('email'),  $t_mail_template);
+            
+            
+            $htmlContent =$t_mail_template;
+            $this->email->to($arr);
+            $this->email->from('noreply@dcsitechnology.bt','noreply');
+            $this->email->subject('DCSI Technology Request of Your Choice');
+            $this->email->message($htmlContent);
+            $this->email->send();
+            $page_data['message']="";
+            $page_data['messagefail']="";
+            $page_data['message']="<div class='alert alert-success alert-dismissible'>Your Information has been added. You will be notified throught email once our the Supplier take further action.Thank you for using our system.</div>";
         }
         else{
-            $page_data['messagefail']='Your Information  is not able to submit. Please try again';
+            $page_data['messagefail']="<div class='alert alert-danger alert-dismissible'>Your Information  is not able to submit. Please try again.Thank You.</div>";
         }
+
         $this->load->view('web/acknowledgement', $page_data);
     }
 

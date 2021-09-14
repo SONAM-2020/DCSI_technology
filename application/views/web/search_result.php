@@ -38,7 +38,7 @@
                                                 </div>
                                             </div>
                                             <div class="add-actions" style="text-align: center;">
-                                                <ul class="add-actions-link m-md-5"">
+                                                <ul class="add-actions-link m-md-5">
                                                     <li class="add-cart active"><a href="#" onclick="loadpage('<?php echo base_url();?>index.php?baseController/load_productdetails/<?=$itm['Id']?>')"> View Details</a></li>
                                                 </ul>
                                             </div>

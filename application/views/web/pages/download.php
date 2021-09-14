@@ -2,6 +2,23 @@
 <?php
     $this->load->view('web/includes/header.php');
 ?>
+<style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button3 {background-color: #f44336;} /* Red */ 
+
+</style>
 <body>
   <div id="mainpublicContent">
     <div class="about-us-wrapper pt-60 pb-40">
@@ -24,7 +41,7 @@
                                     <td>1.</td>
                                     <td><?php echo$event['Name'];?></td>
                                     <td>
-                                        <button type="button" class="btn btn-primary btn-block"><a style="color: white;" href="<?php echo base_url();?><?php echo$event['file'];?>" target="_blank"><i class="fa fa-download"></i> Download</a></button> 
+                                        <button type="button" class="button button3" style="color:red;"><a style="color: white;" href="<?php echo base_url();?><?php echo$event['file'];?>" target="_blank"><i class="fa fa-download"></i> Download</a></button> 
                                     </td>
                                 </tr>
                             </tbody>
