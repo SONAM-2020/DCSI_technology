@@ -35,17 +35,7 @@
                     <div class="col-lg-4">
                         <div class="footer-block">
                             <h3 class="footer-block-title" style="color: 
-                            red;">Visitor Count:&nbsp; <button class="btn btn-success"><?php
-                    $size=sizeof($this->db->get_where('t_visiter_detls', array(
-                        'Status' => 'Active'
-                        ))->result_array());
-                        if($size>0){
-                            echo $size;
-                        }
-                        else{
-                            echo 0;
-                        }
-                    ?></button> </h3>
+                            red;">Visitor Count:&nbsp; <button class="btn btn-success"><?=$IdCount->IdCount;?></button> </h3>
                             <img src="<?php echo base_url();?>uploads/icimod.png" alt="Shipping Icon">
                     <p>Supported By: International Centre for Integrated Mountain Development(ICIMOD) & Asian Pacific Center of Technology Transfer(APCTT)</p>
                         </div>

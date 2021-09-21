@@ -58,8 +58,12 @@ class AdminController extends CI_Controller {
         $this->load->view('backend/pages/newsandAnnouncement/news_announcementdetails', $page_data);
     }
     if($param1=="listproductmaster"){
-        $page_data['List_all_product'] = $this->db->get_where('t_products_master', array(
+       /* $page_data['List_all_product'] = $this->db->get_where('t_products_master', array(
+        'Status' => 'Active'))->result_array();*/
+        $page_data['category_list'] = $this->db->get_where('t_category_master', array(
         'Status' => 'Active'))->result_array();
+        $query ="SELECT p.`Id`, p.`Product_Name`,p.`Price`,p.`Status`,p.`Category_Id`,r.`Category_Name` FROM `t_products_master` p LEFT JOIN `t_category_master` r ON r.`Id`= p.`Category_Id` WHERE p.`Status`='Active'";
+        $page_data['List_all_product'] = $this->db->query($query)->result_array(); 
         $this->load->view('backend/pages/Adminproductlist', $page_data);
     }
     if($param1=="adminviewtechnologyrequest"){
@@ -466,13 +470,12 @@ class AdminController extends CI_Controller {
         $page_data['message']="";
         $page_data['messagefail']="";
         $data['Product_Name']=$this->input->post('Name');    
-        $data['Price']=$this->input->post('Price');  
+        $data['Price']=$this->input->post('Price');
+        $data['Category_Id']=$this->input->post('Category_Id');
+        //die($this->input->post('EditId'));  
         $data['Status']=$this->input->post('Status');
         $this->db->where('Id', $this->input->post('EditId'));
-        
         $this->db->update('t_products_master`', $data); 
-        $page_data['List_all_product'] = $this->db->get_where('t_products_master', array(
-        'Status' => 'Active'))->result_array();
         if($this->db->affected_rows()>0){
           $page_data['message']="Product has been Edited Successfully";
         }

@@ -21,6 +21,10 @@ class BaseController extends CI_Controller {
         $page_data['t_downloads'] = $this->db->get_where('t_downloads',array('Status'=>'Active'))->result_array();
         
         $page_data['category_list'] = $this->CommonModel->get_active_category_list();
+
+        $query ="SELECT COUNT(Id) AS IdCount FROM `t_visiter_detls`";
+        $page_data['IdCount'] = $this->db->query($query)->row(); 
+
         $this->load->view('web/index',$page_data);
     }
     function loadpage($param1="",$param2=""){
