@@ -16,14 +16,14 @@
     <div class="about-us-wrapper pt-60 pb-40">
       <div class="container">
           <div class="row">
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 order-last order-lg-first">
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 order-last order-lg-first" style="background-color:white;">
                   <div class="about-text-wrap">
                       <h4><?=$CompanyInfo->Name;?></h4>
                       <p><?=$CompanyInfo->Company_Description;?></p>
                   </div>
               </div>
               <div class="col-sm-10 col-md-10 col-lg-6 col-xs-12">
-                  <div class="about-image-wrap">
+                  <div>
                       <img class="img-full" src="<?php echo base_url();?>uploads/aboutus.png" alt="About Us" />
                   </div>
               </div>

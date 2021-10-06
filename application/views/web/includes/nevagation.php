@@ -1,5 +1,5 @@
 <div class="body-wrapper" >
-    <header class="li-header-4" style="background-color: #cc0606;">
+    <header class="li-header-4" style="background-color: #7d0b0b;">
         <div class="header-top pt-0 pb-0">
             <div class="container">
                 <div class="row">
@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <div class="header-bottom header-sticky d-none d-lg-block d-xl-block" style="background-color: #cc0606;">
+        <div class="header-bottom header-sticky d-none d-lg-block d-xl-block" style="background-color: #7d0b0b;">
             <!-- style="background-image: url('<?php echo base_url();?>uploads/header1.JPG')"  -->
             <div class="container">
                 <div class="row">

@@ -315,6 +315,9 @@ class BaseController extends CI_Controller {
         $page_data['product_details'] =$this->db->get_where('t_products_master',array('Id'=>$id))->row();
         $page_data['product_images_details'] =$this->db->get_where('t_product_images',array('Product_Id'=>$id))->result_array();
         $page_data['company_details'] =$this->db->get_where('t_supplier_company',array('Id'=>$page_data['product_details']->Company_Id))->row();
+
+         // $query ="SELECT * FROM `t_supplier_company` t JOIN `t_user_master` u ON t.`User_Id`=u.`Id` WHERE t.`Id` = '".$Company_Id."'";
+        //$page_data['company_details'] = $this->db->query($query)->row(); 
         $this->load->view('web/product_details', $page_data);
     }
     
